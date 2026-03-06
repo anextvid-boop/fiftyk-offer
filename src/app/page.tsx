@@ -155,7 +155,7 @@ export default function Home() {
 
               {/* £50,000 - Premium Gold Shine */}
               <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center">
-                <h2 className="text-5xl sm:text-7xl md:text-9xl lg:text-[11rem] font-black tracking-tighter text-transparent bg-clip-text bg-[linear-gradient(110deg,#cfb53b,45%,#fff,55%,#cfb53b)] bg-[length:200%_100%] animate-[shine_4s_linear_infinite] m-0 drop-shadow-[0_0_15px_rgba(207,181,59,0.3)]">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-[linear-gradient(110deg,#cfb53b,45%,#fff,55%,#cfb53b)] bg-[length:200%_100%] animate-[shine_4s_linear_infinite] m-0 drop-shadow-[0_0_15px_rgba(207,181,59,0.3)]">
                   £50,000
                 </h2>
               </motion.div>
