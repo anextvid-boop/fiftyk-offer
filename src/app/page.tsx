@@ -147,14 +147,43 @@ const BASE_PATH = "/fiftyk-offer";
 
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0.5
+    }
+  },
   exit: { opacity: 0 }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 }
-};
+  hidden: { opacity: 0, y: 30, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+} as any;
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 25, filter: "blur(12px)", scale: 0.8 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    scale: 1,
+    transition: {
+      delay: 0.6 + (i * 0.1),
+      duration: 1.5,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  })
+} as any;
 
 // Fixed gold dust positions to prevent hydration mismatch
 const DUST_PARTICLES = [
@@ -426,22 +455,23 @@ export default function Home() {
               <div className="flex flex-col items-center gap-10 w-full">
 
                 {/* Name */}
-                <motion.p
-                  variants={itemVariants}
-                  className="text-xl sm:text-3xl md:text-5xl lg:text-6xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60"
-                >
+                <div className="flex text-xl sm:text-3xl md:text-5xl lg:text-6xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60">
                   {["j", "a", "h", "r", "o", "n", "i", "m", "o"].map((letter, index) => (
-                    <span
+                    <motion.span
                       key={index}
+                      custom={index}
+                      variants={letterVariants}
+                      initial="hidden"
+                      animate="visible"
                       style={{
                         animation: "letter-glow 4s ease-in-out infinite",
                         animationDelay: `${index * 0.15}s`
                       }}
                     >
                       {letter}
-                    </span>
+                    </motion.span>
                   ))}
-                </motion.p>
+                </div>
 
                 {/* Divider */}
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
