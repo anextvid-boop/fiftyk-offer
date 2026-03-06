@@ -17,11 +17,10 @@ const itemVariants = {
   visible: { opacity: 1 }
 };
 
-const ExpandableField = ({ name, label }: { name: string, label: string }) => {
+const ExpandableField = ({ name, label, fields }: { name: string, label: string, fields?: string[] }) => {
   const [expanded, setExpanded] = useState(false);
-  const placeholderText = name === "links" ? "e.g., https://your-website.com" : "Type here...";
   return (
-    <div className="border-b border-[#cfb53b]/40">
+    <div className="border-b border-[#cfb53b]/20">
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
@@ -38,12 +37,27 @@ const ExpandableField = ({ name, label }: { name: string, label: string }) => {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <textarea
-              name={name}
-              placeholder={placeholderText}
-              rows={4}
-              className="w-full bg-white/5 p-6 text-white tracking-wide outline-none placeholder:text-white/10 text-lg md:text-xl font-sans resize-none mt-2 mb-8 border border-[#cfb53b]/20"
-            ></textarea>
+            <div className="flex flex-col gap-4 mb-8">
+              {fields ? (
+                fields.map((fieldLabel, idx) => (
+                  <div key={idx} className="relative group">
+                    <input
+                      type="text"
+                      name={`${name}_${idx}`}
+                      placeholder={fieldLabel.toUpperCase()}
+                      className="w-full bg-white/5 border border-white/10 p-5 text-white tracking-widest outline-none focus:border-[#cfb53b]/60 transition-all placeholder:text-white/10 font-sans"
+                    />
+                  </div>
+                ))
+              ) : (
+                <textarea
+                  name={name}
+                  placeholder="Type here..."
+                  rows={4}
+                  className="w-full bg-white/5 p-6 text-white tracking-wide outline-none placeholder:text-white/10 text-lg md:text-xl font-sans resize-none border border-[#cfb53b]/20"
+                ></textarea>
+              )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -244,11 +258,31 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col w-full border-t border-white/10 mt-8">
-                  <ExpandableField name="personal_life" label="Personal Life" />
-                  <ExpandableField name="business_life" label="Business Life" />
-                  <ExpandableField name="social_links" label="Socials / Work Links" />
-                  <ExpandableField name="other_area" label="Other Interests" />
-                  <ExpandableField name="reference_points" label="Points of Reference" />
+                  <ExpandableField
+                    name="personal_life"
+                    label="Personal Life Details"
+                    fields={["Who are you?", "Personal Ambition", "Lifestyle Focus"]}
+                  />
+                  <ExpandableField
+                    name="business_life"
+                    label="Business Life Details"
+                    fields={["Current Project", "Business Goal", "Strategic Vision"]}
+                  />
+                  <ExpandableField
+                    name="social_links"
+                    label="Socials / Work Links"
+                    fields={["Primary Link", "Secondary Link", "Portfolio / Evidence"]}
+                  />
+                  <ExpandableField
+                    name="other_area"
+                    label="Other Interests"
+                    fields={["Technical Focus", "Creative Area", "Miscellaneous"]}
+                  />
+                  <ExpandableField
+                    name="reference_points"
+                    label="Reference Points"
+                    fields={["How you found me", "Similar Projects", "Key Influences"]}
+                  />
                 </div>
 
                 <a
