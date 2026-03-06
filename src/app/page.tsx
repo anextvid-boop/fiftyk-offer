@@ -541,6 +541,18 @@ export default function Home() {
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_subject" value="New £50k Project Inquiry - jahronimo" />
                 <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_autoresponder" value={`
+THANK YOU
+
+WAIT
+I MAKE
+
+Your inquiry has been received. 
+
+Jahronimo
+07538068550
+jahronimo1@hotmail.com
+                `.trim()} />
                 {/* Requesting a copy to the user email provided in form */}
                 <input type="hidden" name="_cc" value="anextvid@gmail.com" />
                 <input type="hidden" name="_replyto" value="anextvid@gmail.com" />
