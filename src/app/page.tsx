@@ -294,8 +294,8 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              onClick={() => setShowForm(true)}
-              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)]"
+              onClick={() => { playTick(); setShowForm(true); }}
+              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:scale-[0.98] active:brightness-90 origin-center transition-all duration-300"
             >
               {/* Hardware-accelerated glow pulse */}
               <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
@@ -356,14 +356,16 @@ export default function Home() {
                 {/* Divider */}
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
-                {/* Sub text — centred block with period compensation */}
-                <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center">
-                  <p className="text-lg md:text-2xl tracking-[0.5em] font-bold text-[#d4af37]/80 uppercase m-0 mr-[-0.5em] leading-none mb-4">
-                    no saying..
-                  </p>
-                  <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-black text-white uppercase m-0 leading-none mr-[-0.05em]">
-                    i make.
-                  </p>
+                {/* Sub text — perfectly edge-aligned */}
+                <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center mt-2 mb-2">
+                  <div className="inline-flex flex-col items-stretch w-max">
+                    <p className="flex justify-between w-full text-base sm:text-xl md:text-2xl font-bold text-[#d4af37]/80 uppercase mb-3 leading-none">
+                      <span>N</span><span>O</span><span className="w-4 sm:w-6"></span><span>S</span><span>A</span><span>Y</span><span>I</span><span>N</span><span>G</span>
+                    </p>
+                    <p className="flex justify-between w-full text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.02em] font-black text-white uppercase m-0 leading-none">
+                      <span>I</span><span className="w-4 sm:w-8"></span><span>M</span><span>A</span><span>K</span><span>E</span>
+                    </p>
+                  </div>
                 </motion.div>
 
                 {/* CTA */}
