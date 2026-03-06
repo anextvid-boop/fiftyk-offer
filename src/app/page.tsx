@@ -212,7 +212,7 @@ export default function Home() {
                 {/* Name */}
                 <motion.p
                   variants={itemVariants}
-                  className="text-3xl md:text-6xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
+                  className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
                 >
                   jahronimo
                 </motion.p>
@@ -234,12 +234,12 @@ export default function Home() {
                 {/* Divider */}
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent" />
 
-                {/* Sub text — centred block */}
+                {/* Sub text — centred block with period compensation */}
                 <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center">
-                  <p className="text-sm md:text-base tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-3">
+                  <p className="text-sm md:text-lg tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-4">
                     no saying..
                   </p>
-                  <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.02em] font-black text-white uppercase m-0 leading-none">
+                  <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-black text-white uppercase m-0 leading-none mr-[-0.05em]">
                     i make.
                   </p>
                 </motion.div>
