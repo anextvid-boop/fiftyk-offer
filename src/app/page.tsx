@@ -197,8 +197,8 @@ export default function Home() {
                 <h2 className="text-4xl md:text-6xl tracking-[0.3em] font-black uppercase text-white mb-4">
                   Project Access
                 </h2>
-                <p className="text-sm md:text-lg tracking-[0.5em] font-light uppercase text-white/30">
-                  CONFIRM DETAILS
+                <p className="text-sm md:text-lg tracking-[0.5em] font-light uppercase text-[#cfb53b]/60">
+                  FILL IN WHAT YOU WISH
                 </p>
               </motion.div>
 
@@ -232,11 +232,18 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
                 </div>
 
+                <div className="relative group">
+                  <input
+                    type="text"
+                    name="location"
+                    placeholder="WHERE YOU'RE FROM"
+                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-4xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
+                  />
+                  <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
+                </div>
+
                 <div className="flex flex-col w-full border-t border-white/10 mt-8">
-                  <ExpandableField name="personal_life" label="Personal Life" />
-                  <ExpandableField name="business_life" label="Business Life" />
-                  <ExpandableField name="links" label="Links" />
-                  <ExpandableField name="points_of_reference" label="Points of Reference" />
+                  <ExpandableField name="optional_details" label="Optional Details" />
                 </div>
 
                 <a
