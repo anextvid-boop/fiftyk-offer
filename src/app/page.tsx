@@ -36,6 +36,39 @@ const itemVariants = {
   }
 };
 
+const ExpandableField = ({ name, label }: { name: string, label: string }) => {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <div className="border-b border-[#cfb53b]/40">
+      <button
+        type="button"
+        onClick={() => setExpanded(!expanded)}
+        className="w-full py-4 flex justify-between items-center text-white uppercase tracking-widest text-sm outline-none transition-colors hover:text-[#cfb53b]"
+      >
+        <span className={expanded ? "text-[#cfb53b]" : "text-white/70"}>{label}</span>
+        <span className="text-xl font-light text-[#cfb53b]/60">{expanded ? '-' : '+'}</span>
+      </button>
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <textarea
+              name={name}
+              placeholder="Type here..."
+              rows={3}
+              className="w-full bg-white/5 p-4 text-white/90 tracking-wide outline-none placeholder:text-white/20 text-sm md:text-base font-sans resize-none mt-2 mb-4"
+            ></textarea>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -135,14 +168,19 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#cfb53b]"></div>
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#cfb53b]"></div>
 
-              <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl tracking-[0.3em] font-light uppercase text-white/90 mb-10 text-center">
-                Project Access
-              </motion.h2>
+              <motion.div variants={itemVariants} className="w-full text-center mb-10">
+                <h2 className="text-2xl md:text-3xl tracking-[0.3em] font-light uppercase text-white/90 mb-2">
+                  Project Access
+                </h2>
+                <p className="text-xs md:text-sm tracking-[0.2em] font-light uppercase text-white/50">
+                  Fill in what you wish
+                </p>
+              </motion.div>
 
               <motion.form
                 variants={itemVariants}
                 onSubmit={handleSubmit}
-                className="flex flex-col space-y-8 w-full"
+                className="flex flex-col space-y-4 w-full"
               >
                 {/* Disables Captcha for a smoother experience */}
                 <input type="hidden" name="_captcha" value="false" />
@@ -162,16 +200,15 @@ export default function Home() {
                   name="email"
                   placeholder="EMAIL"
                   required
-                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-3 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-colors placeholder:text-white/30 text-sm md:text-base font-sans"
+                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-3 mb-4 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-colors placeholder:text-white/30 text-sm md:text-base font-sans"
                 />
 
-                <textarea
-                  name="details"
-                  placeholder="DETAILS"
-                  rows={3}
-                  required
-                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-3 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-colors placeholder:text-white/30 text-sm md:text-base resize-none font-sans"
-                ></textarea>
+                <div className="flex flex-col w-full border-t border-[#cfb53b]/40 mt-4">
+                  <ExpandableField name="personal_life" label="Personal Life" />
+                  <ExpandableField name="business_life" label="Business Life" />
+                  <ExpandableField name="links" label="Links" />
+                  <ExpandableField name="points_of_reference" label="Points of Reference" />
+                </div>
 
                 <button
                   type="submit"
