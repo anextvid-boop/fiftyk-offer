@@ -216,7 +216,7 @@ export default function Home() {
                   variants={itemVariants}
                   className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase text-[#d4af37]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#d4af37]"
                 >
-                  jahronimo
+                  j<span className="text-[#fff3a6] transition-colors duration-700 group-hover:text-white" style={{ textShadow: "0 0 12px rgba(212,175,55,0.6)" }}>a</span>hr<span className="text-white transition-colors duration-700" style={{ textShadow: "0 0 15px rgba(212,175,55,0.8)" }}>o</span>nim<span className="text-[#fff3a6] transition-colors duration-700 group-hover:text-white" style={{ textShadow: "0 0 12px rgba(212,175,55,0.6)" }}>o</span>
                 </motion.p>
 
                 {/* Divider */}
@@ -248,7 +248,7 @@ export default function Home() {
                 {/* CTA */}
                 <motion.div variants={itemVariants} className="pt-4 flex items-center gap-3">
                   <div className="w-4 h-[1px] bg-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/60 tracking-[0.5em] text-[10px] uppercase font-light mr-[-0.5em]">
+                  <span className="text-[#d4af37]/80 tracking-[0.5em] text-xs uppercase font-medium mr-[-0.5em]">
                     Press to enter.
                   </span>
                   <div className="w-4 h-[1px] bg-[#d4af37]/30" />
@@ -285,7 +285,7 @@ export default function Home() {
                   Access
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
-                <p className="text-xs tracking-[0.4em] font-medium uppercase text-[#d4af37]/70 mr-[-0.4em]">
+                <p className="text-sm tracking-[0.4em] font-semibold uppercase text-[#d4af37]/80 mr-[-0.4em]">
                   Fill in what you wish.
                 </p>
               </div>
