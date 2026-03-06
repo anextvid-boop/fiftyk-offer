@@ -167,6 +167,10 @@ export default function Home() {
 
       {/* Global Keyframes */}
       <style jsx global>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
         @keyframes shimmer {
           0%   { transform: translateX(-160%) skewX(-18deg); }
           100% { transform: translateX(160%) skewX(-18deg); }
@@ -176,18 +180,18 @@ export default function Home() {
           100% { background-position-x: -200%; }
         }
         @keyframes pulsate {
-          0%, 100% { box-shadow: 0 0 40px rgba(207,181,59,0.07), 0 0 0 1px rgba(207,181,59,0.15); }
-          50%       { box-shadow: 0 0 80px rgba(207,181,59,0.18), 0 0 0 1px rgba(207,181,59,0.30); }
+          0%, 100% { box-shadow: 0 0 50px rgba(212,175,55,0.1), 0 0 0 1px rgba(212,175,55,0.2); }
+          50%      { box-shadow: 0 0 100px rgba(212,175,55,0.25), 0 0 0 1px rgba(212,175,55,0.45); }
         }
         @keyframes float {
           0%   { transform: translateY(0px) translateX(0px); opacity: 0; }
-          20%  { opacity: 0.6; }
-          80%  { opacity: 0.3; }
-          100% { transform: translateY(-120px) translateX(15px); opacity: 0; }
+          20%  { opacity: 0.7; }
+          80%  { opacity: 0.4; }
+          100% { transform: translateY(-140px) translateX(20px); opacity: 0; }
         }
         @keyframes borderpulse {
-          0%, 100% { border-color: rgba(207,181,59,0.25); }
-          50%       { border-color: rgba(207,181,59,0.5); }
+          0%, 100% { border-color: rgba(212,175,55,0.3); }
+          50%      { border-color: rgba(212,175,55,0.7); }
         }
       `}</style>
 
@@ -203,9 +207,9 @@ export default function Home() {
           }}
         />
         {/* Ambient gold orbs */}
-        <div className="absolute top-[-25%] left-[-15%] w-[70%] h-[70%] bg-[#cfb53b]/10 blur-[200px] rounded-full" />
-        <div className="absolute bottom-[-25%] right-[-15%] w-[70%] h-[70%] bg-[#cfb53b]/10 blur-[200px] rounded-full" />
-        <div className="absolute top-[35%] left-[35%]  w-[30%] h-[30%] bg-[#cfb53b]/5  blur-[180px] rounded-full" />
+        <div className="absolute top-[-25%] left-[-15%] w-[70%] h-[70%] bg-[#d4af37]/10 blur-[200px] rounded-full" />
+        <div className="absolute bottom-[-25%] right-[-15%] w-[70%] h-[70%] bg-[#d4af37]/10 blur-[200px] rounded-full" />
+        <div className="absolute top-[35%] left-[35%]  w-[30%] h-[30%] bg-[#d4af37]/5  blur-[180px] rounded-full" />
         {/* Fixed gold dust particles */}
         {DUST_PARTICLES.map((p, i) => (
           <div
@@ -236,9 +240,23 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden"
-              style={{ animation: "pulsate 7s ease-in-out infinite" }}
+              className="relative w-full max-w-2xl mx-auto bg-black/80 backdrop-blur-3xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden border border-white/5 rounded-sm"
+              style={{ animation: "pulsate 8s ease-in-out infinite" }}
             >
+              {/* Rotating Gold Beam Border */}
+              <div
+                className="absolute inset-[-1px] pointer-events-none transition-opacity duration-1000"
+                style={{
+                  opacity: 0.15,
+                  animation: "borderpulse 6s ease-in-out infinite"
+                }}
+              >
+                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_170deg,#d4af37_180deg,transparent_190deg,transparent_360deg)] animate-[spin_4s_linear_infinite]" />
+              </div>
+              <div className="absolute inset-[-1px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_160deg,#f9d71c_180deg,transparent_200deg,transparent_360deg)] animate-[spin_2s_linear_infinite]" />
+              </div>
+              <div className="absolute inset-[1px] bg-black/95 pointer-events-none z-0 rounded-sm" />
               {/* Shimmer sweep */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cfb53b]/10 to-transparent animate-[shimmer_6s_ease-in-out_infinite] skew-x-12" />
@@ -277,9 +295,9 @@ export default function Home() {
                 <motion.h1
                   variants={itemVariants}
                   className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
-                    bg-[linear-gradient(110deg,#bf953f_0%,#fcf6ba_30%,#b38728_50%,#fbf5b7_70%,#aa771c_100%)]
+                    bg-[linear-gradient(110deg,#bf953f_0%,#f9d71c_30%,#b38728_50%,#f9d71c_70%,#aa771c_100%)]
                     bg-[length:200%_100%] animate-[shine:6s_linear_infinite]
-                    drop-shadow-[0_0_30px_rgba(207,181,59,0.35)]"
+                    drop-shadow-[0_0_40px_rgba(212,175,55,0.45)]"
                 >
                   <AnimatedLetters text="£50,000" delay={0.4} />
                 </motion.h1>
@@ -317,9 +335,20 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center"
-              style={{ animation: "pulsate 7s ease-in-out infinite" }}
+              className="relative w-full max-w-xl mx-auto bg-black/85 backdrop-blur-3xl p-10 md:p-16 flex flex-col items-center overflow-hidden border border-white/5 rounded-sm"
+              style={{ animation: "pulsate 8s ease-in-out infinite" }}
             >
+              {/* Rotating Gold Beam Border (Form) */}
+              <div
+                className="absolute inset-[-1px] pointer-events-none transition-opacity duration-1000"
+                style={{
+                  opacity: 0.1,
+                  animation: "borderpulse 6s ease-in-out infinite"
+                }}
+              >
+                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_170deg,#d4af37_180deg,transparent_190deg,transparent_360deg)] animate-[spin_5s_linear_infinite]" />
+              </div>
+              <div className="absolute inset-[1px] bg-black/95 pointer-events-none z-0 rounded-sm" />
               {/* Corner brackets */}
               {[
                 "top-0 left-0 border-t border-l",
@@ -359,7 +388,7 @@ export default function Home() {
                       required={field.required}
                       className="w-full bg-transparent border-b border-white/10 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/12 font-light"
                     />
-                    <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#cfb53b] to-[#fcf6ba] group-focus-within:w-full transition-all duration-700" />
+                    <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#d4af37] to-[#f9d71c] group-focus-within:w-full transition-all duration-700" />
                   </div>
                 ))}
 
