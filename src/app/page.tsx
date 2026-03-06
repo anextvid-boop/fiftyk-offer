@@ -511,9 +511,9 @@ export default function Home() {
                   ACCESS
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
-                <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-semibold uppercase text-[#d4af37]/80 mr-[-0.4em]">
+                <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-black uppercase text-[#d4af37]/80 mr-[-0.4em]">
                   <span>FILL ME IN</span>
-                  <span className="text-xs text-[#d4af37]/60 uppercase tracking-[0.1em]">with how much you wish</span>
+                  <span className="text-[10px] text-[#d4af37]/40 normal-case tracking-[0.1em] font-light">with how much you wish</span>
                 </div>
               </div>
 
