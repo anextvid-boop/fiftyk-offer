@@ -82,6 +82,44 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
   );
 };
 
+const ExpandableFileField = ({ name, label, description }: { name: string; label: string; description: string }) => {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <div className="border-b border-[#d4af37]/15">
+      <button
+        type="button"
+        onClick={() => setExpanded(!expanded)}
+        className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light"
+      >
+        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/50"}`}>{label}</span>
+        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
+      </button>
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1, transition: { duration: 0.35, ease: "easeOut" } }}
+            exit={{ height: 0, opacity: 0, transition: { duration: 0.2 } }}
+            className="overflow-hidden"
+          >
+            <div className="flex flex-col gap-3 pb-6">
+              <p className="text-[#d4af37]/60 text-xs tracking-widest uppercase font-light mb-1">{description}</p>
+              <input
+                type="file"
+                name={name}
+                multiple
+                accept="image/*"
+                className="w-full bg-transparent border border-white/8 p-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all font-light text-sm
+                file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-[10px] file:uppercase file:tracking-widest file:bg-[#d4af37]/20 file:text-[#d4af37] hover:file:bg-[#d4af37]/30 file:transition-all file:cursor-pointer"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -310,7 +348,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <form className="flex flex-col gap-8 w-full">
+              <form className="flex flex-col gap-8 w-full" encType="multipart/form-data">
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_subject" value="New £50k Project Inquiry" />
 
@@ -335,10 +373,10 @@ export default function Home() {
                 {/* Expandable optional fields */}
                 <div className="flex flex-col w-full mt-2 border-t border-white/8">
                   <ExpandableField name="personal_life" label="Personal Life" fields={["Who are you?", "Personal Ambition", "Lifestyle Focus", "Values & Beliefs", "Current Challenges"]} />
-                  <ExpandableField name="business_life" label="Business Life" fields={["Current Project", "Business Goal", "Vision", "Biggest Bottleneck", "Revenue Focus"]} />
+                  <ExpandableField name="business_life" label="Business Life" fields={["What you do", "Why?", "Current Project", "Business Goal", "Vision"]} />
                   <ExpandableField name="social_links" label="Socials & Links" fields={["Primary Link", "Secondary Link", "Portfolio", "Recent Work", "Reference Link"]} />
-                  <ExpandableField name="other_area" label="Other Interests" fields={["Creative Focus", "Technical Area", "Hobbies", "Current Obsession", "Other"]} />
-                  <ExpandableField name="reference" label="Reference Points" fields={["How you found me", "Key Influences", "Similar Work", "Aesthetic Preferences", "Expectations"]} />
+                  <ExpandableField name="reference" label="Reference Points" fields={["How you found me?", "What else you want to say.", "Other"]} />
+                  <ExpandableFileField name="photos" label="Attach Photos" description="Up to 5 photos. Anything you want to share." />
                 </div>
 
                 {/* Payment CTA */}
