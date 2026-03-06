@@ -194,10 +194,10 @@ export default function Home() {
               <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-[#cfb53b]/60"></div>
 
               <motion.div variants={itemVariants} className="w-full text-center mb-16">
-                <h2 className="text-4xl md:text-6xl tracking-[0.3em] font-black uppercase text-white mb-4">
+                <h2 className="text-4xl md:text-6xl tracking-[0.3em] font-black uppercase text-white mb-4 mr-[-0.3em]">
                   Project Access
                 </h2>
-                <p className="text-sm md:text-lg tracking-[0.5em] font-light uppercase text-[#cfb53b]/60">
+                <p className="text-sm md:text-lg tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 mr-[-0.5em]">
                   FILL IN WHAT YOU WISH
                 </p>
               </motion.div>
@@ -243,7 +243,9 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col w-full border-t border-white/10 mt-8">
-                  <ExpandableField name="optional_details" label="Optional Details" />
+                  <ExpandableField name="social_links" label="Optional: Social Links" />
+                  <ExpandableField name="project_idea" label="Optional: Project Idea" />
+                  <ExpandableField name="personal_note" label="Optional: Personal Note" />
                 </div>
 
                 <a
