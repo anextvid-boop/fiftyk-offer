@@ -6,22 +6,20 @@ import { motion, AnimatePresence } from "framer-motion";
 const BASE_PATH = "/fiftyk-offer";
 
 const containerVariants = {
-  hidden: { opacity: 0, scale: 0.98, filter: "blur(5px)" },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
-    scale: 1,
-    filter: "blur(0px)",
+    y: 0,
     transition: {
-      duration: 1.2,
-      staggerChildren: 0.2,
-      delayChildren: 0.3
+      duration: 1,
+      staggerChildren: 0.1,
+      delayChildren: 0.1
     }
   },
   exit: {
     opacity: 0,
-    scale: 0.95,
-    filter: "blur(10px)",
-    transition: { duration: 0.6 }
+    y: -15,
+    transition: { duration: 0.4 }
   }
 };
 
@@ -116,36 +114,20 @@ export default function Home() {
 
   return (
     <main className="block relative min-h-screen w-full bg-[#050505] text-white font-sans overflow-hidden">
-      {/* Dynamic Background Collage */}
+      {/* Semi-static Background Collage */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div
-          animate={{
-            scale: [1, 1.05, 1],
-            rotate: [0, 1, 0]
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute inset-[-5%] z-0"
+          animate={{ scale: [1, 1.02, 1] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-[-2%] z-0"
           style={{
             backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'grayscale(100%) blur(8px) brightness(0.3)',
+            filter: 'grayscale(100%) brightness(0.25)',
           }}
         />
-        {/* Subtle Floating Light Orbs */}
-        <motion.div
-          animate={{
-            x: [0, 50, -30, 0],
-            y: [0, -40, 60, 0],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 15, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#cfb53b]/10 rounded-full blur-[120px]"
-        />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Main Content Container */}
@@ -159,7 +141,7 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black/40 backdrop-blur-3xl p-16 md:p-24 shadow-2xl flex flex-col items-center justify-center space-y-16 transition-all duration-700 hover:border-[#cfb53b]/40 hover:bg-black/60 cursor-pointer group"
+              className="relative w-full max-w-2xl mx-auto border border-white/5 bg-black/50 backdrop-blur-xl p-10 md:p-20 shadow-2xl flex flex-col items-center justify-center space-y-12 transition-all duration-500 hover:border-[#cfb53b]/30 cursor-pointer group"
             >
               {/* Corner Accents */}
               <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
@@ -175,38 +157,27 @@ export default function Home() {
                 jahronimo
               </motion.h1>
 
-              {/* £50,000 */}
-              <motion.div variants={itemVariants} className="relative py-4">
-                <h2 className="text-8xl md:text-[10rem] font-bold tracking-tighter text-white transition-all duration-1000 m-0 group-hover:scale-105 group-hover:text-[#cfb53b]">
+              {/* £50,000 - Fixed Cropping */}
+              <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center">
+                <h2 className="text-6xl sm:text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tight text-white transition-all duration-1000 m-0 group-hover:text-[#cfb53b] whitespace-nowrap">
                   £50,000
                 </h2>
-                <div className="absolute -inset-4 bg-[#cfb53b]/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               </motion.div>
 
               {/* no saying. i make. */}
               <motion.div variants={itemVariants} className="flex flex-col items-center space-y-8 text-center m-0">
-                <p className="text-xl md:text-2xl tracking-[0.4em] font-light text-white/30 transition-colors duration-700 uppercase m-0">
+                <p className="text-lg md:text-2xl tracking-[0.4em] font-light text-white/30 uppercase m-0">
                   no saying
                 </p>
-                <div className="overflow-hidden">
-                  <motion.p
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ delay: 0.8, duration: 1 }}
-                    className="text-5xl md:text-8xl tracking-[0.2em] font-black text-white uppercase m-0"
-                  >
-                    i make.
-                  </motion.p>
-                </div>
+                <p className="text-4xl md:text-8xl tracking-[0.2em] font-black text-white uppercase m-0 leading-tight">
+                  i make.
+                </p>
 
-                <div className="pt-24 w-full">
-                  <div className="relative inline-block group/btn">
-                    <span className="text-[#cfb53b] tracking-[0.5em] text-sm md:text-lg font-medium uppercase transition-all duration-500 pb-2 border-b border-[#cfb53b]/20 group-hover/btn:border-[#cfb53b] group-hover/btn:text-white group-hover/btn:tracking-[0.6em]">
+                <div className="pt-16 w-full">
+                  <div className="relative inline-block border-b border-[#cfb53b]/20 pb-2">
+                    <span className="text-[#cfb53b] tracking-[0.5em] text-sm md:text-lg font-medium uppercase transition-all duration-500">
                       Access Project
                     </span>
-                    <motion.div
-                      className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white group-hover/btn:w-full transition-all duration-700"
-                    />
                   </div>
                 </div>
               </motion.div>
