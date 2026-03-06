@@ -325,7 +325,7 @@ export default function Home() {
                 {/* Name */}
                 <motion.p
                   variants={itemVariants}
-                  className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60"
+                  className="text-xl sm:text-3xl md:text-5xl lg:text-6xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60"
                 >
                   {["j", "a", "h", "r", "o", "n", "i", "m", "o"].map((letter, index) => (
                     <span
