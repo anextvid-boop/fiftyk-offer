@@ -115,26 +115,40 @@ export default function Home() {
   };
 
   return (
-    <main className="block relative min-h-screen w-full bg-black text-[#f4f4f4] font-serif overflow-hidden group">
-      {/* Background Image: Static, grayscale, gold-tinted, blurred */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none transition-transform duration-[2s] group-hover:scale-105"
-        style={{
-          backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          filter: 'grayscale(100%) blur(12px) contrast(1.5) brightness(0.6)',
-        }}
-      ></div>
+    <main className="block relative min-h-screen w-full bg-[#050505] text-white font-sans overflow-hidden">
+      {/* Dynamic Background Collage */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+            rotate: [0, 1, 0]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute inset-[-5%] z-0"
+          style={{
+            backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(100%) blur(8px) brightness(0.3)',
+          }}
+        />
+        {/* Subtle Floating Light Orbs */}
+        <motion.div
+          animate={{
+            x: [0, 50, -30, 0],
+            y: [0, -40, 60, 0],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{ duration: 15, repeat: Infinity }}
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#cfb53b]/10 rounded-full blur-[120px]"
+        />
+      </div>
 
-      {/* Gold overlay to tint the black and white image */}
-      <div className="absolute inset-0 z-0 bg-[#cfb53b]/40 mix-blend-multiply pointer-events-none transition-opacity duration-[2s] group-hover:opacity-80"></div>
-
-      {/* Subtle vignette/fade to black at the edges */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] pointer-events-none opacity-80"></div>
-
-      {/* Main Content Container - Centered Gold Box */}
+      {/* Main Content Container */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12">
         <AnimatePresence mode="wait">
           {!showForm ? (
@@ -145,36 +159,54 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-xl mx-auto border border-[#cfb53b]/50 bg-black/70 backdrop-blur-xl p-12 md:p-20 shadow-[0_0_40px_rgba(207,181,59,0.1)] flex flex-col items-center justify-center space-y-12 transition-all duration-700 hover:border-[#cfb53b]/80 hover:bg-black/90 hover:shadow-[0_0_80px_rgba(207,181,59,0.25)] cursor-pointer"
+              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black/40 backdrop-blur-3xl p-16 md:p-24 shadow-2xl flex flex-col items-center justify-center space-y-16 transition-all duration-700 hover:border-[#cfb53b]/40 hover:bg-black/60 cursor-pointer group"
             >
               {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#cfb53b]/40 transition-colors duration-700 group-hover:border-[#cfb53b]"></div>
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#cfb53b]/40 transition-colors duration-700 group-hover:border-[#cfb53b]"></div>
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#cfb53b]/40 transition-colors duration-700 group-hover:border-[#cfb53b]"></div>
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#cfb53b]/40 transition-colors duration-700 group-hover:border-[#cfb53b]"></div>
+              <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
+              <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
 
               {/* jahronimo */}
-              <motion.h1 variants={itemVariants} className="text-3xl md:text-5xl tracking-[0.4em] font-light uppercase text-white/70 transition-colors duration-700 m-0">
+              <motion.h1
+                variants={itemVariants}
+                className="text-2xl md:text-3xl tracking-[1em] font-extralight uppercase text-white/40 transition-all duration-1000 group-hover:text-white group-hover:tracking-[1.1em] m-0 pr-[-1em]"
+              >
                 jahronimo
               </motion.h1>
 
               {/* £50,000 */}
-              <motion.h2 variants={itemVariants} className="text-7xl md:text-9xl font-serif italic text-[#cfb53b] drop-shadow-[0_0_20px_rgba(207,181,59,0.2)] transition-all duration-700 m-0 leading-none">
-                £50,000
-              </motion.h2>
+              <motion.div variants={itemVariants} className="relative py-4">
+                <h2 className="text-8xl md:text-[10rem] font-bold tracking-tighter text-white transition-all duration-1000 m-0 group-hover:scale-105 group-hover:text-[#cfb53b]">
+                  £50,000
+                </h2>
+                <div className="absolute -inset-4 bg-[#cfb53b]/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              </motion.div>
 
               {/* no saying. i make. */}
-              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-10 pt-6 text-center m-0">
-                <p className="text-xl md:text-3xl tracking-[0.3em] font-light text-white/50 transition-colors duration-700 uppercase m-0 leading-none">
+              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-8 text-center m-0">
+                <p className="text-xl md:text-2xl tracking-[0.4em] font-light text-white/30 transition-colors duration-700 uppercase m-0">
                   no saying
                 </p>
-                <p className="text-4xl md:text-7xl tracking-[0.3em] font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-700 uppercase m-0 leading-none">
-                  i make.
-                </p>
+                <div className="overflow-hidden">
+                  <motion.p
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{ delay: 0.8, duration: 1 }}
+                    className="text-5xl md:text-8xl tracking-[0.2em] font-black text-white uppercase m-0"
+                  >
+                    i make.
+                  </motion.p>
+                </div>
 
-                <div className="pt-20">
-                  <div className="text-[#cfb53b] tracking-[0.4em] text-sm md:text-xl font-sans uppercase border-b border-[#cfb53b]/40 pb-4 hover:text-white hover:border-white transition-all duration-500">
-                    Access Project
+                <div className="pt-24 w-full">
+                  <div className="relative inline-block group/btn">
+                    <span className="text-[#cfb53b] tracking-[0.5em] text-sm md:text-lg font-medium uppercase transition-all duration-500 pb-2 border-b border-[#cfb53b]/20 group-hover/btn:border-[#cfb53b] group-hover/btn:text-white group-hover/btn:tracking-[0.6em]">
+                      Access Project
+                    </span>
+                    <motion.div
+                      className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white group-hover/btn:w-full transition-all duration-700"
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -186,49 +218,54 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-xl mx-auto border border-[#cfb53b]/50 bg-black/70 backdrop-blur-xl p-12 md:p-16 shadow-[0_0_40px_rgba(207,181,59,0.1)] flex flex-col items-center justify-center transition-all duration-700"
+              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black/60 backdrop-blur-3xl p-12 md:p-20 shadow-2xl flex flex-col items-center justify-center transition-all duration-1000"
             >
               {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#cfb53b]"></div>
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#cfb53b]"></div>
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#cfb53b]"></div>
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#cfb53b]"></div>
+              <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-[#cfb53b]/60"></div>
+              <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-[#cfb53b]/60"></div>
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-[#cfb53b]/60"></div>
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-[#cfb53b]/60"></div>
 
-              <motion.div variants={itemVariants} className="w-full text-center mb-14">
-                <h2 className="text-4xl md:text-5xl tracking-[0.3em] font-light uppercase text-white/95 mb-4 font-serif">
+              <motion.div variants={itemVariants} className="w-full text-center mb-16">
+                <h2 className="text-4xl md:text-6xl tracking-[0.3em] font-black uppercase text-white mb-4">
                   Project Access
                 </h2>
-                <p className="text-sm md:text-lg tracking-[0.2em] font-light uppercase text-white/40">
-                  Fill in what you wish
+                <p className="text-sm md:text-lg tracking-[0.5em] font-light uppercase text-white/30">
+                  CONFIRM DETAILS
                 </p>
               </motion.div>
 
               <motion.form
                 variants={itemVariants}
-                className="flex flex-col space-y-8 w-full"
+                className="flex flex-col space-y-12 w-full"
               >
                 {/* Disables Captcha for a smoother experience */}
                 <input type="hidden" name="_captcha" value="false" />
-                {/* Sets an email subject so it stands out in inbox */}
                 <input type="hidden" name="_subject" value="New £50k Project Inquiry" />
 
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="NAME"
-                  required
-                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-5 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/20 text-lg md:text-2xl font-sans"
-                />
+                <div className="relative group">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="NAME"
+                    required
+                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-4xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
+                  />
+                  <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
+                </div>
 
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="EMAIL"
-                  required
-                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-5 mb-8 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/20 text-lg md:text-2xl font-sans"
-                />
+                <div className="relative group">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="EMAIL"
+                    required
+                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-4xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
+                  />
+                  <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
+                </div>
 
-                <div className="flex flex-col w-full border-t border-[#cfb53b]/40 mt-4">
+                <div className="flex flex-col w-full border-t border-white/10 mt-8">
                   <ExpandableField name="personal_life" label="Personal Life" />
                   <ExpandableField name="business_life" label="Business Life" />
                   <ExpandableField name="links" label="Links" />
@@ -238,9 +275,12 @@ export default function Home() {
                 <a
                   href="https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00"
                   onClick={handleSubmit}
-                  className={`mt-14 px-10 py-7 border border-[#cfb53b] bg-transparent text-[#cfb53b] tracking-[0.4em] uppercase font-light text-lg md:text-xl hover:bg-[#cfb53b] hover:text-black transition-all duration-500 w-full flex justify-center items-center text-center ${isSubmitting ? 'opacity-30 pointer-events-none' : ''}`}
+                  className={`mt-20 group relative px-10 py-8 border border-white/20 bg-transparent text-white tracking-[0.5em] uppercase font-bold text-xl md:text-2xl hover:border-[#cfb53b] transition-all duration-700 w-full flex justify-center items-center text-center overflow-hidden ${isSubmitting ? 'opacity-30 pointer-events-none' : ''}`}
                 >
-                  {isSubmitting ? "REDIRECTING..." : "PROCEED TO PAYMENT"}
+                  <span className="relative z-10 group-hover:text-black transition-colors duration-500">
+                    {isSubmitting ? "REDIRECTING..." : "PROCEED TO PAYMENT"}
+                  </span>
+                  <div className="absolute inset-0 bg-[#cfb53b] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out" />
                 </a>
               </motion.form>
             </motion.div>
