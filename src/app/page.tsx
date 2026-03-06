@@ -106,7 +106,41 @@ const useSensoryFeedback = () => {
     osc.stop(audioCtx.currentTime + 0.2);
   }, [audioCtx]);
 
-  return { playTick, playSuccessSweep, playKeystroke, playError };
+  const playOpeningSting = useCallback(() => {
+    if (!audioCtx) return;
+    if (navigator.vibrate) navigator.vibrate([20, 10, 50]); // Swoosh into hit
+
+    // 1) Deep bass thud
+    const bassOsc = audioCtx.createOscillator();
+    const bassGain = audioCtx.createGain();
+    bassOsc.type = "sine";
+    bassOsc.frequency.setValueAtTime(40, audioCtx.currentTime);
+    bassOsc.frequency.exponentialRampToValueAtTime(10, audioCtx.currentTime + 1.5);
+    bassGain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    bassGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
+
+    bassOsc.connect(bassGain);
+    bassGain.connect(audioCtx.destination);
+    bassOsc.start();
+    bassOsc.stop(audioCtx.currentTime + 1.5);
+
+    // 2) Glassy swoosh up
+    const swooshOsc = audioCtx.createOscillator();
+    const swooshGain = audioCtx.createGain();
+    swooshOsc.type = "sine";
+    swooshOsc.frequency.setValueAtTime(100, audioCtx.currentTime);
+    swooshOsc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.5);
+    swooshGain.gain.setValueAtTime(0, audioCtx.currentTime);
+    swooshGain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.1);
+    swooshGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
+
+    swooshOsc.connect(swooshGain);
+    swooshGain.connect(audioCtx.destination);
+    swooshOsc.start();
+    swooshOsc.stop(audioCtx.currentTime + 0.8);
+  }, [audioCtx]);
+
+  return { playTick, playSuccessSweep, playKeystroke, playError, playOpeningSting };
 };
 
 const BASE_PATH = "/fiftyk-offer";
@@ -241,7 +275,18 @@ const ExpandableFileField = ({ name, label, description }: { name: string; label
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { playSuccessSweep, playTick, playKeystroke, playError } = useSensoryFeedback();
+  const { playSuccessSweep, playTick, playKeystroke, playError, playOpeningSting } = useSensoryFeedback();
+
+  // Play opening sting on mount
+  useEffect(() => {
+    // A small timeout ensures the audio context has a higher chance of being active
+    // depending on the browser's autoplay policies, but requires a user interaction usually.
+    // However, if the user interacts immediately or if the browser allows it, it sets the tone.
+    const timer = setTimeout(() => {
+      playOpeningSting();
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [playOpeningSting]);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
