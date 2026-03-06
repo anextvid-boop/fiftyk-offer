@@ -214,9 +214,12 @@ export default function Home() {
                 {/* Name */}
                 <motion.p
                   variants={itemVariants}
-                  className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase text-[#d4af37]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#d4af37]"
+                  className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em]
+                    text-transparent bg-clip-text
+                    bg-[linear-gradient(90deg,rgba(212,175,55,0.5)_0%,rgba(212,175,55,0.5)_40%,#fff_50%,rgba(212,175,55,0.5)_60%,rgba(212,175,55,0.5)_100%)]
+                    bg-[length:200%_100%] animate-[shine_4s_linear_infinite]"
                 >
-                  j<span className="text-[#fff3a6] transition-colors duration-700 group-hover:text-white" style={{ textShadow: "0 0 12px rgba(212,175,55,0.6)" }}>a</span>hr<span className="text-white transition-colors duration-700" style={{ textShadow: "0 0 15px rgba(212,175,55,0.8)" }}>o</span>nim<span className="text-[#fff3a6] transition-colors duration-700 group-hover:text-white" style={{ textShadow: "0 0 12px rgba(212,175,55,0.6)" }}>o</span>
+                  jahronimo
                 </motion.p>
 
                 {/* Divider */}
