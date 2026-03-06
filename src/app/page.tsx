@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const BASE_PATH = "/fiftyk-offer";
 
-// Solid, stable transition logic
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.3 } },
-  exit: { opacity: 0, transition: { duration: 0.1 } }
+  visible: { opacity: 1 },
+  exit: { opacity: 0 }
 };
 
 const itemVariants = {
@@ -17,45 +16,63 @@ const itemVariants = {
   visible: { opacity: 1 }
 };
 
-const ExpandableField = ({ name, label, fields }: { name: string, label: string, fields?: string[] }) => {
+// Fixed gold dust positions to prevent hydration mismatch
+const DUST_PARTICLES = [
+  { top: 12, left: 8, size: 2, dur: 8, delay: 0 },
+  { top: 34, left: 72, size: 3, dur: 10, delay: 1.2 },
+  { top: 67, left: 15, size: 1.5, dur: 7, delay: 0.5 },
+  { top: 22, left: 91, size: 2.5, dur: 9, delay: 2 },
+  { top: 80, left: 55, size: 2, dur: 11, delay: 0.8 },
+  { top: 45, left: 38, size: 1, dur: 6, delay: 3 },
+  { top: 5, left: 50, size: 3, dur: 12, delay: 1.5 },
+  { top: 90, left: 25, size: 2, dur: 8, delay: 4 },
+  { top: 58, left: 82, size: 1.5, dur: 9, delay: 2.5 },
+  { top: 75, left: 5, size: 2.5, dur: 7, delay: 0.2 },
+  { top: 18, left: 63, size: 1, dur: 10, delay: 3.5 },
+  { top: 50, left: 97, size: 2, dur: 8.5, delay: 1 },
+  { top: 95, left: 70, size: 3, dur: 11, delay: 2.2 },
+  { top: 30, left: 20, size: 1.5, dur: 7.5, delay: 4.5 },
+  { top: 62, left: 48, size: 2, dur: 9.5, delay: 0.7 },
+];
+
+const ExpandableField = ({ name, label, fields }: { name: string; label: string; fields?: string[] }) => {
   const [expanded, setExpanded] = useState(false);
   return (
-    <div className="border-b border-[#cfb53b]/20">
+    <div className="border-b border-[#cfb53b]/15">
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="w-full py-6 flex justify-between items-center text-white uppercase tracking-[0.2em] text-base md:text-xl outline-none transition-all hover:text-[#cfb53b] font-light"
+        className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#cfb53b] font-light"
       >
-        <span className={expanded ? "text-[#cfb53b]" : "text-white/70"}>{label}</span>
-        <span className="text-2xl font-light text-[#cfb53b]/60">{expanded ? '−' : '+'}</span>
+        <span className={`transition-colors duration-300 ${expanded ? "text-[#cfb53b]" : "text-white/50"}`}>{label}</span>
+        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#cfb53b] rotate-45" : "text-[#cfb53b]/40"}`}>+</span>
       </button>
       <AnimatePresence>
         {expanded && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1, transition: { duration: 0.35, ease: "easeOut" } }}
+            exit={{ height: 0, opacity: 0, transition: { duration: 0.2 } }}
             className="overflow-hidden"
           >
-            <div className="flex flex-col gap-4 mb-8">
+            <div className="flex flex-col gap-3 pb-6">
               {fields ? (
                 fields.map((fieldLabel, idx) => (
-                  <div key={idx} className="relative group">
-                    <input
-                      type="text"
-                      name={`${name}_${idx}`}
-                      placeholder={fieldLabel.toUpperCase()}
-                      className="w-full bg-white/5 border border-white/10 p-5 text-white tracking-widest outline-none focus:border-[#cfb53b]/60 transition-all placeholder:text-white/10 font-sans"
-                    />
-                  </div>
+                  <input
+                    key={idx}
+                    type="text"
+                    name={`${name}_${idx}`}
+                    placeholder={fieldLabel}
+                    className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#cfb53b]/50 transition-all placeholder:text-white/15 font-light text-base"
+                  />
                 ))
               ) : (
                 <textarea
                   name={name}
-                  placeholder="Type here..."
-                  rows={4}
-                  className="w-full bg-white/5 p-6 text-white tracking-wide outline-none placeholder:text-white/10 text-lg md:text-xl font-sans resize-none border border-[#cfb53b]/20"
-                ></textarea>
+                  placeholder="Write here..."
+                  rows={3}
+                  className="w-full bg-transparent py-4 text-white tracking-wide outline-none placeholder:text-white/15 font-light text-base resize-none border-b border-white/8 focus:border-[#cfb53b]/50 transition-all"
+                />
               )}
             </div>
           </motion.div>
@@ -70,101 +87,94 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // We stop the native click navigation initially to control the flow
     e.preventDefault();
-
-    const form = e.currentTarget.closest('form');
-    const targetUrl = e.currentTarget.getAttribute('href');
-
+    const form = e.currentTarget.closest("form");
+    const targetUrl = e.currentTarget.getAttribute("href");
     if (form && targetUrl) {
-      if (!form.checkValidity()) {
-        form.reportValidity(); // Show native browser validation popups
-        return;
-      }
-
+      if (!form.checkValidity()) { form.reportValidity(); return; }
       setIsSubmitting(true);
       const formData = new FormData(form);
-
       try {
-        // Run fetch in parallel
-        const fetchPromise = fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
+        fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
           method: "POST",
-          headers: {
-            'Accept': 'application/json'
-          },
+          headers: { Accept: "application/json" },
           body: formData,
-          keepalive: true
+          keepalive: true,
         });
-
-        // Use a small delay for UI presence and ensure the fetch has a head start
-        // This solves the 'glitchy' feeling of an instant navigation that kills JS contexts
-        await new Promise(resolve => setTimeout(resolve, 800));
-
-        // Finalize navigation
+        await new Promise((r) => setTimeout(r, 800));
         window.location.href = targetUrl;
-      } catch (error) {
-        console.error(error);
-        window.location.href = targetUrl; // Fallback redirect anyway
+      } catch {
+        window.location.href = targetUrl;
       }
     }
   };
 
   return (
-    <main className="block relative min-h-screen w-full bg-[#050505] text-white font-sans overflow-hidden">
-      {/* Ultra-Premium Gold Backdrop */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#020202]">
-        <div
-          className="absolute inset-0 z-0 opacity-10 grayscale brightness-30"
-          style={{
-            backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        {/* Floating Gold Dust */}
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-[#cfb53b]/20"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 4 + 1}px`,
-              height: `${Math.random() * 4 + 1}px`,
-              animation: `float ${Math.random() * 5 + 5}s infinite ease-in-out`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          />
-        ))}
-        {/* Ambient Gold Glows */}
-        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-[#cfb53b]/10 blur-[180px] rounded-full" />
-        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] bg-[#cfb53b]/10 blur-[180px] rounded-full" />
-        <div className="absolute top-[40%] left-[30%] w-[40%] h-[40%] bg-[#cfb53b]/5 blur-[200px] rounded-full" />
-      </div>
+    <main className="block relative min-h-screen w-full bg-[#020202] text-white font-sans overflow-hidden">
 
+      {/* Global Keyframes */}
       <style jsx global>{`
         @keyframes shimmer {
-          0% { transform: translateX(-150%) skewX(-20deg); }
-          100% { transform: translateX(150%) skewX(-20deg); }
+          0%   { transform: translateX(-160%) skewX(-18deg); }
+          100% { transform: translateX(160%) skewX(-18deg); }
         }
         @keyframes shine {
-          to { background-position-x: -200%; }
+          0%   { background-position-x: 200%; }
+          100% { background-position-x: -200%; }
         }
         @keyframes pulsate {
-          0% { box-shadow: 0 0 50px rgba(207,181,59,0.1); }
-          50% { box-shadow: 0 0 100px rgba(207,181,59,0.2); }
-          100% { box-shadow: 0 0 50px rgba(207,181,59,0.1); }
+          0%, 100% { box-shadow: 0 0 40px rgba(207,181,59,0.07), 0 0 0 1px rgba(207,181,59,0.15); }
+          50%       { box-shadow: 0 0 80px rgba(207,181,59,0.18), 0 0 0 1px rgba(207,181,59,0.30); }
         }
         @keyframes float {
-          0% { transform: translateY(0) translateX(0); opacity: 0; }
-          50% { opacity: 0.4; }
-          100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+          0%   { transform: translateY(0px) translateX(0px); opacity: 0; }
+          20%  { opacity: 0.6; }
+          80%  { opacity: 0.3; }
+          100% { transform: translateY(-120px) translateX(15px); opacity: 0; }
+        }
+        @keyframes borderpulse {
+          0%, 100% { border-color: rgba(207,181,59,0.25); }
+          50%       { border-color: rgba(207,181,59,0.5); }
         }
       `}</style>
 
-      {/* Main Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12">
+      {/* ── Background ────────────────────────────────────────── */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Collage texture – deeply dimmed */}
+        <div
+          className="absolute inset-0 opacity-[0.06] grayscale"
+          style={{
+            backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        {/* Ambient gold orbs */}
+        <div className="absolute top-[-25%] left-[-15%] w-[70%] h-[70%] bg-[#cfb53b]/10 blur-[200px] rounded-full" />
+        <div className="absolute bottom-[-25%] right-[-15%] w-[70%] h-[70%] bg-[#cfb53b]/10 blur-[200px] rounded-full" />
+        <div className="absolute top-[35%] left-[35%]  w-[30%] h-[30%] bg-[#cfb53b]/5  blur-[180px] rounded-full" />
+        {/* Fixed gold dust particles */}
+        {DUST_PARTICLES.map((p, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-[#cfb53b]/30"
+            style={{
+              top: `${p.top}%`,
+              left: `${p.left}%`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              animation: `float ${p.dur}s ease-in-out infinite`,
+              animationDelay: `${p.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* ── Main Content ──────────────────────────────────────── */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-16">
         <AnimatePresence mode="wait">
+
+          {/* ── Landing Card ──────────────────────────────────── */}
           {!showForm ? (
             <motion.div
               key="landing"
@@ -173,163 +183,154 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-4xl mx-auto border border-[#cfb53b]/30 bg-black/80 backdrop-blur-xl p-8 sm:p-12 md:p-20 flex flex-col items-center justify-center space-y-12 cursor-pointer group overflow-hidden animate-[pulsate_6s_infinite_ease-in-out] rounded-[2px]"
+              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden"
+              style={{ animation: "pulsate 7s ease-in-out infinite" }}
             >
-              {/* Premium Shimmer Effect */}
+              {/* Shimmer sweep */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cfb53b]/15 to-transparent -translate-x-full animate-[shimmer_4s_infinite] skew-x-12" />
-              </div>
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-start justify-start p-1">
-                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
-              </div>
-              <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-start justify-end p-1">
-                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-end justify-start p-1">
-                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
-              </div>
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-end justify-end p-1">
-                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cfb53b]/10 to-transparent animate-[shimmer_6s_ease-in-out_infinite] skew-x-12" />
               </div>
 
-              {/* jahronimo */}
-              <motion.h1
-                variants={itemVariants}
-                className="text-xl md:text-2xl tracking-[1.2em] font-light uppercase text-[#cfb53b]/60 transition-all duration-700 group-hover:text-[#cfb53b] m-0 mr-[-1.2em]"
-              >
-                jahronimo
-              </motion.h1>
-
-              {/* £50,000 - High-Fidelity Gold Shine */}
-              <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center">
-                <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-[linear-gradient(110deg,#bf953f,25%,#fcf6ba,45%,#b38728,55%,#fbf5b7,75%,#aa771c)] bg-[length:200%_100%] animate-[shine_5s_linear_infinite] m-0 drop-shadow-[0_0_20px_rgba(207,181,59,0.4)] mr-[-0.01em]">
-                  £50,000
-                </h2>
-              </motion.div>
-
-              {/* no saying. i make. */}
-              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6 text-center m-0 w-full">
-                <p className="text-lg md:text-xl tracking-[0.5em] font-light text-[#cfb53b]/40 uppercase m-0 mr-[-0.5em]">
-                  no saying
-                </p>
-                <p className="text-4xl md:text-7xl tracking-[0.1em] font-black text-white uppercase m-0 leading-tight mr-[-0.1em]">
-                  i make.
-                </p>
-
-                <div className="pt-12 w-full flex justify-center">
-                  <div className="relative inline-block border-b border-[#cfb53b]/40 pb-2">
-                    <span className="text-[#cfb53b] tracking-[0.6em] text-xs md:text-sm font-bold uppercase mr-[-0.6em]">
-                      Access Project
-                    </span>
-                  </div>
+              {/* Corner brackets */}
+              {[
+                "top-0 left-0 border-t border-l items-start justify-start",
+                "top-0 right-0 border-t border-r items-start justify-end",
+                "bottom-0 left-0 border-b border-l items-end justify-start",
+                "bottom-0 right-0 border-b border-r items-end justify-end",
+              ].map((cls, i) => (
+                <div
+                  key={i}
+                  className={`absolute w-10 h-10 ${cls} border-[#cfb53b]/25 transition-all duration-700 group-hover:border-[#cfb53b]/70 group-hover:w-14 group-hover:h-14 flex p-[3px]`}
+                >
+                  <div className="w-[3px] h-[3px] rounded-full bg-[#cfb53b]/50 group-hover:bg-[#cfb53b] transition-all" />
                 </div>
-              </motion.div>
+              ))}
+
+              {/* Content */}
+              <div className="flex flex-col items-center gap-10 w-full">
+
+                {/* Name */}
+                <motion.p
+                  variants={itemVariants}
+                  className="text-xs md:text-sm tracking-[0.6em] font-light uppercase text-[#cfb53b]/50 m-0 mr-[-0.6em] transition-all duration-700 group-hover:text-[#cfb53b]/80"
+                >
+                  jahronimo
+                </motion.p>
+
+                {/* Divider */}
+                <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent" />
+
+                {/* £50,000 */}
+                <motion.h1
+                  variants={itemVariants}
+                  className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
+                    bg-[linear-gradient(110deg,#bf953f_0%,#fcf6ba_30%,#b38728_50%,#fbf5b7_70%,#aa771c_100%)]
+                    bg-[length:200%_100%] animate-[shine_6s_linear_infinite]
+                    drop-shadow-[0_0_30px_rgba(207,181,59,0.35)]"
+                >
+                  £50,000
+                </motion.h1>
+
+                {/* Divider */}
+                <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent" />
+
+                {/* Sub text */}
+                <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 text-center">
+                  <p className="text-[10px] md:text-xs tracking-[0.55em] font-light text-[#cfb53b]/35 uppercase mr-[-0.55em]">
+                    no saying
+                  </p>
+                  <p className="text-2xl md:text-4xl tracking-[0.05em] font-black text-white uppercase mr-[-0.05em]">
+                    i make.
+                  </p>
+                </motion.div>
+
+                {/* CTA */}
+                <motion.div variants={itemVariants} className="pt-4 flex items-center gap-3">
+                  <div className="w-4 h-[1px] bg-[#cfb53b]/30" />
+                  <span className="text-[#cfb53b]/60 tracking-[0.5em] text-[10px] uppercase font-light mr-[-0.5em]">
+                    Access Project
+                  </span>
+                  <div className="w-4 h-[1px] bg-[#cfb53b]/30" />
+                </motion.div>
+
+              </div>
             </motion.div>
+
           ) : (
+            /* ── Form Card ────────────────────────────────────── */
             <motion.div
               key="form"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black p-12 md:p-20 shadow-2xl flex flex-col items-center justify-center transition-all duration-300"
+              className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center"
+              style={{ animation: "pulsate 7s ease-in-out infinite" }}
             >
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-[#cfb53b]/60"></div>
-              <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-[#cfb53b]/60"></div>
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-[#cfb53b]/60"></div>
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-[#cfb53b]/60"></div>
+              {/* Corner brackets */}
+              {[
+                "top-0 left-0 border-t border-l",
+                "top-0 right-0 border-t border-r",
+                "bottom-0 left-0 border-b border-l",
+                "bottom-0 right-0 border-b border-r",
+              ].map((cls, i) => (
+                <div key={i} className={`absolute w-10 h-10 ${cls} border-[#cfb53b]/30`} />
+              ))}
 
-              <motion.div variants={itemVariants} className="w-full text-center mb-16">
-                <h2 className="text-4xl md:text-6xl tracking-[0.3em] font-black uppercase text-white mb-4 mr-[-0.3em]">
+              {/* Header */}
+              <div className="w-full text-center mb-12">
+                <h2 className="text-2xl md:text-4xl tracking-[0.25em] font-black uppercase text-white mb-3 mr-[-0.25em]">
                   Project Access
                 </h2>
-                <p className="text-sm md:text-lg tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 mr-[-0.5em]">
-                  FILL IN WHAT YOU WISH
+                <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent mx-auto mb-3" />
+                <p className="text-[10px] tracking-[0.5em] font-light uppercase text-[#cfb53b]/50 mr-[-0.5em]">
+                  Fill in what you wish
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.form
-                variants={itemVariants}
-                className="flex flex-col space-y-12 w-full"
-              >
-                {/* Disables Captcha for a smoother experience */}
+              <form className="flex flex-col gap-8 w-full">
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_subject" value="New £50k Project Inquiry" />
 
-                <div className="relative group">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="NAME"
-                    required
-                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-4xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
-                  />
-                  <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
+                {/* Required fields */}
+                {[
+                  { name: "name", placeholder: "Your Name", type: "text", required: true },
+                  { name: "email", placeholder: "Email Address", type: "email", required: true },
+                  { name: "location", placeholder: "Where you're from", type: "text", required: true },
+                ].map((field) => (
+                  <div key={field.name} className="relative group">
+                    <input
+                      type={field.type}
+                      name={field.name}
+                      placeholder={field.placeholder.toUpperCase()}
+                      required={field.required}
+                      className="w-full bg-transparent border-b border-white/10 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/12 font-light"
+                    />
+                    <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#cfb53b] to-[#fcf6ba] group-focus-within:w-full transition-all duration-700" />
+                  </div>
+                ))}
+
+                {/* Expandable optional fields */}
+                <div className="flex flex-col w-full mt-2 border-t border-white/8">
+                  <ExpandableField name="personal_life" label="Personal Life" fields={["Who are you?", "Personal Ambition", "Lifestyle Focus"]} />
+                  <ExpandableField name="business_life" label="Business Life" fields={["Current Project", "Business Goal", "Vision"]} />
+                  <ExpandableField name="social_links" label="Socials & Links" fields={["Primary Link", "Secondary Link", "Portfolio"]} />
+                  <ExpandableField name="other_area" label="Other Interests" fields={["Creative Focus", "Technical Area", "Other"]} />
+                  <ExpandableField name="reference" label="Reference Points" fields={["How you found me", "Key Influences", "Similar Work"]} />
                 </div>
 
-                <div className="relative group">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="EMAIL"
-                    required
-                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-4xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
-                  />
-                  <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
-                </div>
-
-                <div className="relative group">
-                  <input
-                    type="text"
-                    name="location"
-                    placeholder="WHERE YOU'RE FROM"
-                    required
-                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-3xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
-                  />
-                  <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
-                </div>
-
-                <div className="flex flex-col w-full border-t border-white/10 mt-8">
-                  <ExpandableField
-                    name="personal_life"
-                    label="Personal Life Details"
-                    fields={["Who are you?", "Personal Ambition", "Lifestyle Focus"]}
-                  />
-                  <ExpandableField
-                    name="business_life"
-                    label="Business Life Details"
-                    fields={["Current Project", "Business Goal", "Strategic Vision"]}
-                  />
-                  <ExpandableField
-                    name="social_links"
-                    label="Socials / Work Links"
-                    fields={["Primary Link", "Secondary Link", "Portfolio / Evidence"]}
-                  />
-                  <ExpandableField
-                    name="other_area"
-                    label="Other Interests"
-                    fields={["Technical Focus", "Creative Area", "Miscellaneous"]}
-                  />
-                  <ExpandableField
-                    name="reference_points"
-                    label="Reference Points"
-                    fields={["How you found me", "Similar Projects", "Key Influences"]}
-                  />
-                </div>
-
+                {/* Payment CTA */}
                 <a
                   href="https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00"
                   onClick={handleSubmit}
-                  className={`mt-20 group relative px-10 py-8 border border-white/20 bg-transparent text-white tracking-[0.5em] uppercase font-bold text-xl md:text-2xl hover:border-[#cfb53b] transition-all duration-700 w-full flex justify-center items-center text-center overflow-hidden ${isSubmitting ? 'opacity-30 pointer-events-none' : ''}`}
+                  className={`mt-8 group relative py-6 border border-[#cfb53b]/30 bg-transparent text-white tracking-[0.45em] uppercase font-light text-sm hover:border-[#cfb53b] transition-all duration-700 w-full flex justify-center items-center overflow-hidden ${isSubmitting ? "opacity-30 pointer-events-none" : ""}`}
                 >
-                  <span className="relative z-10 group-hover:text-black transition-colors duration-500">
-                    {isSubmitting ? "REDIRECTING..." : "PROCEED TO PAYMENT"}
+                  <span className="relative z-10 group-hover:text-black transition-colors duration-500 mr-[-0.45em]">
+                    {isSubmitting ? "Redirecting…" : "Proceed to Payment"}
                   </span>
-                  <div className="absolute inset-0 bg-[#cfb53b] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#bf953f] via-[#fcf6ba] to-[#aa771c] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out" />
                 </a>
-              </motion.form>
+              </form>
             </motion.div>
           )}
         </AnimatePresence>
