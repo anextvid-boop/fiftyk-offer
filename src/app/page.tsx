@@ -5,68 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const BASE_PATH = "/fiftyk-offer";
 
-const containerVariants: any = {
+const containerVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.15
-    }
-  },
+  visible: { opacity: 1 },
   exit: { opacity: 0 }
 };
 
-const itemVariants: any = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-  }
-};
-
-const letterVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.05,
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1], // easeOutQuart
-    },
-  }),
-};
-
-const AnimatedLetters = ({ text, className, delay = 0, stagger = 0.04 }: { text: string; className?: string; delay?: number; stagger?: number }) => {
-  return (
-    <span className={className + " inline-flex"}>
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          custom={i}
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: (idx: number) => ({
-              opacity: 1,
-              y: 0,
-              transition: {
-                delay: delay + idx * stagger,
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            }),
-          }}
-          style={{ display: "inline-block", whiteSpace: "pre" }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </span>
-  );
+const itemVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
 };
 
 // Fixed gold dust positions to prevent hydration mismatch
@@ -175,19 +122,19 @@ export default function Home() {
           0%   { background-position-x: 200%; }
           100% { background-position-x: -200%; }
         }
-        @keyframes pulsate {
-          0%, 100% { box-shadow: 0 0 50px rgba(212,175,55,0.1), 0 0 0 1px rgba(212,175,55,0.2); }
-          50%      { box-shadow: 0 0 100px rgba(212,175,55,0.25), 0 0 0 1px rgba(212,175,55,0.45); }
+        @keyframes pulsate-opacity {
+          0%, 100% { opacity: 0; }
+          50%       { opacity: 1; }
         }
         @keyframes float {
-          0%   { transform: translateY(0px) translateX(0px); opacity: 0; }
-          20%  { opacity: 0.7; }
-          80%  { opacity: 0.4; }
-          100% { transform: translateY(-140px) translateX(20px); opacity: 0; }
+          0%   { transform: translateY(0px) translateX(0px) translateZ(0); opacity: 0; }
+          20%  { opacity: 0.6; }
+          80%  { opacity: 0.3; }
+          100% { transform: translateY(-120px) translateX(15px) translateZ(0); opacity: 0; }
         }
         @keyframes borderpulse {
-          0%, 100% { border-color: rgba(212,175,55,0.3); }
-          50%      { border-color: rgba(212,175,55,0.7); }
+          0%, 100% { border-color: rgba(207,181,59,0.25); }
+          50%       { border-color: rgba(207,181,59,0.5); }
         }
       `}</style>
 
@@ -202,10 +149,10 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         />
-        {/* Ambient gold orbs */}
-        <div className="absolute top-[-25%] left-[-15%] w-[70%] h-[70%] bg-[#d4af37]/10 blur-[200px] rounded-full" />
-        <div className="absolute bottom-[-25%] right-[-15%] w-[70%] h-[70%] bg-[#d4af37]/10 blur-[200px] rounded-full" />
-        <div className="absolute top-[35%] left-[35%]  w-[30%] h-[30%] bg-[#d4af37]/5  blur-[180px] rounded-full" />
+        {/* Ambient gold orbs - hardware accelerated via radial background */}
+        <div className="absolute top-[-25%] left-[-15%] w-[70%] h-[70%] bg-[radial-gradient(circle_at_center,rgba(207,181,59,0.08)_0%,transparent_70%)]" />
+        <div className="absolute bottom-[-25%] right-[-15%] w-[70%] h-[70%] bg-[radial-gradient(circle_at_center,rgba(207,181,59,0.08)_0%,transparent_70%)]" />
+        <div className="absolute top-[35%] left-[35%] w-[30%] h-[30%] bg-[radial-gradient(circle_at_center,rgba(207,181,59,0.05)_0%,transparent_70%)]" />
         {/* Fixed gold dust particles */}
         {DUST_PARTICLES.map((p, i) => (
           <div
@@ -216,6 +163,7 @@ export default function Home() {
               left: `${p.left}%`,
               width: `${p.size}px`,
               height: `${p.size}px`,
+              willChange: "transform, opacity",
               animation: `float ${p.dur}s ease-in-out infinite`,
               animationDelay: `${p.delay}s`,
             }}
@@ -236,9 +184,10 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden"
-              style={{ animation: "pulsate 7s ease-in-out infinite" }}
+              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden shadow-[0_0_40px_rgba(207,181,59,0.07),0_0_0_1px_rgba(207,181,59,0.15)]"
             >
+              {/* Hardware-accelerated glow pulse */}
+              <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(207,181,59,0.18),0_0_0_1px_rgba(207,181,59,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
               {/* Shimmer sweep */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cfb53b]/10 to-transparent animate-[shimmer_6s_ease-in-out_infinite] skew-x-12" />
@@ -263,12 +212,12 @@ export default function Home() {
               <div className="flex flex-col items-center gap-10 w-full">
 
                 {/* Name */}
-                <motion.div
+                <motion.p
                   variants={itemVariants}
                   className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
                 >
-                  <AnimatedLetters text="jahronimo" delay={0.2} />
-                </motion.div>
+                  jahronimo
+                </motion.p>
 
                 {/* Divider */}
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent" />
@@ -277,11 +226,10 @@ export default function Home() {
                 <motion.h1
                   variants={itemVariants}
                   className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
-                    bg-[linear-gradient(110deg,#bf953f_0%,#f9d71c_30%,#b38728_50%,#f9d71c_70%,#aa771c_100%)]
-                    bg-[length:200%_100%] animate-[shine:6s_linear_infinite]
-                    drop-shadow-[0_0_40px_rgba(212,175,55,0.45)]"
+                    bg-[linear-gradient(110deg,#bf953f_0%,#fcf6ba_30%,#b38728_50%,#fbf5b7_70%,#aa771c_100%)]
+                    bg-[length:200%_100%] animate-[shine_6s_linear_infinite]"
                 >
-                  <AnimatedLetters text="£50,000" delay={0.4} />
+                  £50,000
                 </motion.h1>
 
                 {/* Divider */}
@@ -289,12 +237,12 @@ export default function Home() {
 
                 {/* Sub text — centred block with period compensation */}
                 <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center">
-                  <div className="text-sm md:text-lg tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-4">
-                    <AnimatedLetters text="no saying.." delay={0.6} />
-                  </div>
-                  <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-black text-white uppercase m-0 leading-none mr-[-0.05em]">
-                    <AnimatedLetters text="i make." delay={0.8} stagger={0.3} />
-                  </div>
+                  <p className="text-sm md:text-lg tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-4">
+                    no saying..
+                  </p>
+                  <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-black text-white uppercase m-0 leading-none mr-[-0.05em]">
+                    i make.
+                  </p>
                 </motion.div>
 
                 {/* CTA */}
@@ -317,9 +265,10 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center"
-              style={{ animation: "pulsate 7s ease-in-out infinite" }}
+              className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center shadow-[0_0_40px_rgba(207,181,59,0.07),0_0_0_1px_rgba(207,181,59,0.15)]"
             >
+              {/* Hardware-accelerated glow pulse */}
+              <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(207,181,59,0.18),0_0_0_1px_rgba(207,181,59,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
               {/* Corner brackets */}
               {[
                 "top-0 left-0 border-t border-l",
@@ -359,7 +308,7 @@ export default function Home() {
                       required={field.required}
                       className="w-full bg-transparent border-b border-white/10 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/12 font-light"
                     />
-                    <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#d4af37] to-[#f9d71c] group-focus-within:w-full transition-all duration-700" />
+                    <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#cfb53b] to-[#fcf6ba] group-focus-within:w-full transition-all duration-700" />
                   </div>
                 ))}
 
