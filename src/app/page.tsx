@@ -394,7 +394,7 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => { playTick(); setShowForm(true); }}
-              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:scale-[0.98] active:brightness-90 origin-center transition-all duration-300"
+              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_60px_rgba(212,175,55,0.12)] origin-center transition-all duration-300"
             >
               {/* Hardware-accelerated glow pulse */}
               <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
@@ -470,9 +470,25 @@ export default function Home() {
                 {/* CTA */}
                 <motion.div variants={itemVariants} className="pt-4 flex items-center gap-3">
                   <div className="w-4 h-[1px] bg-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/80 tracking-[0.5em] text-xs uppercase font-medium mr-[-0.5em]">
+                  <motion.span
+                    animate={{
+                      opacity: [0.7, 1, 0.7],
+                      scale: [1, 1.05, 1],
+                      textShadow: [
+                        "0 0 0px rgba(214, 175, 55, 0)",
+                        "0 0 20px rgba(214, 175, 55, 0.6)",
+                        "0 0 0px rgba(214, 175, 55, 0)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="text-[#d4af37] tracking-[0.5em] text-xs uppercase font-bold mr-[-0.5em]"
+                  >
                     Press to enter.
-                  </span>
+                  </motion.span>
                   <div className="w-4 h-[1px] bg-[#d4af37]/30" />
                 </motion.div>
 
