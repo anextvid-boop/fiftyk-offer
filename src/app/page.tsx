@@ -237,15 +237,18 @@ export default function Home() {
                     type="text"
                     name="location"
                     placeholder="WHERE YOU'RE FROM"
-                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-4xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
+                    required
+                    className="w-full bg-transparent border-b border-white/10 py-6 text-2xl md:text-3xl text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/10 font-sans"
                   />
                   <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#cfb53b] group-focus-within:w-full transition-all duration-700" />
                 </div>
 
                 <div className="flex flex-col w-full border-t border-white/10 mt-8">
-                  <ExpandableField name="social_links" label="Optional: Social Links" />
-                  <ExpandableField name="project_idea" label="Optional: Project Idea" />
-                  <ExpandableField name="personal_note" label="Optional: Personal Note" />
+                  <ExpandableField name="personal_life" label="Personal Life" />
+                  <ExpandableField name="business_life" label="Business Life" />
+                  <ExpandableField name="social_links" label="Socials / Work Links" />
+                  <ExpandableField name="other_area" label="Other Interests" />
+                  <ExpandableField name="reference_points" label="Points of Reference" />
                 </div>
 
                 <a
