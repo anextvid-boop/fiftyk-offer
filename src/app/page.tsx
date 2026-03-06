@@ -304,9 +304,10 @@ export default function Home() {
                   Access
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
-                <p className="text-sm tracking-[0.4em] font-semibold uppercase text-[#d4af37]/80 mr-[-0.4em]">
-                  Fill in what you wish.
-                </p>
+                <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-semibold uppercase text-[#d4af37]/80 mr-[-0.4em]">
+                  <span>Fill in</span>
+                  <span className="text-xs text-[#d4af37]/60">what you wish.</span>
+                </div>
               </div>
 
               <form className="flex flex-col gap-8 w-full">
