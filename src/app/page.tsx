@@ -212,7 +212,7 @@ export default function Home() {
                 {/* Name */}
                 <motion.p
                   variants={itemVariants}
-                  className="text-xl md:text-3xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
+                  className="text-3xl md:text-6xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
                 >
                   jahronimo
                 </motion.p>
@@ -323,9 +323,9 @@ export default function Home() {
                 <a
                   href="https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00"
                   onClick={handleSubmit}
-                  className={`mt-8 group relative py-6 border border-[#cfb53b]/30 bg-transparent text-white tracking-[0.45em] uppercase font-light text-sm hover:border-[#cfb53b] transition-all duration-700 w-full flex justify-center items-center overflow-hidden ${isSubmitting ? "opacity-30 pointer-events-none" : ""}`}
+                  className={`mt-8 group relative py-6 border border-[#cfb53b]/30 bg-transparent text-white tracking-[0.45em] uppercase font-light text-sm hover:border-[#cfb53b] transition-all duration-700 w-full flex justify-center items-center text-center overflow-hidden ${isSubmitting ? "opacity-30 pointer-events-none" : ""}`}
                 >
-                  <span className="relative z-10 group-hover:text-black transition-colors duration-500 mr-[-0.45em]">
+                  <span className="relative z-10 group-hover:text-black transition-colors duration-500 mr-[-0.45em] w-full text-center">
                     {isSubmitting ? "Redirecting…" : "Proceed to Payment"}
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#bf953f] via-[#fcf6ba] to-[#aa771c] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out" />
