@@ -148,7 +148,7 @@ export default function Home() {
               {/* jahronimo */}
               <motion.h1
                 variants={itemVariants}
-                className="text-xl md:text-2xl tracking-[1.2em] font-light uppercase text-[#cfb53b]/60 transition-all duration-700 group-hover:text-[#cfb53b] m-0"
+                className="text-xl md:text-2xl tracking-[1.2em] font-light uppercase text-[#cfb53b]/60 transition-all duration-700 group-hover:text-[#cfb53b] m-0 mr-[-1.2em]"
               >
                 jahronimo
               </motion.h1>
@@ -161,17 +161,17 @@ export default function Home() {
               </motion.div>
 
               {/* no saying. i make. */}
-              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6 text-center m-0">
-                <p className="text-lg md:text-xl tracking-[0.5em] font-light text-[#cfb53b]/40 uppercase m-0">
+              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6 text-center m-0 w-full">
+                <p className="text-lg md:text-xl tracking-[0.5em] font-light text-[#cfb53b]/40 uppercase m-0 mr-[-0.5em]">
                   no saying
                 </p>
-                <p className="text-4xl md:text-7xl tracking-[0.1em] font-black text-white uppercase m-0 leading-tight">
+                <p className="text-4xl md:text-7xl tracking-[0.1em] font-black text-white uppercase m-0 leading-tight mr-[-0.1em]">
                   i make.
                 </p>
 
-                <div className="pt-12 w-full">
+                <div className="pt-12 w-full flex justify-center">
                   <div className="relative inline-block border-b border-[#cfb53b]/40 pb-2">
-                    <span className="text-[#cfb53b] tracking-[0.6em] text-xs md:text-sm font-bold uppercase">
+                    <span className="text-[#cfb53b] tracking-[0.6em] text-xs md:text-sm font-bold uppercase mr-[-0.6em]">
                       Access Project
                     </span>
                   </div>
