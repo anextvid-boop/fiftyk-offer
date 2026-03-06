@@ -458,8 +458,8 @@ export default function Home() {
                 {/* Sub text — perfectly edge-aligned */}
                 <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center mt-2 mb-2">
                   <div className="inline-flex flex-col items-stretch w-max">
-                    <p className="flex justify-between w-full text-base sm:text-xl md:text-2xl font-bold text-[#d4af37]/80 uppercase mb-3 leading-none tracking-[0.2em]">
-                      <span>W</span><span>A</span><span>I</span><span>T</span>
+                    <p className="flex justify-between w-full text-base sm:text-xl md:text-2xl font-bold text-[#d4af37]/80 uppercase mb-3 leading-none">
+                      <span>N</span><span>O</span><span className="w-4 sm:w-6"></span><span>S</span><span>A</span><span>Y</span><span>I</span><span>N</span><span>G</span>
                     </p>
                     <p className="flex justify-between w-full text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.02em] font-black text-white uppercase m-0 leading-none">
                       <span>I</span><span className="w-4 sm:w-8"></span><span>M</span><span>A</span><span>K</span><span>E</span>
@@ -507,13 +507,13 @@ export default function Home() {
 
               {/* Header */}
               <div className="w-full text-center mb-12">
-                <h2 className="text-2xl md:text-4xl tracking-[0.25em] font-light uppercase mb-3 mr-[-0.25em] text-transparent bg-clip-text bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)] bg-[length:200%_100%] animate-[shine:6s_linear_infinite]">
-                  <span className="font-black italic mr-2">J</span> jahronimo
+                <h2 className="text-2xl md:text-4xl tracking-[0.25em] font-black uppercase mb-3 mr-[-0.25em] text-transparent bg-clip-text bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)] bg-[length:200%_100%] animate-[shine_6s_linear_infinite]">
+                  Access
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
                 <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-semibold uppercase text-[#d4af37]/80 mr-[-0.4em]">
-                  <span>THANK YOU</span>
-                  <span className="text-xs text-[#d4af37]/60">SIGN OFF EXECUTED</span>
+                  <span>FILL ME IN</span>
+                  <span className="text-xs text-[#d4af37]/60 uppercase tracking-[0.1em]">WITH HOW MUCH YOU WISH</span>
                 </div>
               </div>
 
