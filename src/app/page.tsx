@@ -212,7 +212,7 @@ export default function Home() {
                 {/* Name */}
                 <motion.p
                   variants={itemVariants}
-                  className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
+                  className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
                 >
                   jahronimo
                 </motion.p>
