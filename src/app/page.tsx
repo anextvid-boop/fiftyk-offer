@@ -44,10 +44,10 @@ const ExpandableField = ({ name, label }: { name: string, label: string }) => {
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="w-full py-4 flex justify-between items-center text-white uppercase tracking-widest text-sm outline-none transition-colors hover:text-[#cfb53b]"
+        className="w-full py-6 flex justify-between items-center text-white uppercase tracking-[0.2em] text-base md:text-xl outline-none transition-all hover:text-[#cfb53b] font-light"
       >
         <span className={expanded ? "text-[#cfb53b]" : "text-white/70"}>{label}</span>
-        <span className="text-xl font-light text-[#cfb53b]/60">{expanded ? '-' : '+'}</span>
+        <span className="text-2xl font-light text-[#cfb53b]/60">{expanded ? '−' : '+'}</span>
       </button>
       <AnimatePresence>
         {expanded && (
@@ -60,8 +60,8 @@ const ExpandableField = ({ name, label }: { name: string, label: string }) => {
             <textarea
               name={name}
               placeholder={placeholderText}
-              rows={3}
-              className="w-full bg-white/5 p-4 text-white/90 tracking-wide outline-none placeholder:text-white/20 text-sm md:text-base font-sans resize-none mt-2 mb-4"
+              rows={4}
+              className="w-full bg-white/5 p-6 text-white tracking-wide outline-none placeholder:text-white/10 text-lg md:text-xl font-sans resize-none mt-2 mb-8 border border-[#cfb53b]/20"
             ></textarea>
           </motion.div>
         )}
@@ -74,13 +74,15 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // We navigate natively with the href, so we DO NOT use e.preventDefault() here!
+  const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // We stop the native click navigation initially to control the flow
+    e.preventDefault();
 
     const form = e.currentTarget.closest('form');
-    if (form) {
+    const targetUrl = e.currentTarget.getAttribute('href');
+
+    if (form && targetUrl) {
       if (!form.checkValidity()) {
-        e.preventDefault(); // Only prevent navigation if form fields are empty/invalid
         form.reportValidity(); // Show native browser validation popups
         return;
       }
@@ -89,16 +91,25 @@ export default function Home() {
       const formData = new FormData(form);
 
       try {
-        fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
+        // Run fetch in parallel
+        const fetchPromise = fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
           method: "POST",
           headers: {
             'Accept': 'application/json'
           },
           body: formData,
-          keepalive: true // Ensures background fetch completes even as browser navigates to Stripe!
+          keepalive: true
         });
+
+        // Use a small delay for UI presence and ensure the fetch has a head start
+        // This solves the 'glitchy' feeling of an instant navigation that kills JS contexts
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        // Finalize navigation
+        window.location.href = targetUrl;
       } catch (error) {
         console.error(error);
+        window.location.href = targetUrl; // Fallback redirect anyway
       }
     }
   };
@@ -143,26 +154,26 @@ export default function Home() {
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#cfb53b]/40 transition-colors duration-700 group-hover:border-[#cfb53b]"></div>
 
               {/* jahronimo */}
-              <motion.h1 variants={itemVariants} className="text-2xl md:text-3xl tracking-[0.4em] font-light uppercase text-white/70 transition-colors duration-700 m-0">
+              <motion.h1 variants={itemVariants} className="text-3xl md:text-5xl tracking-[0.4em] font-light uppercase text-white/70 transition-colors duration-700 m-0">
                 jahronimo
               </motion.h1>
 
               {/* £50,000 */}
-              <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-serif italic text-[#cfb53b] drop-shadow-[0_0_20px_rgba(207,181,59,0.2)] transition-all duration-700 m-0">
+              <motion.h2 variants={itemVariants} className="text-7xl md:text-9xl font-serif italic text-[#cfb53b] drop-shadow-[0_0_20px_rgba(207,181,59,0.2)] transition-all duration-700 m-0 leading-none">
                 £50,000
               </motion.h2>
 
               {/* no saying. i make. */}
-              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6 pt-6 text-center m-0">
-                <p className="text-lg md:text-xl tracking-[0.3em] font-light text-white/50 transition-colors duration-700 uppercase m-0">
+              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-10 pt-6 text-center m-0">
+                <p className="text-xl md:text-3xl tracking-[0.3em] font-light text-white/50 transition-colors duration-700 uppercase m-0 leading-none">
                   no saying
                 </p>
-                <p className="text-xl md:text-3xl tracking-[0.3em] font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] transition-all duration-700 uppercase m-0">
+                <p className="text-4xl md:text-7xl tracking-[0.3em] font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-700 uppercase m-0 leading-none">
                   i make.
                 </p>
 
-                <div className="pt-12">
-                  <div className="text-[#cfb53b] tracking-[0.3em] text-xs font-sans uppercase border-b border-[#cfb53b]/40 pb-2 hover:text-white hover:border-white transition-colors duration-500">
+                <div className="pt-20">
+                  <div className="text-[#cfb53b] tracking-[0.4em] text-sm md:text-xl font-sans uppercase border-b border-[#cfb53b]/40 pb-4 hover:text-white hover:border-white transition-all duration-500">
                     Access Project
                   </div>
                 </div>
@@ -183,18 +194,18 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#cfb53b]"></div>
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#cfb53b]"></div>
 
-              <motion.div variants={itemVariants} className="w-full text-center mb-10">
-                <h2 className="text-2xl md:text-3xl tracking-[0.3em] font-light uppercase text-white/90 mb-2">
+              <motion.div variants={itemVariants} className="w-full text-center mb-14">
+                <h2 className="text-4xl md:text-5xl tracking-[0.3em] font-light uppercase text-white/95 mb-4 font-serif">
                   Project Access
                 </h2>
-                <p className="text-xs md:text-sm tracking-[0.2em] font-light uppercase text-white/50">
+                <p className="text-sm md:text-lg tracking-[0.2em] font-light uppercase text-white/40">
                   Fill in what you wish
                 </p>
               </motion.div>
 
               <motion.form
                 variants={itemVariants}
-                className="flex flex-col space-y-4 w-full"
+                className="flex flex-col space-y-8 w-full"
               >
                 {/* Disables Captcha for a smoother experience */}
                 <input type="hidden" name="_captcha" value="false" />
@@ -206,7 +217,7 @@ export default function Home() {
                   name="name"
                   placeholder="NAME"
                   required
-                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-3 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-colors placeholder:text-white/30 text-sm md:text-base font-sans"
+                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-5 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/20 text-lg md:text-2xl font-sans"
                 />
 
                 <input
@@ -214,7 +225,7 @@ export default function Home() {
                   name="email"
                   placeholder="EMAIL"
                   required
-                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-3 mb-4 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-colors placeholder:text-white/30 text-sm md:text-base font-sans"
+                  className="w-full bg-transparent border-b border-[#cfb53b]/40 py-5 mb-8 text-white tracking-widest outline-none focus:border-[#cfb53b] transition-all placeholder:text-white/20 text-lg md:text-2xl font-sans"
                 />
 
                 <div className="flex flex-col w-full border-t border-[#cfb53b]/40 mt-4">
@@ -227,7 +238,7 @@ export default function Home() {
                 <a
                   href="https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00"
                   onClick={handleSubmit}
-                  className={`mt-8 px-8 py-5 border border-[#cfb53b] bg-transparent text-[#cfb53b] tracking-[0.3em] uppercase font-light text-sm hover:bg-[#cfb53b] hover:text-black transition-all duration-500 w-full flex justify-center items-center text-center ${isSubmitting ? 'opacity-50 pointer-events-none' : ''}`}
+                  className={`mt-14 px-10 py-7 border border-[#cfb53b] bg-transparent text-[#cfb53b] tracking-[0.4em] uppercase font-light text-lg md:text-xl hover:bg-[#cfb53b] hover:text-black transition-all duration-500 w-full flex justify-center items-center text-center ${isSubmitting ? 'opacity-30 pointer-events-none' : ''}`}
                 >
                   {isSubmitting ? "REDIRECTING..." : "PROCEED TO PAYMENT"}
                 </a>
