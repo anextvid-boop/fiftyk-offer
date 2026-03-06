@@ -199,19 +199,23 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
           >
             <div className="flex flex-col gap-3 pb-6">
               {fields ? (
-                fields.map((fieldLabel, idx) => (
-                  <textarea
-                    key={idx}
-                    name={`${name}_${idx}`}
-                    placeholder={fieldLabel}
-                    rows={2}
-                    onFocus={playKeystroke}
-                    onChange={(e) => {
-                      if (e.target.value.length % 5 === 0) playKeystroke(); // Occasional tactile click when typing
-                    }}
-                    className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/15 font-light text-base resize-none"
-                  />
-                ))
+                fields.map((fieldLabel, idx) => {
+                  // Sanitize fieldLabel for email/form name (e.g. "Who are you?" -> "Who_are_you")
+                  const inputName = fieldLabel.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s+/g, "_");
+                  return (
+                    <textarea
+                      key={idx}
+                      name={inputName}
+                      placeholder={fieldLabel}
+                      rows={2}
+                      onFocus={playKeystroke}
+                      onChange={(e) => {
+                        if (e.target.value.length % 5 === 0) playKeystroke(); // Occasional tactile click when typing
+                      }}
+                      className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/15 font-light text-base resize-none"
+                    />
+                  );
+                })
               ) : (
                 <textarea
                   name={name}
