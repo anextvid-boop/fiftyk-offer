@@ -212,7 +212,7 @@ export default function Home() {
                 {/* Name */}
                 <motion.p
                   variants={itemVariants}
-                  className="text-xs md:text-sm tracking-[0.6em] font-light uppercase text-[#cfb53b]/50 m-0 mr-[-0.6em] transition-all duration-700 group-hover:text-[#cfb53b]/80"
+                  className="text-xl md:text-3xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
                 >
                   jahronimo
                 </motion.p>
@@ -234,8 +234,8 @@ export default function Home() {
                 {/* Divider */}
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent" />
 
-                {/* Sub text — left-aligned block */}
-                <motion.div variants={itemVariants} className="flex flex-col items-start gap-0 w-full text-left pl-0">
+                {/* Sub text — centred block */}
+                <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center">
                   <p className="text-sm md:text-base tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-3">
                     no saying..
                   </p>
