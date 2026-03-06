@@ -180,10 +180,18 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cfb53b]/15 to-transparent -translate-x-full animate-[shimmer_4s_infinite] skew-x-12" />
               </div>
               {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
-              <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
+              <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-start justify-start p-1">
+                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
+              </div>
+              <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-start justify-end p-1">
+                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-end justify-start p-1">
+                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
+              </div>
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16 flex items-end justify-end p-1">
+                <div className="w-1 h-1 bg-[#cfb53b]/40 rounded-full"></div>
+              </div>
 
               {/* jahronimo */}
               <motion.h1
