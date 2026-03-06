@@ -114,16 +114,32 @@ export default function Home() {
       {/* Ultra-Premium Gold Backdrop */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#020202]">
         <div
-          className="absolute inset-0 z-0 opacity-10 grayscale brightness-50"
+          className="absolute inset-0 z-0 opacity-10 grayscale brightness-30"
           style={{
             backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
+        {/* Floating Gold Dust */}
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-[#cfb53b]/20"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 1}px`,
+              height: `${Math.random() * 4 + 1}px`,
+              animation: `float ${Math.random() * 5 + 5}s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
         {/* Ambient Gold Glows */}
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#cfb53b]/5 blur-[150px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#cfb53b]/5 blur-[150px] rounded-full" />
+        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-[#cfb53b]/10 blur-[180px] rounded-full" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] bg-[#cfb53b]/10 blur-[180px] rounded-full" />
+        <div className="absolute top-[40%] left-[30%] w-[40%] h-[40%] bg-[#cfb53b]/5 blur-[200px] rounded-full" />
       </div>
 
       <style jsx global>{`
@@ -133,6 +149,16 @@ export default function Home() {
         }
         @keyframes shine {
           to { background-position-x: -200%; }
+        }
+        @keyframes pulsate {
+          0% { box-shadow: 0 0 50px rgba(207,181,59,0.1); }
+          50% { box-shadow: 0 0 100px rgba(207,181,59,0.2); }
+          100% { box-shadow: 0 0 50px rgba(207,181,59,0.1); }
+        }
+        @keyframes float {
+          0% { transform: translateY(0) translateX(0); opacity: 0; }
+          50% { opacity: 0.4; }
+          100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
         }
       `}</style>
 
@@ -147,7 +173,7 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-4xl mx-auto border border-[#cfb53b]/40 bg-black/90 p-8 sm:p-12 md:p-20 shadow-[0_0_100px_rgba(207,181,59,0.1)] flex flex-col items-center justify-center space-y-12 cursor-pointer group overflow-hidden"
+              className="relative w-full max-w-4xl mx-auto border border-[#cfb53b]/30 bg-black/80 backdrop-blur-xl p-8 sm:p-12 md:p-20 flex flex-col items-center justify-center space-y-12 cursor-pointer group overflow-hidden animate-[pulsate_6s_infinite_ease-in-out] rounded-[2px]"
             >
               {/* Premium Shimmer Effect */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -167,9 +193,9 @@ export default function Home() {
                 jahronimo
               </motion.h1>
 
-              {/* £50,000 - Premium Gold Shine */}
+              {/* £50,000 - High-Fidelity Gold Shine */}
               <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center">
-                <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-[linear-gradient(110deg,#cfb53b,45%,#fff,55%,#cfb53b)] bg-[length:200%_100%] animate-[shine_4s_linear_infinite] m-0 drop-shadow-[0_0_15px_rgba(207,181,59,0.3)]">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-[linear-gradient(110deg,#bf953f,25%,#fcf6ba,45%,#b38728,55%,#fbf5b7,75%,#aa771c)] bg-[length:200%_100%] animate-[shine_5s_linear_infinite] m-0 drop-shadow-[0_0_20px_rgba(207,181,59,0.4)] mr-[-0.01em]">
                   £50,000
                 </h2>
               </motion.div>
