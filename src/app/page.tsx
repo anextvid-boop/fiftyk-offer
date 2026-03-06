@@ -38,6 +38,7 @@ const itemVariants = {
 
 const ExpandableField = ({ name, label }: { name: string, label: string }) => {
   const [expanded, setExpanded] = useState(false);
+  const placeholderText = name === "links" ? "e.g., https://your-website.com" : "Type here...";
   return (
     <div className="border-b border-[#cfb53b]/40">
       <button
@@ -58,7 +59,7 @@ const ExpandableField = ({ name, label }: { name: string, label: string }) => {
           >
             <textarea
               name={name}
-              placeholder="Type here..."
+              placeholder={placeholderText}
               rows={3}
               className="w-full bg-white/5 p-4 text-white/90 tracking-wide outline-none placeholder:text-white/20 text-sm md:text-base font-sans resize-none mt-2 mb-4"
             ></textarea>
@@ -73,24 +74,32 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSubmit = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // We navigate natively with the href, so we DO NOT use e.preventDefault() here!
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget.closest('form');
+    if (form) {
+      if (!form.checkValidity()) {
+        e.preventDefault(); // Only prevent navigation if form fields are empty/invalid
+        form.reportValidity(); // Show native browser validation popups
+        return;
+      }
 
-    try {
-      await fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: formData
-      });
-    } catch (error) {
-      console.error(error);
-    } finally {
-      window.location.href = "https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00";
+      setIsSubmitting(true);
+      const formData = new FormData(form);
+
+      try {
+        fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData,
+          keepalive: true // Ensures background fetch completes even as browser navigates to Stripe!
+        });
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
@@ -144,13 +153,19 @@ export default function Home() {
               </motion.h2>
 
               {/* no saying. i make. */}
-              <motion.div variants={itemVariants} className="space-y-6 pt-6 text-center m-0">
+              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6 pt-6 text-center m-0">
                 <p className="text-lg md:text-xl tracking-[0.3em] font-light text-white/50 transition-colors duration-700 uppercase m-0">
                   no saying
                 </p>
                 <p className="text-xl md:text-3xl tracking-[0.3em] font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] transition-all duration-700 uppercase m-0">
                   i make.
                 </p>
+
+                <div className="pt-12">
+                  <div className="text-[#cfb53b] tracking-[0.3em] text-xs font-sans uppercase border-b border-[#cfb53b]/40 pb-2 hover:text-white hover:border-white transition-colors duration-500">
+                    Access Project
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           ) : (
@@ -179,7 +194,6 @@ export default function Home() {
 
               <motion.form
                 variants={itemVariants}
-                onSubmit={handleSubmit}
                 className="flex flex-col space-y-4 w-full"
               >
                 {/* Disables Captcha for a smoother experience */}
@@ -210,13 +224,13 @@ export default function Home() {
                   <ExpandableField name="points_of_reference" label="Points of Reference" />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="mt-8 px-8 py-5 border border-[#cfb53b] bg-transparent text-[#cfb53b] tracking-[0.3em] uppercase font-light text-sm hover:bg-[#cfb53b] hover:text-black disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500 w-full flex justify-center items-center"
+                <a
+                  href="https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00"
+                  onClick={handleSubmit}
+                  className={`mt-8 px-8 py-5 border border-[#cfb53b] bg-transparent text-[#cfb53b] tracking-[0.3em] uppercase font-light text-sm hover:bg-[#cfb53b] hover:text-black transition-all duration-500 w-full flex justify-center items-center text-center ${isSubmitting ? 'opacity-50 pointer-events-none' : ''}`}
                 >
-                  {isSubmitting ? "REDIRECTING TO GATEWAY..." : "PROCEED TO PAYMENT"}
-                </button>
+                  {isSubmitting ? "REDIRECTING..." : "PROCEED TO PAYMENT"}
+                </a>
               </motion.form>
             </motion.div>
           )}
