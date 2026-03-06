@@ -133,13 +133,11 @@ export default function Home() {
       setIsSubmitting(true);
       const formData = new FormData(form);
       try {
-        fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
+        await fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
           method: "POST",
           headers: { Accept: "application/json" },
           body: formData,
-          keepalive: true,
         });
-        await new Promise((r) => setTimeout(r, 800));
         window.location.href = targetUrl;
       } catch {
         window.location.href = targetUrl;
@@ -389,7 +387,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent animate-[shimmer_3s_ease-in-out_infinite] skew-x-12" />
                   </div>
                   <span className="relative z-10 group-hover:text-black transition-colors duration-500 mr-[-0.45em] w-full text-center">
-                    {isSubmitting ? "Redirecting…" : "Complete Payment"}
+                    {isSubmitting ? "Processing & Redirecting..." : "Complete Payment"}
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#d4af37] via-[#fff3a6] to-[#b8860b] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out" />
                 </a>
