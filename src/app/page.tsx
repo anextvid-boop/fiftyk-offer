@@ -234,12 +234,12 @@ export default function Home() {
                 {/* Divider */}
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent" />
 
-                {/* Sub text */}
-                <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 text-center">
-                  <p className="text-[10px] md:text-xs tracking-[0.55em] font-light text-[#cfb53b]/35 uppercase mr-[-0.55em]">
-                    no saying
+                {/* Sub text — left-aligned block */}
+                <motion.div variants={itemVariants} className="flex flex-col items-start gap-0 w-full text-left pl-0">
+                  <p className="text-sm md:text-base tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-3">
+                    no saying..
                   </p>
-                  <p className="text-2xl md:text-4xl tracking-[0.05em] font-black text-white uppercase mr-[-0.05em]">
+                  <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.02em] font-black text-white uppercase m-0 leading-none">
                     i make.
                   </p>
                 </motion.div>
