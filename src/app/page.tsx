@@ -24,7 +24,10 @@ export default function Home() {
   // Create an array of 50 images for that "mad, infinite" background vibe
   const [collageImages, setCollageImages] = useState<any[]>([]);
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const arr = Array.from({ length: 50 }).map((_, i) => ({
       id: i,
       src: `${BASE_PATH}/${LOCAL_IMAGES[i % LOCAL_IMAGES.length]}`,
@@ -53,15 +56,17 @@ export default function Home() {
         style={{ backgroundImage: `url("${BASE_PATH}/noise.svg")` }}></div>
 
       {/* --- MAD INFINITE COLLAGE IMAGES --- */}
-      <div className="fixed inset-0 z-0 pointer-events-none h-full w-full">
-        {collageImages.map((img) => (
-          <CollageImage
-            key={img.id}
-            img={img}
-            scrollYProgress={scrollYProgress}
-          />
-        ))}
-      </div>
+      {mounted && (
+        <div className="fixed inset-0 z-0 pointer-events-none h-full w-full">
+          {collageImages.map((img) => (
+            <CollageImage
+              key={img.id}
+              img={img}
+              scrollYProgress={scrollYProgress}
+            />
+          ))}
+        </div>
+      )}
 
       {/* --- CONTENT OVERLAYS --- */}
       <div className="relative z-10 flex flex-col items-center justify-between w-full mx-auto px-6 max-w-[1400px]">
