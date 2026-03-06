@@ -5,15 +5,68 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const BASE_PATH = "/fiftyk-offer";
 
-const containerVariants = {
+const containerVariants: any = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.15
+    }
+  },
   exit: { opacity: 0 }
 };
 
-const itemVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 }
+const itemVariants: any = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.05,
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1], // easeOutQuart
+    },
+  }),
+};
+
+const AnimatedLetters = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
+  return (
+    <span className={className + " inline-flex"}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          custom={i}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: (idx: number) => ({
+              opacity: 1,
+              y: 0,
+              transition: {
+                delay: delay + idx * 0.04,
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1],
+              },
+            }),
+          }}
+          style={{ display: "inline-block", whiteSpace: "pre" }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
 };
 
 // Fixed gold dust positions to prevent hydration mismatch
@@ -210,12 +263,12 @@ export default function Home() {
               <div className="flex flex-col items-center gap-10 w-full">
 
                 {/* Name */}
-                <motion.p
+                <motion.div
                   variants={itemVariants}
                   className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase text-[#cfb53b]/60 m-0 mr-[-0.5em] transition-all duration-700 group-hover:text-[#cfb53b]"
                 >
-                  jahronimo
-                </motion.p>
+                  <AnimatedLetters text="jahronimo" delay={0.2} />
+                </motion.div>
 
                 {/* Divider */}
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#cfb53b]/40 to-transparent" />
@@ -225,10 +278,10 @@ export default function Home() {
                   variants={itemVariants}
                   className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
                     bg-[linear-gradient(110deg,#bf953f_0%,#fcf6ba_30%,#b38728_50%,#fbf5b7_70%,#aa771c_100%)]
-                    bg-[length:200%_100%] animate-[shine_6s_linear_infinite]
+                    bg-[length:200%_100%] animate-[shine:6s_linear_infinite]
                     drop-shadow-[0_0_30px_rgba(207,181,59,0.35)]"
                 >
-                  £50,000
+                  <AnimatedLetters text="£50,000" delay={0.4} />
                 </motion.h1>
 
                 {/* Divider */}
@@ -236,12 +289,12 @@ export default function Home() {
 
                 {/* Sub text — centred block with period compensation */}
                 <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center">
-                  <p className="text-sm md:text-lg tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-4">
-                    no saying..
-                  </p>
-                  <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-black text-white uppercase m-0 leading-none mr-[-0.05em]">
-                    i make.
-                  </p>
+                  <div className="text-sm md:text-lg tracking-[0.5em] font-light text-[#cfb53b]/50 uppercase m-0 mr-[-0.5em] leading-none mb-4">
+                    <AnimatedLetters text="no saying.." delay={0.6} />
+                  </div>
+                  <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-black text-white uppercase m-0 leading-none mr-[-0.05em]">
+                    <AnimatedLetters text="i make." delay={0.8} />
+                  </div>
                 </motion.div>
 
                 {/* CTA */}
