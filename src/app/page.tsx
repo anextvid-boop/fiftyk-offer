@@ -39,7 +39,7 @@ const letterVariants = {
   }),
 };
 
-const AnimatedLetters = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
+const AnimatedLetters = ({ text, className, delay = 0, stagger = 0.04 }: { text: string; className?: string; delay?: number; stagger?: number }) => {
   return (
     <span className={className + " inline-flex"}>
       {text.split("").map((char, i) => (
@@ -54,7 +54,7 @@ const AnimatedLetters = ({ text, className, delay = 0 }: { text: string; classNa
               opacity: 1,
               y: 0,
               transition: {
-                delay: delay + idx * 0.04,
+                delay: delay + idx * stagger,
                 duration: 1,
                 ease: [0.22, 1, 0.36, 1],
               },
@@ -293,7 +293,7 @@ export default function Home() {
                     <AnimatedLetters text="no saying.." delay={0.6} />
                   </div>
                   <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-black text-white uppercase m-0 leading-none mr-[-0.05em]">
-                    <AnimatedLetters text="i make." delay={0.8} />
+                    <AnimatedLetters text="i make." delay={0.8} stagger={0.3} />
                   </div>
                 </motion.div>
 
