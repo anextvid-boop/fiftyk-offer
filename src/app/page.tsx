@@ -167,10 +167,6 @@ export default function Home() {
 
       {/* Global Keyframes */}
       <style jsx global>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
         @keyframes shimmer {
           0%   { transform: translateX(-160%) skewX(-18deg); }
           100% { transform: translateX(160%) skewX(-18deg); }
@@ -240,23 +236,9 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-2xl mx-auto bg-black/80 backdrop-blur-3xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden border border-white/5 rounded-sm"
-              style={{ animation: "pulsate 8s ease-in-out infinite" }}
+              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden"
+              style={{ animation: "pulsate 7s ease-in-out infinite" }}
             >
-              {/* Rotating Gold Beam Border */}
-              <div
-                className="absolute inset-[-1px] pointer-events-none transition-opacity duration-1000"
-                style={{
-                  opacity: 0.15,
-                  animation: "borderpulse 6s ease-in-out infinite"
-                }}
-              >
-                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_170deg,#d4af37_180deg,transparent_190deg,transparent_360deg)] animate-[spin_4s_linear_infinite]" />
-              </div>
-              <div className="absolute inset-[-1px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_160deg,#f9d71c_180deg,transparent_200deg,transparent_360deg)] animate-[spin_2s_linear_infinite]" />
-              </div>
-              <div className="absolute inset-[1px] bg-black/95 pointer-events-none z-0 rounded-sm" />
               {/* Shimmer sweep */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cfb53b]/10 to-transparent animate-[shimmer_6s_ease-in-out_infinite] skew-x-12" />
@@ -335,20 +317,9 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-xl mx-auto bg-black/85 backdrop-blur-3xl p-10 md:p-16 flex flex-col items-center overflow-hidden border border-white/5 rounded-sm"
-              style={{ animation: "pulsate 8s ease-in-out infinite" }}
+              className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center"
+              style={{ animation: "pulsate 7s ease-in-out infinite" }}
             >
-              {/* Rotating Gold Beam Border (Form) */}
-              <div
-                className="absolute inset-[-1px] pointer-events-none transition-opacity duration-1000"
-                style={{
-                  opacity: 0.1,
-                  animation: "borderpulse 6s ease-in-out infinite"
-                }}
-              >
-                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_170deg,#d4af37_180deg,transparent_190deg,transparent_360deg)] animate-[spin_5s_linear_infinite]" />
-              </div>
-              <div className="absolute inset-[1px] bg-black/95 pointer-events-none z-0 rounded-sm" />
               {/* Corner brackets */}
               {[
                 "top-0 left-0 border-t border-l",
