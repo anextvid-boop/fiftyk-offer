@@ -64,7 +64,49 @@ const useSensoryFeedback = () => {
     });
   }, [audioCtx]);
 
-  return { playTick, playSuccessSweep };
+  const playKeystroke = useCallback(() => {
+    if (!audioCtx) return;
+    if (navigator.vibrate) navigator.vibrate([5]); // Very light buzz
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = "square";
+    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.03); // Quick low thud
+
+    gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.03);
+  }, [audioCtx]);
+
+  const playError = useCallback(() => {
+    if (!audioCtx) return;
+    if (navigator.vibrate) navigator.vibrate([30, 50, 30]); // Stutter buzz
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+    osc.frequency.linearRampToValueAtTime(100, audioCtx.currentTime + 0.2); // Downward pitch
+
+    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.2);
+  }, [audioCtx]);
+
+  return { playTick, playSuccessSweep, playKeystroke, playError };
 };
 
 const BASE_PATH = "/fiftyk-offer";
@@ -101,7 +143,7 @@ const DUST_PARTICLES = [
 
 const ExpandableField = ({ name, label, fields }: { name: string; label: string; fields?: string[] }) => {
   const [expanded, setExpanded] = useState(false);
-  const { playTick } = useSensoryFeedback();
+  const { playTick, playKeystroke } = useSensoryFeedback();
 
   return (
     <div className="border-b border-[#d4af37]/15">
@@ -129,6 +171,10 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
                     name={`${name}_${idx}`}
                     placeholder={fieldLabel}
                     rows={2}
+                    onFocus={playKeystroke}
+                    onChange={(e) => {
+                      if (e.target.value.length % 5 === 0) playKeystroke(); // Occasional tactile click when typing
+                    }}
                     className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/15 font-light text-base resize-none"
                   />
                 ))
@@ -137,6 +183,10 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
                   name={name}
                   placeholder="Write here..."
                   rows={3}
+                  onFocus={playKeystroke}
+                  onChange={(e) => {
+                    if (e.target.value.length % 5 === 0) playKeystroke();
+                  }}
                   className="w-full bg-transparent py-4 text-white tracking-wide outline-none placeholder:text-white/15 font-light text-base resize-none border-b border-white/8 focus:border-[#d4af37]/50 transition-all"
                 />
               )}
@@ -191,14 +241,18 @@ const ExpandableFileField = ({ name, label, description }: { name: string; label
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { playSuccessSweep, playTick } = useSensoryFeedback();
+  const { playSuccessSweep, playTick, playKeystroke, playError } = useSensoryFeedback();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const form = e.currentTarget.closest("form");
     const targetUrl = e.currentTarget.getAttribute("href");
     if (form && targetUrl) {
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (!form.checkValidity()) {
+        playError();
+        form.reportValidity();
+        return;
+      }
       playSuccessSweep();
       setIsSubmitting(true);
       const formData = new FormData(form);
@@ -434,6 +488,10 @@ export default function Home() {
                       name={field.name}
                       placeholder={field.placeholder.toUpperCase()}
                       required={field.required}
+                      onFocus={playKeystroke}
+                      onChange={(e) => {
+                        if (e.target.value.length % 5 === 0) playKeystroke();
+                      }}
                       className="w-full bg-transparent border-b border-white/10 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/12 font-light"
                     />
                     <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#d4af37] to-[#fff3a6] group-focus-within:w-full transition-all duration-700" />
