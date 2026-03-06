@@ -58,12 +58,12 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
             <div className="flex flex-col gap-3 pb-6">
               {fields ? (
                 fields.map((fieldLabel, idx) => (
-                  <input
+                  <textarea
                     key={idx}
-                    type="text"
                     name={`${name}_${idx}`}
                     placeholder={fieldLabel}
-                    className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/15 font-light text-base"
+                    rows={2}
+                    className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/15 font-light text-base resize-none"
                   />
                 ))
               ) : (
@@ -280,10 +280,14 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)]"
+              className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] overflow-hidden"
             >
               {/* Hardware-accelerated glow pulse */}
               <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
+              {/* Shimmer sweep */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/10 to-transparent animate-[shimmer_7s_ease-in-out_infinite] skew-x-12" />
+              </div>
               {/* Corner brackets */}
               {[
                 "top-0 left-0 border-t border-l",
@@ -296,7 +300,7 @@ export default function Home() {
 
               {/* Header */}
               <div className="w-full text-center mb-12">
-                <h2 className="text-2xl md:text-4xl tracking-[0.25em] font-black uppercase text-white mb-3 mr-[-0.25em]">
+                <h2 className="text-2xl md:text-4xl tracking-[0.25em] font-black uppercase mb-3 mr-[-0.25em] text-transparent bg-clip-text bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)] bg-[length:200%_100%] animate-[shine_6s_linear_infinite]">
                   Access
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
@@ -329,11 +333,11 @@ export default function Home() {
 
                 {/* Expandable optional fields */}
                 <div className="flex flex-col w-full mt-2 border-t border-white/8">
-                  <ExpandableField name="personal_life" label="Personal Life" fields={["Who are you?", "Personal Ambition", "Lifestyle Focus"]} />
-                  <ExpandableField name="business_life" label="Business Life" fields={["Current Project", "Business Goal", "Vision"]} />
-                  <ExpandableField name="social_links" label="Socials & Links" fields={["Primary Link", "Secondary Link", "Portfolio"]} />
-                  <ExpandableField name="other_area" label="Other Interests" fields={["Creative Focus", "Technical Area", "Other"]} />
-                  <ExpandableField name="reference" label="Reference Points" fields={["How you found me", "Key Influences", "Similar Work"]} />
+                  <ExpandableField name="personal_life" label="Personal Life" fields={["Who are you?", "Personal Ambition", "Lifestyle Focus", "Values & Beliefs", "Current Challenges"]} />
+                  <ExpandableField name="business_life" label="Business Life" fields={["Current Project", "Business Goal", "Vision", "Biggest Bottleneck", "Revenue Focus"]} />
+                  <ExpandableField name="social_links" label="Socials & Links" fields={["Primary Link", "Secondary Link", "Portfolio", "Recent Work", "Reference Link"]} />
+                  <ExpandableField name="other_area" label="Other Interests" fields={["Creative Focus", "Technical Area", "Hobbies", "Current Obsession", "Other"]} />
+                  <ExpandableField name="reference" label="Reference Points" fields={["How you found me", "Key Influences", "Similar Work", "Aesthetic Preferences", "Expectations"]} />
                 </div>
 
                 {/* Payment CTA */}
@@ -342,6 +346,9 @@ export default function Home() {
                   onClick={handleSubmit}
                   className={`mt-8 group relative py-6 border border-[#d4af37]/30 bg-transparent text-white tracking-[0.45em] uppercase font-light text-sm hover:border-[#d4af37] transition-all duration-700 w-full flex justify-center items-center text-center overflow-hidden ${isSubmitting ? "opacity-30 pointer-events-none" : ""}`}
                 >
+                  <div className="absolute inset-0 pointer-events-none opacity-50 group-hover:opacity-0 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent animate-[shimmer_3s_ease-in-out_infinite] skew-x-12" />
+                  </div>
                   <span className="relative z-10 group-hover:text-black transition-colors duration-500 mr-[-0.45em] w-full text-center">
                     {isSubmitting ? "Redirecting…" : "Complete Payment"}
                   </span>
