@@ -282,11 +282,11 @@ export default function Home() {
               {/* Header */}
               <div className="w-full text-center mb-12">
                 <h2 className="text-2xl md:text-4xl tracking-[0.25em] font-black uppercase text-white mb-3 mr-[-0.25em]">
-                  Project Access
+                  Access
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
-                <p className="text-[10px] tracking-[0.5em] font-light uppercase text-[#d4af37]/50 mr-[-0.5em]">
-                  Fill in what you wish
+                <p className="text-xs tracking-[0.4em] font-medium uppercase text-[#d4af37]/70 mr-[-0.4em]">
+                  Fill in what you wish.
                 </p>
               </div>
 
@@ -328,7 +328,7 @@ export default function Home() {
                   className={`mt-8 group relative py-6 border border-[#d4af37]/30 bg-transparent text-white tracking-[0.45em] uppercase font-light text-sm hover:border-[#d4af37] transition-all duration-700 w-full flex justify-center items-center text-center overflow-hidden ${isSubmitting ? "opacity-30 pointer-events-none" : ""}`}
                 >
                   <span className="relative z-10 group-hover:text-black transition-colors duration-500 mr-[-0.45em] w-full text-center">
-                    {isSubmitting ? "Redirecting…" : "Proceed to Payment"}
+                    {isSubmitting ? "Redirecting…" : "Complete Payment"}
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#d4af37] via-[#fff3a6] to-[#b8860b] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out" />
                 </a>
