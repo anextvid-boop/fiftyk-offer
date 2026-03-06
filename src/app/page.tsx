@@ -6,31 +6,23 @@ import { motion, AnimatePresence } from "framer-motion";
 const BASE_PATH = "/fiftyk-offer";
 
 const containerVariants = {
-  hidden: { opacity: 0, y: 15 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-      delayChildren: 0.1
+      duration: 0.3
     }
   },
   exit: {
     opacity: 0,
-    y: -15,
-    transition: { duration: 0.4 }
+    transition: { duration: 0.2 }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1
-    }
+    opacity: 1
   }
 };
 
@@ -114,20 +106,17 @@ export default function Home() {
 
   return (
     <main className="block relative min-h-screen w-full bg-[#050505] text-white font-sans overflow-hidden">
-      {/* Semi-static Background Collage */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.02, 1] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-[-2%] z-0"
+      {/* Static Background Collage */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+        <div
+          className="absolute inset-0 z-0 opacity-25"
           style={{
             backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'grayscale(100%) brightness(0.25)',
+            filter: 'grayscale(100%)',
           }}
         />
-        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Main Content Container */}
@@ -141,7 +130,7 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-2xl mx-auto border border-white/5 bg-black/50 backdrop-blur-xl p-10 md:p-20 shadow-2xl flex flex-col items-center justify-center space-y-12 transition-all duration-500 hover:border-[#cfb53b]/30 cursor-pointer group"
+              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black p-10 md:p-20 shadow-2xl flex flex-col items-center justify-center space-y-12 cursor-pointer group"
             >
               {/* Corner Accents */}
               <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
@@ -157,9 +146,9 @@ export default function Home() {
                 jahronimo
               </motion.h1>
 
-              {/* £50,000 - Fixed Cropping */}
-              <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center">
-                <h2 className="text-6xl sm:text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tight text-white transition-all duration-1000 m-0 group-hover:text-[#cfb53b] whitespace-nowrap">
+              {/* £50,000 - Fixed Cropping & Stability */}
+              <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center overflow-visible">
+                <h2 className="text-6xl sm:text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tight text-white m-0 whitespace-nowrap">
                   £50,000
                 </h2>
               </motion.div>
@@ -189,7 +178,7 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black/60 backdrop-blur-3xl p-12 md:p-20 shadow-2xl flex flex-col items-center justify-center transition-all duration-1000"
+              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black p-12 md:p-20 shadow-2xl flex flex-col items-center justify-center transition-all duration-300"
             >
               {/* Corner Accents */}
               <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-[#cfb53b]/60"></div>
