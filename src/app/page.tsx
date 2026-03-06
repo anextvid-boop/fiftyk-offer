@@ -38,6 +38,28 @@ const itemVariants = {
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      await fetch("https://formsubmit.co/ajax/anextvid@gmail.com", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      window.location.href = "https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00";
+    }
+  };
 
   return (
     <main className="block relative min-h-screen w-full bg-black text-[#f4f4f4] font-serif overflow-hidden group">
@@ -119,12 +141,9 @@ export default function Home() {
 
               <motion.form
                 variants={itemVariants}
-                action="https://formsubmit.co/anextvid@gmail.com"
-                method="POST"
+                onSubmit={handleSubmit}
                 className="flex flex-col space-y-8 w-full"
               >
-                {/* Redirects user to Stripe AFTER successful form submission */}
-                <input type="hidden" name="_next" value="https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00" />
                 {/* Disables Captcha for a smoother experience */}
                 <input type="hidden" name="_captcha" value="false" />
                 {/* Sets an email subject so it stands out in inbox */}
@@ -156,9 +175,10 @@ export default function Home() {
 
                 <button
                   type="submit"
-                  className="mt-8 px-8 py-5 border border-[#cfb53b] bg-transparent text-[#cfb53b] tracking-[0.3em] uppercase font-light text-sm hover:bg-[#cfb53b] hover:text-black transition-all duration-500 w-full"
+                  disabled={isSubmitting}
+                  className="mt-8 px-8 py-5 border border-[#cfb53b] bg-transparent text-[#cfb53b] tracking-[0.3em] uppercase font-light text-sm hover:bg-[#cfb53b] hover:text-black disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500 w-full flex justify-center items-center"
                 >
-                  Proceed to Payment
+                  {isSubmitting ? "REDIRECTING TO GATEWAY..." : "PROCEED TO PAYMENT"}
                 </button>
               </motion.form>
             </motion.div>
