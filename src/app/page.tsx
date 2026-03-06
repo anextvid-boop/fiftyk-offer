@@ -136,6 +136,11 @@ export default function Home() {
           0%, 100% { border-color: rgba(212,175,55,0.25); }
           50%       { border-color: rgba(212,175,55,0.5); }
         }
+        @keyframes letter-glow {
+          0%, 100% { color: rgba(212,175,55,0.6); text-shadow: none; }
+          15%, 25% { color: #ffffff; text-shadow: 0 0 15px rgba(212,175,55,0.9), 0 0 5px rgba(255,255,255,0.5); }
+          40%, 90% { color: rgba(212,175,55,0.6); text-shadow: none; }
+        }
       `}</style>
 
       {/* ── Background ────────────────────────────────────────── */}
@@ -214,12 +219,19 @@ export default function Home() {
                 {/* Name */}
                 <motion.p
                   variants={itemVariants}
-                  className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em]
-                    text-transparent bg-clip-text
-                    bg-[linear-gradient(90deg,rgba(212,175,55,0.5)_0%,rgba(212,175,55,0.5)_40%,#fff_50%,rgba(212,175,55,0.5)_60%,rgba(212,175,55,0.5)_100%)]
-                    bg-[length:200%_100%] animate-[shine_4s_linear_infinite]"
+                  className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60"
                 >
-                  jahronimo
+                  {["j", "a", "h", "r", "o", "n", "i", "m", "o"].map((letter, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        animation: "letter-glow 4s ease-in-out infinite",
+                        animationDelay: `${index * 0.15}s`
+                      }}
+                    >
+                      {letter}
+                    </span>
+                  ))}
                 </motion.p>
 
                 {/* Divider */}
