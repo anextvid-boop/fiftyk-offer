@@ -5,25 +5,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const BASE_PATH = "/fiftyk-offer";
 
+// Solid, stable transition logic
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.3
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.2 }
-  }
+  visible: { opacity: 1, transition: { duration: 0.3 } },
+  exit: { opacity: 0, transition: { duration: 0.1 } }
 };
 
 const itemVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1
-  }
+  visible: { opacity: 1 }
 };
 
 const ExpandableField = ({ name, label }: { name: string, label: string }) => {
@@ -106,21 +97,33 @@ export default function Home() {
 
   return (
     <main className="block relative min-h-screen w-full bg-[#050505] text-white font-sans overflow-hidden">
-      {/* Static Background Collage */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+      {/* Ultra-Premium Gold Backdrop */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#020202]">
         <div
-          className="absolute inset-0 z-0 opacity-25"
+          className="absolute inset-0 z-0 opacity-10 grayscale brightness-50"
           style={{
             backgroundImage: `url('${BASE_PATH}/collage-bg.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'grayscale(100%)',
           }}
         />
+        {/* Ambient Gold Glows */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#cfb53b]/5 blur-[150px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#cfb53b]/5 blur-[150px] rounded-full" />
       </div>
 
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-150%) skewX(-20deg); }
+          100% { transform: translateX(150%) skewX(-20deg); }
+        }
+        @keyframes shine {
+          to { background-position-x: -200%; }
+        }
+      `}</style>
+
       {/* Main Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12">
         <AnimatePresence mode="wait">
           {!showForm ? (
             <motion.div
@@ -130,8 +133,12 @@ export default function Home() {
               animate="visible"
               exit="exit"
               onClick={() => setShowForm(true)}
-              className="relative w-full max-w-2xl mx-auto border border-white/10 bg-black p-10 md:p-20 shadow-2xl flex flex-col items-center justify-center space-y-12 cursor-pointer group"
+              className="relative w-full max-w-4xl mx-auto border border-[#cfb53b]/40 bg-black/90 p-8 sm:p-12 md:p-20 shadow-[0_0_100px_rgba(207,181,59,0.1)] flex flex-col items-center justify-center space-y-12 cursor-pointer group overflow-hidden"
             >
+              {/* Premium Shimmer Effect */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#cfb53b]/15 to-transparent -translate-x-full animate-[shimmer_4s_infinite] skew-x-12" />
+              </div>
               {/* Corner Accents */}
               <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
               <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-white/20 transition-all duration-700 group-hover:border-[#cfb53b] group-hover:w-16 group-hover:h-16"></div>
@@ -141,30 +148,30 @@ export default function Home() {
               {/* jahronimo */}
               <motion.h1
                 variants={itemVariants}
-                className="text-2xl md:text-3xl tracking-[1em] font-extralight uppercase text-white/40 transition-all duration-1000 group-hover:text-white group-hover:tracking-[1.1em] m-0 pr-[-1em]"
+                className="text-xl md:text-2xl tracking-[1.2em] font-light uppercase text-[#cfb53b]/60 transition-all duration-700 group-hover:text-[#cfb53b] m-0"
               >
                 jahronimo
               </motion.h1>
 
-              {/* £50,000 - Fixed Cropping & Stability */}
-              <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center overflow-visible">
-                <h2 className="text-6xl sm:text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tight text-white m-0 whitespace-nowrap">
+              {/* £50,000 - Premium Gold Shine */}
+              <motion.div variants={itemVariants} className="relative py-2 w-full flex justify-center">
+                <h2 className="text-5xl sm:text-7xl md:text-9xl lg:text-[11rem] font-black tracking-tighter text-transparent bg-clip-text bg-[linear-gradient(110deg,#cfb53b,45%,#fff,55%,#cfb53b)] bg-[length:200%_100%] animate-[shine_4s_linear_infinite] m-0 drop-shadow-[0_0_15px_rgba(207,181,59,0.3)]">
                   £50,000
                 </h2>
               </motion.div>
 
               {/* no saying. i make. */}
-              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-8 text-center m-0">
-                <p className="text-lg md:text-2xl tracking-[0.4em] font-light text-white/30 uppercase m-0">
+              <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6 text-center m-0">
+                <p className="text-lg md:text-xl tracking-[0.5em] font-light text-[#cfb53b]/40 uppercase m-0">
                   no saying
                 </p>
-                <p className="text-4xl md:text-8xl tracking-[0.2em] font-black text-white uppercase m-0 leading-tight">
+                <p className="text-4xl md:text-7xl tracking-[0.1em] font-black text-white uppercase m-0 leading-tight">
                   i make.
                 </p>
 
-                <div className="pt-16 w-full">
-                  <div className="relative inline-block border-b border-[#cfb53b]/20 pb-2">
-                    <span className="text-[#cfb53b] tracking-[0.5em] text-sm md:text-lg font-medium uppercase transition-all duration-500">
+                <div className="pt-12 w-full">
+                  <div className="relative inline-block border-b border-[#cfb53b]/40 pb-2">
+                    <span className="text-[#cfb53b] tracking-[0.6em] text-xs md:text-sm font-bold uppercase">
                       Access Project
                     </span>
                   </div>
