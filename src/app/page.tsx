@@ -1,7 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// --- SENSORY FEEDBACK SYSTEM ---
+const useSensoryFeedback = () => {
+  const [audioCtx, setAudioCtx] = useState<AudioContext | null>(null);
+
+  useEffect(() => {
+    // Initialize AudioContext only on client
+    const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    setAudioCtx(ctx);
+    return () => { ctx.close(); };
+  }, []);
+
+  const playTick = useCallback(() => {
+    if (!audioCtx) return;
+    if (navigator.vibrate) navigator.vibrate([10]); // Soft haptic tap
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(800, audioCtx.currentTime); // High glassy pitch
+    osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+
+    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.05);
+  }, [audioCtx]);
+
+  const playSuccessSweep = useCallback(() => {
+    if (!audioCtx) return;
+    if (navigator.vibrate) navigator.vibrate([20, 30, 40]); // Swell haptic feedback
+
+    // C maj 7 chord components (C, E, G, B)
+    const frequencies = [261.63, 329.63, 392.00, 493.88];
+
+    frequencies.forEach((freq, i) => {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.value = freq;
+
+      // Staggered fade in/out for a "sweep" jazzy feel
+      const startTime = audioCtx.currentTime + (i * 0.08);
+
+      gain.gain.setValueAtTime(0, startTime);
+      gain.gain.linearRampToValueAtTime(0.15, startTime + 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.8);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(startTime);
+      osc.stop(startTime + 0.8);
+    });
+  }, [audioCtx]);
+
+  return { playTick, playSuccessSweep };
+};
 
 const BASE_PATH = "/fiftyk-offer";
 
@@ -37,12 +101,14 @@ const DUST_PARTICLES = [
 
 const ExpandableField = ({ name, label, fields }: { name: string; label: string; fields?: string[] }) => {
   const [expanded, setExpanded] = useState(false);
+  const { playTick } = useSensoryFeedback();
+
   return (
     <div className="border-b border-[#d4af37]/15">
       <button
         type="button"
-        onClick={() => setExpanded(!expanded)}
-        className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light"
+        onClick={() => { playTick(); setExpanded(!expanded); }}
+        className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light active:scale-[0.99] active:brightness-90 origin-center"
       >
         <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/50"}`}>{label}</span>
         <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
@@ -84,12 +150,14 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
 
 const ExpandableFileField = ({ name, label, description }: { name: string; label: string; description: string }) => {
   const [expanded, setExpanded] = useState(false);
+  const { playTick } = useSensoryFeedback();
+
   return (
     <div className="border-b border-[#d4af37]/15">
       <button
         type="button"
-        onClick={() => setExpanded(!expanded)}
-        className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light"
+        onClick={() => { playTick(); setExpanded(!expanded); }}
+        className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light active:scale-[0.99] active:brightness-90 origin-center"
       >
         <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/50"}`}>{label}</span>
         <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
@@ -123,6 +191,7 @@ const ExpandableFileField = ({ name, label, description }: { name: string; label
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { playSuccessSweep, playTick } = useSensoryFeedback();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -130,6 +199,7 @@ export default function Home() {
     const targetUrl = e.currentTarget.getAttribute("href");
     if (form && targetUrl) {
       if (!form.checkValidity()) { form.reportValidity(); return; }
+      playSuccessSweep();
       setIsSubmitting(true);
       const formData = new FormData(form);
       try {
@@ -341,8 +411,8 @@ export default function Home() {
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
                 <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-semibold uppercase text-[#d4af37]/80 mr-[-0.4em]">
-                  <span>Fill in</span>
-                  <span className="text-xs text-[#d4af37]/60">what you wish.</span>
+                  <span>FILL ME IN</span>
+                  <span className="text-xs text-[#d4af37]/60">WHAT YOU WISH</span>
                 </div>
               </div>
 
@@ -381,7 +451,7 @@ export default function Home() {
                 <a
                   href="https://buy.stripe.com/5kQ00iepe6YDghffFKdjO00"
                   onClick={handleSubmit}
-                  className={`mt-8 group relative py-6 border border-[#d4af37]/30 bg-transparent text-white tracking-[0.45em] uppercase font-light text-sm hover:border-[#d4af37] transition-all duration-700 w-full flex justify-center items-center text-center overflow-hidden ${isSubmitting ? "opacity-30 pointer-events-none" : ""}`}
+                  className={`mt-8 group relative py-6 border border-[#d4af37]/30 bg-transparent text-white tracking-[0.45em] uppercase font-light text-sm hover:border-[#d4af37] transition-all duration-700 w-full flex justify-center items-center text-center overflow-hidden active:scale-[0.98] active:brightness-90 origin-center ${isSubmitting ? "opacity-30 pointer-events-none" : ""}`}
                 >
                   <div className="absolute inset-0 pointer-events-none opacity-50 group-hover:opacity-0 transition-opacity duration-500">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent animate-[shimmer_3s_ease-in-out_infinite] skew-x-12" />
