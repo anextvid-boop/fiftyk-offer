@@ -497,8 +497,8 @@ export default function Home() {
                 {/* Content */}
                 <div className="flex flex-col items-center gap-10 w-full">
                   {/* Name */}
-                  <div className="flex text-xl sm:text-3xl md:text-5xl lg:text-6xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60">
-                    {["j", "a", "h", "r", "o", "n", "i", "m", "o"].map((letter, index) => (
+                  <div className="flex flex-wrap justify-center text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] font-light uppercase m-0 mr-[-0.3em] text-[#d4af37]/60">
+                    {["f", "o", "r", " ", "s", "i", "z", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
                       <motion.span
                         key={index}
                         custom={index}
@@ -507,10 +507,10 @@ export default function Home() {
                         animate="visible"
                         style={{
                           animation: "letter-glow 4s ease-in-out infinite",
-                          animationDelay: `${index * 0.15}s`
+                          animationDelay: `${index * 0.1}s`
                         }}
                       >
-                        {letter}
+                        {letter === " " ? "\u00A0" : letter}
                       </motion.span>
                     ))}
                   </div>
@@ -519,23 +519,27 @@ export default function Home() {
 
                   <motion.h1
                     variants={itemVariants}
-                    className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
+                    className="text-6xl sm:text-7xl md:text-9xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
                       bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
                       bg-[length:200%_100%] animate-[shine_6s_linear_infinite]"
                   >
-                    £50,000
+                    1 of 1&apos;s
                   </motion.h1>
 
                   <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
-                  <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center mt-2 mb-2">
-                    <div className="inline-flex flex-col items-stretch w-max">
-                      <p className="flex justify-between w-full text-base sm:text-xl md:text-2xl font-bold text-[#d4af37]/80 uppercase mb-3 leading-none">
-                        <span>N</span><span>O</span><span className="w-4 sm:w-6"></span><span>S</span><span>A</span><span>Y</span><span>I</span><span>N</span><span>G</span>
-                      </p>
-                      <p className="flex justify-between w-full text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.02em] font-black text-white uppercase m-0 leading-none">
-                        <span>I</span><span className="w-4 sm:w-8"></span><span>M</span><span>A</span><span>K</span><span>E</span>
-                      </p>
+                  <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 w-full text-center mt-6">
+                    <div className="relative">
+                      <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-[-0.08em] leading-none m-0 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        no saying
+                      </h2>
+                      <div className="mt-2 flex items-center justify-center">
+                        <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#d4af37]/30" />
+                        <p className="px-4 text-[#d4af37]/90 tracking-[0.4em] text-sm md:text-base font-black uppercase">
+                          i make
+                        </p>
+                        <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-[#d4af37]/30" />
+                      </div>
                     </div>
                   </motion.div>
 
@@ -610,7 +614,7 @@ export default function Home() {
 THANK YOU
 
 WAIT
-I MAKE
+NO SAYING I MAKE
 
 Your inquiry has been received. 
 
