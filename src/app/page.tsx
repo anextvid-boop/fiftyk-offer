@@ -593,8 +593,8 @@ export default function Home() {
 
               {/* Header */}
               <div className="w-full text-center mb-12">
-                <h2 className="text-2xl md:text-4xl tracking-[0.25em] font-black uppercase mb-3 mr-[-0.25em] text-transparent bg-clip-text bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)] bg-[length:200%_100%] animate-[shine_6s_linear_infinite]">
-                  ACCESS
+                <h2 className="text-xl md:text-3xl tracking-[0.25em] font-black uppercase mb-3 mr-[-0.25em] text-transparent bg-clip-text bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)] bg-[length:200%_100%] animate-[shine_6s_linear_infinite] leading-tight">
+                  THE PROJECT <br /> ACCESS
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
                 <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-black uppercase text-[#d4af37]/80 mr-[-0.4em]">
