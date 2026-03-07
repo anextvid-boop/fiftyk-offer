@@ -428,18 +428,51 @@ export default function Home() {
               exit="exit"
               className="flex flex-col items-center gap-12 w-full max-w-2xl mx-auto"
             >
-              {/* GoFundMe Donation Button */}
+              {/* Donation Card (GoFundMe) */}
               <motion.a
                 href="https://gofund.me/1bdc2d15c"
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
                 onClick={() => playTick()}
-                className="relative w-full bg-[#d4af37] text-black font-black text-xl md:text-2xl uppercase py-8 px-12 tracking-[0.3em] text-center shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] transition-all duration-300 active:scale-95 group overflow-hidden"
+                className="relative w-full bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-16 px-10 sm:px-16 cursor-pointer group overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_60px_rgba(212,175,55,0.12)] origin-center transition-all duration-300"
               >
-                {/* Button inner glow and shimmer */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                <span className="relative z-10">Make a donation</span>
+                {/* Hardware-accelerated glow pulse */}
+                <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
+                {/* Shimmer sweep */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/10 to-transparent animate-[shimmer_6s_ease-in-out_infinite] skew-x-12" />
+                </div>
+
+                {/* Corner brackets */}
+                {[
+                  "top-0 left-0 border-t border-l items-start justify-start",
+                  "top-0 right-0 border-t border-r items-start justify-end",
+                  "bottom-0 left-0 border-b border-l items-end justify-start",
+                  "bottom-0 right-0 border-b border-r items-end justify-end",
+                ].map((cls, i) => (
+                  <div
+                    key={i}
+                    className={`absolute w-8 h-8 ${cls} border-[#d4af37]/25 transition-all duration-700 group-hover:border-[#d4af37]/70 group-hover:w-12 group-hover:h-12 flex p-[2px]`}
+                  >
+                    <div className="w-[2px] h-[2px] rounded-full bg-[#d4af37]/50 group-hover:bg-[#d4af37] transition-all" />
+                  </div>
+                ))}
+
+                {/* Content */}
+                <div className="flex flex-col items-center gap-6 w-full text-center">
+                  <p className="text-[#d4af37]/60 tracking-[0.4em] text-[10px] md:text-sm uppercase font-bold">SUPPORT THE MISSION</p>
+                  <div className="w-8 h-[1px] bg-[#d4af37]/20" />
+                  <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tight leading-none group-hover:text-[#d4af37] transition-colors duration-300">
+                    MAKE A <br /> DONATION
+                  </h2>
+                  <div className="w-8 h-[1px] bg-[#d4af37]/20" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-4 h-[1px] bg-[#d4af37]/30" />
+                    <span className="text-[#d4af37] tracking-[0.3em] text-[10px] uppercase font-bold">Launch GoFundMe</span>
+                    <div className="w-4 h-[1px] bg-[#d4af37]/30" />
+                  </div>
+                </div>
               </motion.a>
 
               {/* Purchase Card (Existing jahronimo £50,000 Card) */}
