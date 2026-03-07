@@ -791,49 +791,11 @@ jahronimo1@hotmail.com
                     title: "Something Special",
                     content: (
                       <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>Hey, something special lined up…</p>
-                        <p>Something I want to do…</p>
-                        <p className="pt-1">Although, I&apos;m looking for support.<br />I need help…</p>
-                        <p className="pt-1">I would appreciate it a lot.</p>
-                        <p className="pt-1">I have a donations page.<br />Any help would be wonderful.</p>
-                        <p className="pt-1">I&apos;ve tried this before…<br />Nothing really happened.</p>
-                        <p className="pt-1">So now…</p>
-                        <p className="text-white/80 font-medium">This is way more interesting.</p>
-                      </div>
-                    ),
-                  },
-                  {
-                    title: "The One-of-One Project",
-                    content: (
-                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>For sizable contributions,<br />I&apos;m offering art commissions.</p>
-                        <p className="pt-1 text-white/80 font-medium">The One-of-One Project.</p>
-                        <p className="pt-1">Something non-replicable.<br />Secret. Special. Specific…<br />Created for you.</p>
-                        <p className="pt-1">Projects that are not just digital.<br />Something… different.</p>
-                        <p className="pt-1">Mixed media.<br />Physical + creative experimentation.</p>
-                        <p className="pt-1">No saying exactly what…<br />That&apos;s part of it.</p>
-                      </div>
-                    ),
-                  },
-                  {
-                    title: "About the Art",
-                    content: (
-                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I&apos;ve been doing mixed media art styles most of my life — since I was a kid.</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
-                          <p>A++ Art Foundation.</p>
-                          <p>Then Games Design.</p>
-                          <p>3D Animation.</p>
-                          <p>Video production.</p>
-                          <p>Advertising work.</p>
-                        </div>
-                        <p className="pt-1">My art has always been about combining things:</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
-                          <p>Paints · Inks · Glues · Buttons · Objects · Materials</p>
-                          <p>And an entire line of experimental approaches.</p>
-                        </div>
-                        <p className="pt-2">Working on something…<br />Not saying what exactly.<br />Just part of it.</p>
-                        <p className="text-white/80 font-medium pt-1">I think it will be good.</p>
+                        <p>I have something lined up.<br />Something I really want to do.</p>
+                        <p className="pt-1">Although right now, I need help getting there.<br />I&apos;m looking for support.</p>
+                        <p className="pt-1">I&apos;ve tried reaching people before…<br />Nothing really came of it.</p>
+                        <p className="pt-1">So now I&apos;m doing this differently.</p>
+                        <p className="text-white/80 font-medium pt-1">More direct. More interesting.</p>
                       </div>
                     ),
                   },
@@ -842,10 +804,40 @@ jahronimo1@hotmail.com
                     content: (
                       <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>My name is Jahronimo.</p>
-                        <p className="pt-1">I&apos;m looking for help.<br />Rent, food, basic things.</p>
-                        <p>Things are not looking good right now.</p>
-                        <p className="pt-1">I&apos;ve done many forms of art my whole life.<br />But art takes a lot of time.</p>
-                        <p className="pt-1">There has been some support, but very little overall.</p>
+                        <p className="pt-1">I&apos;ve applied for jobs — games design, animation, video production, video editing.<br />I hear nothing back.</p>
+                        <p className="pt-1">Not many people can see me.<br />Not much engagement. Not much help with things.</p>
+                        <p className="pt-1">I&apos;ve done many forms of art my whole life.<br />Art takes a lot of time — and a lot of visibility I haven&apos;t had.</p>
+                        <p className="pt-1">I plan to make something special.<br />I think I&apos;m capable of most of it.</p>
+                        <p className="text-white/80 font-medium pt-1">But I need support to get there.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "The One-of-One Project",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>For sizable contributions, I&apos;m offering a personal art commission.</p>
+                        <p className="pt-1">Secret. Specific. Made only for you.<br />Not replicable. Not digital-only.</p>
+                        <p className="pt-1">Physical. Mixed media. Something genuinely different.</p>
+                        <p className="pt-1">I can&apos;t say exactly what it will be.<br />That&apos;s part of it.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "About the Art",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>I&apos;ve been doing mixed media art since I was a kid. My background:</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
+                          <p>A++ Art Foundation</p>
+                          <p>Games Design</p>
+                          <p>3D Animation</p>
+                          <p>Video Production</p>
+                          <p>Advertising</p>
+                        </div>
+                        <p className="pt-2">My work combines things people wouldn&apos;t normally put together — paints, inks, glues, objects, materials, and experimental approaches that don&apos;t have a name yet.</p>
+                        <p className="pt-1">Currently working on something I&apos;m not ready to reveal.</p>
+                        <p className="text-white/80 font-medium pt-1">I think it will be good.</p>
                       </div>
                     ),
                   },
@@ -853,18 +845,11 @@ jahronimo1@hotmail.com
                     title: "Current Situation",
                     content: (
                       <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>Recently I&apos;ve mostly been eating:</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
-                          <p>Cheap noodles for about a month.<br />Maybe more like 2–3 months.</p>
-                          <p className="pt-1">Also cheap pizzas — about £1.40.</p>
-                        </div>
-                        <p className="pt-2">Just trying to keep costs low.</p>
-                        <p className="pt-1">Thankfully I&apos;m not homeless.<br />I live in supported accommodation.</p>
-                        <p className="pt-1">But I cannot currently make rent.<br />Around 7 months behind.</p>
-                        <p className="pt-2">And right now…</p>
+                        <p>For the past 2–3 months, I&apos;ve mostly been eating cheap noodles and £1.40 pizzas.<br />Keeping costs as low as possible.</p>
+                        <p className="pt-1">I&apos;m not homeless — I live in supported accommodation, which helps with housing.<br />But I cannot currently make rent. Around 7 months behind.</p>
+                        <p className="pt-2">Right now…</p>
                         <p className="text-white text-base font-black tracking-tight">I have about £1.50 to my name.</p>
-                        <p className="pt-1">No money for food, software, or anything really.</p>
-                        <p className="pt-2 text-white/80">If you can support in any way,<br />it would be greatly appreciated.</p>
+                        <p className="pt-1">No money for food, software, or anything else.</p>
                       </div>
                     ),
                   },
@@ -872,9 +857,10 @@ jahronimo1@hotmail.com
                     title: "Why I'm Asking",
                     content: (
                       <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I come from a large family with a low-income background.</p>
-                        <p>That&apos;s about as much as I&apos;d like to say about that.</p>
-                        <p className="pt-1">Right now I&apos;m just trying to keep going, keep creating, and build something meaningful.</p>
+                        <p>I come from a large, low-income family.<br />That&apos;s about as much as I&apos;d like to share about that.</p>
+                        <p className="pt-1">Jobs haven&apos;t come through. Visibility hasn&apos;t come easily.<br />I&apos;m not complaining — just being honest.</p>
+                        <p className="pt-1">I&apos;m trying to keep going, keep creating, and build something that matters.</p>
+                        <p className="text-white/80 font-medium pt-1">Any help gets me closer to that.</p>
                       </div>
                     ),
                   },
@@ -882,15 +868,10 @@ jahronimo1@hotmail.com
                     title: "Support the Project",
                     content: (
                       <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>If you want to support:</p>
-                        <p className="pt-1">Donations are appreciated.</p>
-                        <p>Large contributions can receive One-of-One art commissions.</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-2">
-                          <p>Unique.</p>
-                          <p>Non-replicable.</p>
-                          <p>Created specifically for you.</p>
-                        </div>
-                        <p className="pt-2 text-white/80 font-medium">Part of the £50,000 One-of-One Project.</p>
+                        <p>Any amount helps. Genuinely.</p>
+                        <p className="pt-1">For a contribution of £50,000 — you receive a One-of-One commission.<br />Made specifically for you. Yours alone. Never repeated.</p>
+                        <p className="pt-1">If you&apos;d like to help in any way, I have a page:</p>
+                        <p className="text-[#d4af37]/70 font-medium pt-1 tracking-wide">gofundme.com/f/zkt4m-stuff</p>
                       </div>
                     ),
                   },
