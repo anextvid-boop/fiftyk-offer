@@ -788,6 +788,22 @@ jahronimo1@hotmail.com
               {(() => {
                 const sections = [
                   {
+                    title: "Something Special",
+                    content: (
+                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>Hey, something special lined up&hellip;</p>
+                        <p>Something I want to do&hellip;</p>
+                        <p>Although, I&apos;m looking for support.</p>
+                        <p>I need help&hellip;</p>
+                        <p>I would appreciate it a lot.</p>
+                        <p>I&apos;ve tried this before&hellip;</p>
+                        <p>Nothing really happened.</p>
+                        <p>So now&hellip;</p>
+                        <p className="text-white/80 font-semibold">This is way more interesting.</p>
+                      </div>
+                    ),
+                  },
+                  {
                     title: "About Me",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
@@ -814,28 +830,6 @@ jahronimo1@hotmail.com
                         <p>Right now I&apos;m just trying to keep going,</p>
                         <p>keep creating,</p>
                         <p>and <strong className="text-white/80 font-semibold">find a way forward.</strong></p>
-                      </div>
-                    ),
-                  },
-                  {
-                    title: "Current Situation",
-                    content: (
-                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>Recently I&apos;ve mostly been eating:</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>Cheap noodles for about a month.</p>
-                          <p>Maybe more like 2&ndash;3 months.</p>
-                          <p>Also cheap pizzas, about £1.40.</p>
-                        </div>
-                        <p>Just trying to keep costs low.</p>
-                        <p>Thankfully I&apos;m not homeless.</p>
-                        <p>I live in supported accommodation.</p>
-                        <p>But I cannot currently make rent.</p>
-                        <p>At the moment I am around <strong className="text-white/80 font-semibold">7 months behind.</strong></p>
-                        <p>And right now&hellip;</p>
-                        <p className="text-white text-base font-black tracking-tight">I have about £1.50 to my name.</p>
-                        <p>No money for food, software, or anything really.</p>
-                        <p>If you can support in any way,<br />it would be greatly appreciated.</p>
                       </div>
                     ),
                   },
