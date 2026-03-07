@@ -496,38 +496,56 @@ export default function Home() {
 
                 {/* Content */}
                 <div className="flex flex-col items-center gap-10 w-full">
-                  {/* Name */}
-                  <div className="flex flex-wrap justify-center text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] font-light uppercase m-0 mr-[-0.3em] text-[#d4af37]/60">
-                    {["f", "o", "r", " ", "s", "i", "z", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
-                      <motion.span
-                        key={index}
-                        custom={index}
-                        variants={letterVariants}
-                        initial="hidden"
-                        animate="visible"
-                        style={{
-                          animation: "letter-glow 4s ease-in-out infinite",
-                          animationDelay: `${index * 0.1}s`
-                        }}
-                      >
-                        {letter === " " ? "\u00A0" : letter}
-                      </motion.span>
-                    ))}
+                  {/* Name & Context */}
+                  <div className="flex flex-col items-center gap-2">
+                    <motion.p
+                      variants={itemVariants}
+                      className="text-[#d4af37]/80 tracking-[0.6em] text-xs sm:text-sm uppercase font-black mr-[-0.6em]"
+                    >
+                      Jahronimo
+                    </motion.p>
+                    <div className="flex flex-wrap justify-center text-lg sm:text-xl md:text-2xl tracking-[0.3em] font-light uppercase m-0 mr-[-0.3em] text-white/40">
+                      {["f", "o", "r", " ", "s", "i", "z", "e", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
+                        <motion.span
+                          key={index}
+                          custom={index}
+                          variants={letterVariants}
+                          initial="hidden"
+                          animate="visible"
+                          style={{
+                            animation: "letter-glow 4s ease-in-out infinite",
+                            animationDelay: `${index * 0.05}s`
+                          }}
+                        >
+                          {letter === " " ? "\u00A0" : letter}
+                        </motion.span>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
-                  <motion.h1
-                    variants={itemVariants}
-                    className="text-6xl sm:text-7xl md:text-9xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
-                      bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
-                      bg-[length:200%_100%] animate-[shine_6s_linear_infinite]"
-                  >
-                    1 of 1&apos;s
-                  </motion.h1>
+                  {/* Main Offer Title */}
+                  <div className="flex flex-col items-center gap-6">
+                    <motion.h2
+                      variants={itemVariants}
+                      className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-white uppercase m-0"
+                    >
+                      1 of 1&apos;s
+                    </motion.h2>
+                    <motion.h1
+                      variants={itemVariants}
+                      className="text-6xl sm:text-7xl md:text-9xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
+                        bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
+                        bg-[length:200%_100%] animate-[shine:6s_linear_infinite]"
+                    >
+                      £50,000
+                    </motion.h1>
+                  </div>
 
                   <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
+                  {/* Strategy & Footer */}
                   <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 w-full text-center mt-6">
                     <div className="relative">
                       <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-[-0.08em] leading-none m-0 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
@@ -536,7 +554,7 @@ export default function Home() {
                       <div className="mt-2 flex items-center justify-center">
                         <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#d4af37]/30" />
                         <p className="px-4 text-[#d4af37]/90 tracking-[0.4em] text-sm md:text-base font-black uppercase">
-                          i make
+                          I MAKE
                         </p>
                         <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-[#d4af37]/30" />
                       </div>
@@ -562,7 +580,7 @@ export default function Home() {
                       }}
                       className="text-[#d4af37] tracking-[0.5em] text-xs uppercase font-bold mr-[-0.5em]"
                     >
-                      Press to enter.
+                      press to enter
                     </motion.span>
                     <div className="w-4 h-[1px] bg-[#d4af37]/30" />
                   </motion.div>
