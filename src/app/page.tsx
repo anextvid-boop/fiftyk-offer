@@ -793,13 +793,9 @@ jahronimo1@hotmail.com
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>Hey, something special lined up&hellip;</p>
                         <p>Something I want to do&hellip;</p>
-                        <p>Although, I&apos;m looking for support.</p>
-                        <p>I need help&hellip;</p>
-                        <p>I would appreciate it a lot.</p>
-                        <p>I&apos;ve tried this before&hellip;</p>
-                        <p>Nothing really happened.</p>
-                        <p>So now&hellip;</p>
-                        <p className="text-white/80 font-semibold">This is way more interesting.</p>
+                        <p>Although I&apos;m looking for support.</p>
+                        <p>I would appreciate it.</p>
+                        <p className="text-white/80 font-semibold">I have something interesting.</p>
                       </div>
                     ),
                   },
