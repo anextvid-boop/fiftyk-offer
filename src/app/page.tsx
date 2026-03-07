@@ -497,14 +497,14 @@ export default function Home() {
                 {/* Content */}
                 <div className="flex flex-col items-center gap-10 w-full">
                   {/* Name & Context */}
-                  <div className="flex flex-col items-center gap-2">
+                  <div className="flex flex-col items-center gap-4">
                     <motion.p
                       variants={itemVariants}
-                      className="text-[#d4af37]/80 tracking-[0.6em] text-xs sm:text-sm uppercase font-black mr-[-0.6em]"
+                      className="text-[#d4af37] tracking-[0.6em] text-lg sm:text-xl md:text-2xl uppercase font-black mr-[-0.6em]"
                     >
                       Jahronimo
                     </motion.p>
-                    <div className="flex flex-wrap justify-center text-lg sm:text-xl md:text-2xl tracking-[0.3em] font-light uppercase m-0 mr-[-0.3em] text-white/40">
+                    <div className="flex flex-wrap justify-center text-2xl sm:text-3xl md:text-4xl tracking-[0.2em] font-medium uppercase m-0 mr-[-0.2em] text-white/70">
                       {["f", "o", "r", " ", "s", "i", "z", "e", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
                         <motion.span
                           key={index}
