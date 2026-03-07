@@ -599,7 +599,6 @@ export default function Home() {
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
                 <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-black uppercase text-[#d4af37]/80 mr-[-0.4em]">
                   <span>FILL ME IN</span>
-                  <span className="text-[10px] text-[#d4af37]/40 normal-case tracking-[0.1em] font-light">with how much you wish</span>
                 </div>
               </div>
 
@@ -628,6 +627,7 @@ jahronimo1@hotmail.com
                   { name: "name", placeholder: "Your Name", type: "text", required: true },
                   { name: "email", placeholder: "Email Address", type: "email", required: true },
                   { name: "location", placeholder: "Where you're from", type: "text", required: true },
+                  { name: "contact", placeholder: "How best to find you?", type: "text", required: true },
                 ].map((field) => (
                   <div key={field.name} className="relative group">
                     <input
@@ -647,6 +647,7 @@ jahronimo1@hotmail.com
 
                 {/* Expandable optional fields */}
                 <div className="flex flex-col w-full mt-2 border-t border-white/8">
+                  <ExpandableField name="your_type" label="Your Type" fields={["What's your type?", "Big or small?", "Pick a colour"]} />
                   <ExpandableField name="personal_life" label="Personal Life" fields={["Who are you?", "Personal Ambition", "Lifestyle Focus", "Values & Beliefs", "Current Challenges"]} />
                   <ExpandableField name="business_life" label="Business Life" fields={["What you do", "Why?", "Current Project", "Business Goal", "Vision"]} />
                   <ExpandableField name="social_links" label="Socials & Links" fields={["Primary Link", "Secondary Link", "Portfolio", "Recent Work", "Reference Link"]} />
