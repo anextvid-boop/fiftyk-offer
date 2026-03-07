@@ -832,9 +832,11 @@ jahronimo1@hotmail.com
                     title: "Why I'm Asking",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I come from a large family with a low-income background.</p>
+                        <p>I come from a large family with a <strong className="text-white/80 font-semibold">low-income background.</strong></p>
                         <p>That&apos;s about as much as I&apos;d like to say about that.</p>
-                        <p>Right now I&apos;m just trying to keep going, keep creating,<br />and build something meaningful.</p>
+                        <p>Right now I&apos;m just trying to keep going,</p>
+                        <p>keep creating,</p>
+                        <p>and <strong className="text-white/80 font-semibold">build something meaningful.</strong></p>
                       </div>
                     ),
                   },
@@ -908,7 +910,7 @@ jahronimo1@hotmail.com
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>If you want to support:</p>
                         <p>Donations are appreciated.</p>
-                        <p>Large contributions can receive One-of-One art commissions.</p>
+                        <p>Large contributions can receive <strong className="text-white/80 font-semibold">One-of-One art commissions.</strong></p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
                           <p>Unique.</p>
                           <p>Non-replicable.</p>
@@ -935,14 +937,10 @@ jahronimo1@hotmail.com
                 </div>
                 <div className="flex flex-col gap-4">
                   {[
-                    `${BASE_PATH}/work10.jpg`,
-                    `${BASE_PATH}/work1.jpg`,
-                    `${BASE_PATH}/work5.jpg`,
-                    `${BASE_PATH}/work2.jpg`,
-                    `${BASE_PATH}/work8.jpg`,
-                    `${BASE_PATH}/work3.jpg`,
-                    `${BASE_PATH}/work9.jpg`,
-                    `${BASE_PATH}/work4.jpg`,
+                    `${BASE_PATH}/newwork1.jpg`,
+                    `${BASE_PATH}/newwork2.jpg`,
+                    `${BASE_PATH}/newwork3.jpg`,
+                    `${BASE_PATH}/newwork4.jpg`,
                   ].map((src, i) => (
                     <div
                       key={i}
