@@ -556,7 +556,7 @@ export default function Home() {
                       </h2>
                       <div className="mt-4 flex items-center justify-center w-full max-w-lg">
                         <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                        <p className="px-2 sm:px-6 text-[#d4af37] tracking-[0.2em] sm:tracking-[0.6em] text-[clamp(1.2rem,5vw,3rem)] font-black uppercase whitespace-nowrap">
+                        <p className="px-2 sm:px-4 text-[#d4af37] tracking-[0.2em] sm:tracking-[0.4em] md:tracking-[0.6em] text-[clamp(1rem,4.5vw,3rem)] font-black uppercase whitespace-nowrap overflow-visible">
                           I MAKE
                         </p>
                         <div className="h-[1px] flex-grow bg-gradient-to-l from-transparent to-[#d4af37]/30" />
