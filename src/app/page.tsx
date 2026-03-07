@@ -808,14 +808,11 @@ jahronimo1@hotmail.com
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>My name is <strong className="text-white font-semibold">Jahronimo.</strong></p>
-                        <p>Right now I&apos;m looking for help</p>
-                        <p>with basic things &mdash; rent, food,</p>
-                        <p>and getting through the day.</p>
-                        <p>Things are <strong className="text-white/80 font-semibold">not looking great</strong> at the moment.</p>
+                        <p>Right now I&apos;m looking for help.</p>
                         <p>I&apos;ve spent most of my life working in different forms of art.</p>
-                        <p>Creative work takes a lot of time and dedication,</p>
+                        <p>Creative work takes time, dedication, and patience,</p>
                         <p>and it&apos;s something I&apos;ve always been committed to.</p>
-                        <p>Over the years I&apos;ve studied and worked across several creative fields, including:</p>
+                        <p>Over the years I&apos;ve studied and trained across several creative fields, including:</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
                           <p>Games design,</p>
                           <p>3D animation,</p>
@@ -827,9 +824,7 @@ jahronimo1@hotmail.com
                         <p>but unfortunately <strong className="text-white/80 font-semibold">I rarely hear anything back.</strong></p>
                         <p>There hasn&apos;t been much support for my work overall.</p>
                         <p>There has been some help along the way, but very little.</p>
-                        <p>Right now I&apos;m just trying to keep going,</p>
-                        <p>keep creating,</p>
-                        <p>and <strong className="text-white/80 font-semibold">find a way forward.</strong></p>
+                        <p>Right now I&apos;m just trying to <strong className="text-white/80 font-semibold">do this project.</strong></p>
                       </div>
                     ),
                   },
