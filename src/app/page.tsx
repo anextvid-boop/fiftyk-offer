@@ -908,13 +908,18 @@ jahronimo1@hotmail.com
                   <p className="text-[#d4af37]/50 tracking-[0.4em] text-[9px] uppercase">Work So Far</p>
                   <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/20" />
                 </div>
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-4">
                   {[
                     `${BASE_PATH}/work1.jpg`,
                     `${BASE_PATH}/work2.jpg`,
                     `${BASE_PATH}/work3.jpg`,
                     `${BASE_PATH}/work4.jpg`,
                     `${BASE_PATH}/work5.jpg`,
+                    `${BASE_PATH}/work6.jpg`,
+                    `${BASE_PATH}/work7.jpg`,
+                    `${BASE_PATH}/work8.jpg`,
+                    `${BASE_PATH}/work9.jpg`,
+                    `${BASE_PATH}/work10.jpg`,
                   ].map((src, i) => (
                     <div
                       key={i}
