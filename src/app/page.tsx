@@ -456,10 +456,10 @@ export default function Home() {
                 ))}
 
                 {/* Content - Compact */}
-                <div className="flex flex-col items-center gap-4 w-full text-center">
-                  <p className="text-[#d4af37]/40 tracking-[0.4em] text-[9px] lowercase font-light italic">i need help</p>
-                  <p className="text-[#d4af37]/70 tracking-[0.3em] text-[10px] uppercase font-bold">SUPPORT THE MISSION</p>
-                  <div className="w-8 h-[1px] bg-[#d4af37]/20" />
+                <div className="flex flex-col items-center gap-2 w-full text-center">
+                  <p className="text-[#d4af37]/90 tracking-[0.5em] text-[12px] sm:text-sm uppercase font-black">I NEED HELP</p>
+                  <p className="text-[#d4af37]/70 tracking-[0.3em] text-[10px] uppercase font-bold mt-1">SUPPORT THE MISSION</p>
+                  <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent my-1" />
                   <h2 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-wider leading-none group-hover:text-[#d4af37] transition-colors duration-300">
                     MAKE A DONATION
                   </h2>
