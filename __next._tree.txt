@@ -1,3 +1,3 @@
-:HL["/fiftyk-offer/_next/static/chunks/1453686b0c452214.css","style"]
+:HL["/fiftyk-offer/_next/static/chunks/a85be6d0d6a6415b.css","style"]
 :HL["/fiftyk-offer/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"buildId":"y8t3vBuOTQLo__4fnGZh7","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"8dPRuNbtA26wNA8_dWJZf","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
