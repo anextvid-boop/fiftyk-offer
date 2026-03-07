@@ -428,19 +428,19 @@ export default function Home() {
               exit="exit"
               className="flex flex-col items-center gap-6 w-full max-w-2xl mx-auto"
             >
-              {/* Donation Card (Compact - 30% weighting) */}
+              {/* Donation Card (Enhanced Visibility) */}
               <motion.a
                 href="https://gofund.me/1bdc2d15c"
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
                 onClick={() => playTick()}
-                className="relative w-full max-w-lg bg-black/60 backdrop-blur-xl flex flex-col items-center justify-center py-8 px-8 cursor-pointer group overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.05),0_0_0_1px_rgba(212,175,55,0.1)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] origin-center transition-all duration-300"
+                className="relative w-full max-w-lg bg-black/60 backdrop-blur-xl flex flex-col items-center justify-center py-12 px-8 cursor-pointer group overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.05),0_0_0_1px_rgba(212,175,55,0.1)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] origin-center transition-all duration-300"
               >
                 {/* Hardware-accelerated glow pulse */}
                 <div className="absolute inset-0 pointer-events-none shadow-[0_0_40px_rgba(212,175,55,0.1),0_0_0_1px_rgba(212,175,55,0.2)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
 
-                {/* Corner brackets - Smaller for compact look */}
+                {/* Corner brackets - Larger for impact */}
                 {[
                   "top-0 left-0 border-t border-l items-start justify-start",
                   "top-0 right-0 border-t border-r items-start justify-end",
@@ -449,21 +449,20 @@ export default function Home() {
                 ].map((cls, i) => (
                   <div
                     key={i}
-                    className={`absolute w-6 h-6 ${cls} border-[#d4af37]/20 flex p-[2px]`}
+                    className={`absolute w-8 h-8 ${cls} border-[#d4af37]/30 flex p-[2px]`}
                   >
-                    <div className="w-[2px] h-[2px] rounded-full bg-[#d4af37]/40" />
+                    <div className="w-[3px] h-[3px] rounded-full bg-[#d4af37]/50" />
                   </div>
                 ))}
 
-                {/* Content - Compact */}
-                <div className="flex flex-col items-center gap-2 w-full text-center">
-                  <p className="text-[#d4af37]/90 tracking-[0.5em] text-[12px] sm:text-sm uppercase font-black">I NEED HELP</p>
-                  <p className="text-[#d4af37]/70 tracking-[0.3em] text-[10px] uppercase font-bold mt-1">SUPPORT THE MISSION</p>
-                  <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent my-1" />
-                  <h2 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-wider leading-none group-hover:text-[#d4af37] transition-colors duration-300">
-                    MAKE A DONATION
+                {/* Content - High Impact */}
+                <div className="flex flex-col items-center gap-4 w-full text-center">
+                  <p className="text-[#d4af37] tracking-[0.5em] text-lg sm:text-xl md:text-2xl uppercase font-black drop-shadow-[0_0_10px_rgba(212,175,55,0.4)]">I NEED HELP</p>
+                  <p className="text-[#d4af37]/90 tracking-[0.3em] text-xs sm:text-sm uppercase font-black">SUPPORT THE MISSION</p>
+                  <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent my-1" />
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight leading-none group-hover:text-[#d4af37] transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    MAKE A <br className="sm:hidden" /> DONATION
                   </h2>
-                  <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent" />
                 </div>
               </motion.a>
 
