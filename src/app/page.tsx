@@ -418,117 +418,129 @@ export default function Home() {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-16">
         <AnimatePresence mode="wait">
 
-          {/* ── Landing Card ──────────────────────────────────── */}
+          {/* ── Landing Page Content ────────────────────────── */}
           {!showForm ? (
             <motion.div
-              key="landing"
+              key="landing-stack"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              onClick={() => { playTick(); setShowForm(true); }}
-              className="relative w-full max-w-2xl mx-auto bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_60px_rgba(212,175,55,0.12)] origin-center transition-all duration-300"
+              className="flex flex-col items-center gap-12 w-full max-w-2xl mx-auto"
             >
-              {/* Hardware-accelerated glow pulse */}
-              <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
-              {/* Shimmer sweep */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/10 to-transparent animate-[shimmer_6s_ease-in-out_infinite] skew-x-12" />
-              </div>
+              {/* GoFundMe Donation Button */}
+              <motion.a
+                href="https://gofund.me/1bdc2d15c"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariants}
+                onClick={() => playTick()}
+                className="relative w-full bg-[#d4af37] text-black font-black text-xl md:text-2xl uppercase py-8 px-12 tracking-[0.3em] text-center shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] transition-all duration-300 active:scale-95 group overflow-hidden"
+              >
+                {/* Button inner glow and shimmer */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <span className="relative z-10">Make a donation</span>
+              </motion.a>
 
-              {/* Corner brackets */}
-              {[
-                "top-0 left-0 border-t border-l items-start justify-start",
-                "top-0 right-0 border-t border-r items-start justify-end",
-                "bottom-0 left-0 border-b border-l items-end justify-start",
-                "bottom-0 right-0 border-b border-r items-end justify-end",
-              ].map((cls, i) => (
-                <div
-                  key={i}
-                  className={`absolute w-10 h-10 ${cls} border-[#d4af37]/25 transition-all duration-700 group-hover:border-[#d4af37]/70 group-hover:w-14 group-hover:h-14 flex p-[3px]`}
-                >
-                  <div className="w-[3px] h-[3px] rounded-full bg-[#d4af37]/50 group-hover:bg-[#d4af37] transition-all" />
-                </div>
-              ))}
-
-              {/* Content */}
-              <div className="flex flex-col items-center gap-10 w-full">
-
-                {/* Name */}
-                <div className="flex text-xl sm:text-3xl md:text-5xl lg:text-6xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60">
-                  {["j", "a", "h", "r", "o", "n", "i", "m", "o"].map((letter, index) => (
-                    <motion.span
-                      key={index}
-                      custom={index}
-                      variants={letterVariants}
-                      initial="hidden"
-                      animate="visible"
-                      style={{
-                        animation: "letter-glow 4s ease-in-out infinite",
-                        animationDelay: `${index * 0.15}s`
-                      }}
-                    >
-                      {letter}
-                    </motion.span>
-                  ))}
+              {/* Purchase Card (Existing jahronimo £50,000 Card) */}
+              <motion.div
+                variants={itemVariants}
+                onClick={() => { playTick(); setShowForm(true); }}
+                className="relative w-full bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group animate-card-entrance overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_60px_rgba(212,175,55,0.12)] origin-center transition-all duration-300"
+              >
+                {/* Hardware-accelerated glow pulse */}
+                <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
+                {/* Shimmer sweep */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/10 to-transparent animate-[shimmer_6s_ease-in-out_infinite] skew-x-12" />
                 </div>
 
-                {/* Divider */}
-                <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
-
-                {/* £50,000 */}
-                <motion.h1
-                  variants={itemVariants}
-                  className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
-                    bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
-                    bg-[length:200%_100%] animate-[shine_6s_linear_infinite]"
-                >
-                  £50,000
-                </motion.h1>
-
-                {/* Divider */}
-                <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
-
-                {/* Sub text — perfectly edge-aligned */}
-                <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center mt-2 mb-2">
-                  <div className="inline-flex flex-col items-stretch w-max">
-                    <p className="flex justify-between w-full text-base sm:text-xl md:text-2xl font-bold text-[#d4af37]/80 uppercase mb-3 leading-none">
-                      <span>N</span><span>O</span><span className="w-4 sm:w-6"></span><span>S</span><span>A</span><span>Y</span><span>I</span><span>N</span><span>G</span>
-                    </p>
-                    <p className="flex justify-between w-full text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.02em] font-black text-white uppercase m-0 leading-none">
-                      <span>I</span><span className="w-4 sm:w-8"></span><span>M</span><span>A</span><span>K</span><span>E</span>
-                    </p>
-                  </div>
-                </motion.div>
-
-                {/* CTA */}
-                <motion.div variants={itemVariants} className="pt-4 flex items-center gap-3">
-                  <div className="w-4 h-[1px] bg-[#d4af37]/30" />
-                  <motion.span
-                    animate={{
-                      opacity: [0.7, 1, 0.7],
-                      scale: [1, 1.05, 1],
-                      textShadow: [
-                        "0 0 0px rgba(214, 175, 55, 0)",
-                        "0 0 20px rgba(214, 175, 55, 0.6)",
-                        "0 0 0px rgba(214, 175, 55, 0)"
-                      ]
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="text-[#d4af37] tracking-[0.5em] text-xs uppercase font-bold mr-[-0.5em]"
+                {/* Corner brackets */}
+                {[
+                  "top-0 left-0 border-t border-l items-start justify-start",
+                  "top-0 right-0 border-t border-r items-start justify-end",
+                  "bottom-0 left-0 border-b border-l items-end justify-start",
+                  "bottom-0 right-0 border-b border-r items-end justify-end",
+                ].map((cls, i) => (
+                  <div
+                    key={i}
+                    className={`absolute w-10 h-10 ${cls} border-[#d4af37]/25 transition-all duration-700 group-hover:border-[#d4af37]/70 group-hover:w-14 group-hover:h-14 flex p-[3px]`}
                   >
-                    Press to enter.
-                  </motion.span>
-                  <div className="w-4 h-[1px] bg-[#d4af37]/30" />
-                </motion.div>
+                    <div className="w-[3px] h-[3px] rounded-full bg-[#d4af37]/50 group-hover:bg-[#d4af37] transition-all" />
+                  </div>
+                ))}
 
-              </div>
+                {/* Content */}
+                <div className="flex flex-col items-center gap-10 w-full">
+                  {/* Name */}
+                  <div className="flex text-xl sm:text-3xl md:text-5xl lg:text-6xl tracking-[0.5em] font-light uppercase m-0 mr-[-0.5em] text-[#d4af37]/60">
+                    {["j", "a", "h", "r", "o", "n", "i", "m", "o"].map((letter, index) => (
+                      <motion.span
+                        key={index}
+                        custom={index}
+                        variants={letterVariants}
+                        initial="hidden"
+                        animate="visible"
+                        style={{
+                          animation: "letter-glow 4s ease-in-out infinite",
+                          animationDelay: `${index * 0.15}s`
+                        }}
+                      >
+                        {letter}
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
+
+                  <motion.h1
+                    variants={itemVariants}
+                    className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
+                      bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
+                      bg-[length:200%_100%] animate-[shine_6s_linear_infinite]"
+                  >
+                    £50,000
+                  </motion.h1>
+
+                  <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
+
+                  <motion.div variants={itemVariants} className="flex flex-col items-center gap-0 w-full text-center mt-2 mb-2">
+                    <div className="inline-flex flex-col items-stretch w-max">
+                      <p className="flex justify-between w-full text-base sm:text-xl md:text-2xl font-bold text-[#d4af37]/80 uppercase mb-3 leading-none">
+                        <span>N</span><span>O</span><span className="w-4 sm:w-6"></span><span>S</span><span>A</span><span>Y</span><span>I</span><span>N</span><span>G</span>
+                      </p>
+                      <p className="flex justify-between w-full text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.02em] font-black text-white uppercase m-0 leading-none">
+                        <span>I</span><span className="w-4 sm:w-8"></span><span>M</span><span>A</span><span>K</span><span>E</span>
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div variants={itemVariants} className="pt-4 flex items-center gap-3">
+                    <div className="w-4 h-[1px] bg-[#d4af37]/30" />
+                    <motion.span
+                      animate={{
+                        opacity: [0.7, 1, 0.7],
+                        scale: [1, 1.05, 1],
+                        textShadow: [
+                          "0 0 0px rgba(214, 175, 55, 0)",
+                          "0 0 20px rgba(214, 175, 55, 0.6)",
+                          "0 0 0px rgba(214, 175, 55, 0)"
+                        ]
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="text-[#d4af37] tracking-[0.5em] text-xs uppercase font-bold mr-[-0.5em]"
+                    >
+                      Press to enter.
+                    </motion.span>
+                    <div className="w-4 h-[1px] bg-[#d4af37]/30" />
+                  </motion.div>
+                </div>
+              </motion.div>
             </motion.div>
-
           ) : (
             /* ── Form Card ────────────────────────────────────── */
             <motion.div
