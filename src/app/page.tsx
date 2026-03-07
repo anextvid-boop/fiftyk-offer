@@ -809,6 +809,7 @@ jahronimo1@hotmail.com
                         <p>It&apos;s something I&apos;ve always been committed to.</p>
                         <p>Over the years I&apos;ve studied and trained across several creative fields, including:</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
+                          <p>Foundational arts,</p>
                           <p>Games design,</p>
                           <p>3D animation,</p>
                           <p>Video production,</p>
@@ -829,10 +830,10 @@ jahronimo1@hotmail.com
                         <p>For sizable contributions,</p>
                         <p>I&apos;m offering art commissions.</p>
                         <p><strong className="text-white/80 font-semibold">Something non-replicable.</strong></p>
-                        <p>Secret. Special. Specific&hellip;</p>
+                        <p><strong className="text-white/70 font-semibold">Secret. Special. Specific&hellip;</strong></p>
                         <p>Created for you.</p>
                         <p>Projects that are not just digital.</p>
-                        <p>Something&hellip; different.</p>
+                        <p><strong className="text-white/70 font-semibold font-medium">Something&hellip; different.</strong></p>
                         <p>Mixed media.</p>
                         <p>Physical + creative experimentation.</p>
                         <p>No saying exactly what&hellip;</p>
@@ -907,6 +908,7 @@ jahronimo1@hotmail.com
                 </div>
                 <div className="flex flex-col gap-4">
                   {[
+                    `${BASE_PATH}/main_collage.jpg`,
                     `${BASE_PATH}/newwork1.jpg`,
                     `${BASE_PATH}/newwork2.jpg`,
                     `${BASE_PATH}/newwork3.jpg`,
