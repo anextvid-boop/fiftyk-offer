@@ -307,6 +307,7 @@ const ExpandableFileField = ({ name, label, description }: { name: string; label
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { playSuccessSweep, playTick, playKeystroke, playError, playOpeningSting } = useSensoryFeedback();
 
@@ -466,7 +467,17 @@ export default function Home() {
                 </div>
               </motion.a>
 
-              {/* Purchase Card (Dominant - 70% weighting) */}
+              {/* ── Expand Info Button ─────── */}
+              <motion.button
+                variants={itemVariants}
+                onClick={() => { playTick(); setShowGallery(true); }}
+                className="relative flex items-center gap-3 px-8 py-3 border border-[#d4af37]/30 hover:border-[#d4af37]/70 text-[#d4af37]/70 hover:text-[#d4af37] tracking-[0.3em] text-xs uppercase font-semibold transition-all duration-300 group"
+              >
+                <span className="w-4 h-[1px] bg-[#d4af37]/40 group-hover:bg-[#d4af37]/80 transition-all" />
+                expand info
+                <span className="w-4 h-[1px] bg-[#d4af37]/40 group-hover:bg-[#d4af37]/80 transition-all" />
+              </motion.button>
+
               <motion.div
                 variants={itemVariants}
                 onClick={() => { playTick(); setShowForm(true); }}
@@ -705,6 +716,78 @@ jahronimo1@hotmail.com
           )}
         </AnimatePresence>
       </div>
+
+      {/* ── Work Gallery Modal ─────────────────────────────── */}
+      {showGallery && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 backdrop-blur-sm p-4 sm:p-8"
+          onClick={(e) => { if (e.target === e.currentTarget) setShowGallery(false); }}
+        >
+          {/* Gold-framed container */}
+          <div className="relative w-full max-w-5xl max-h-[90vh] bg-[#070707] border border-[#d4af37]/40 overflow-hidden flex flex-col shadow-[0_0_80px_rgba(212,175,55,0.18),inset_0_0_0_1px_rgba(212,175,55,0.08)]">
+
+            {/* Corner accents */}
+            {[
+              "top-0 left-0 border-t-2 border-l-2",
+              "top-0 right-0 border-t-2 border-r-2",
+              "bottom-0 left-0 border-b-2 border-l-2",
+              "bottom-0 right-0 border-b-2 border-r-2",
+            ].map((cls, i) => (
+              <div key={i} className={`absolute w-6 h-6 ${cls} border-[#d4af37] z-10`} />
+            ))}
+
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 sm:px-10 py-5 border-b border-[#d4af37]/20 flex-shrink-0">
+              <div className="flex items-center gap-4">
+                <div className="w-5 h-[1px] bg-[#d4af37]/50" />
+                <p className="text-[#d4af37] tracking-[0.4em] text-[10px] sm:text-xs uppercase font-semibold">Work So Far</p>
+              </div>
+              <p className="text-white/20 tracking-[0.2em] text-[9px] uppercase hidden sm:block">Jahronimo · 1 of 1 Art Project</p>
+              {/* Exit button */}
+              <button
+                onClick={() => setShowGallery(false)}
+                className="flex items-center gap-2 text-[#d4af37]/50 hover:text-[#d4af37] tracking-[0.3em] text-[10px] uppercase font-semibold transition-all duration-200 group"
+              >
+                <span>close</span>
+                <span className="w-6 h-6 border border-[#d4af37]/30 group-hover:border-[#d4af37]/80 flex items-center justify-center transition-all text-xs font-thin">✕</span>
+              </button>
+            </div>
+
+            {/* Scrollable image area */}
+            <div className="overflow-y-auto flex-1 p-4 sm:p-8">
+              <div className="flex flex-col gap-6">
+                {[
+                  `${BASE_PATH}/work1.jpg`,
+                  `${BASE_PATH}/work2.jpg`,
+                  `${BASE_PATH}/work3.jpg`,
+                  `${BASE_PATH}/work4.jpg`,
+                  `${BASE_PATH}/work5.jpg`,
+                ].map((src, i) => (
+                  <div
+                    key={i}
+                    className="w-full border border-[#d4af37]/15 overflow-hidden"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={src}
+                      alt={`Work sample ${i + 1}`}
+                      className="w-full h-auto block"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Footer rule */}
+              <div className="flex items-center gap-4 mt-8 mb-2">
+                <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/20" />
+                <p className="text-[#d4af37]/30 tracking-[0.4em] text-[9px] uppercase">End of Preview</p>
+                <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/20" />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
