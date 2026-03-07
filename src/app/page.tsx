@@ -812,12 +812,10 @@ jahronimo1@hotmail.com
                           <p>Games design,</p>
                           <p>3D animation,</p>
                           <p>Video production,</p>
-                          <p>and video editing.</p>
-                          <p>etc.</p>
+                          <p>and video editing. etc.</p>
                         </div>
                         <p>Along with a range of other creative projects.</p>
-                        <p>I&apos;ve applied for many jobs in these areas&hellip;</p>
-                        <p><strong className="text-white/80 font-semibold">nope.</strong></p>
+                        <p>I&apos;ve applied for many jobs in these areas&hellip; nope.</p>
                         <p>There has been some help along the way, but very little.</p>
                         <p>Right now, I&apos;m just trying to <strong className="text-white/80 font-semibold">do this project.</strong></p>
                         <p>and stuff.</p>
