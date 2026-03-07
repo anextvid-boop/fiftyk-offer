@@ -792,17 +792,28 @@ jahronimo1@hotmail.com
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>My name is <strong className="text-white font-semibold">Jahronimo.</strong></p>
-                        <p>I&apos;m looking for help.</p>
-                        <p>Rent, food, basic things.</p>
-                        <p>Things are not looking good right now.</p>
-                        <p>I&apos;ve done many forms of art my whole life.</p>
-                        <p>But art takes a lot of time.</p>
-                        <p>I&apos;ve applied for jobs.</p>
-                        <p>Games design, animation, video production, video editing.</p>
-                        <p><strong className="text-white/80 font-semibold">I hear nothing back.</strong></p>
-                        <p>Not many people can see me.</p>
-                        <p>Not much engagement. Not much help with things.</p>
-                        <p>There has been some support, but very little overall.</p>
+                        <p>Right now I&apos;m looking for help</p>
+                        <p>with basic things &mdash; rent, food,</p>
+                        <p>and getting through the day.</p>
+                        <p>Things are <strong className="text-white/80 font-semibold">not looking great</strong> at the moment.</p>
+                        <p>I&apos;ve spent most of my life working in different forms of art.</p>
+                        <p>Creative work takes a lot of time and dedication,</p>
+                        <p>and it&apos;s something I&apos;ve always been committed to.</p>
+                        <p>Over the years I&apos;ve studied and worked across several creative fields, including:</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
+                          <p>Games design,</p>
+                          <p>3D animation,</p>
+                          <p>Video production,</p>
+                          <p>and video editing,</p>
+                          <p>along with a range of other creative projects.</p>
+                        </div>
+                        <p>I&apos;ve applied for many jobs in these areas,</p>
+                        <p>but unfortunately <strong className="text-white/80 font-semibold">I rarely hear anything back.</strong></p>
+                        <p>There hasn&apos;t been much support for my work overall.</p>
+                        <p>There has been some help along the way, but very little.</p>
+                        <p>Right now I&apos;m just trying to keep going,</p>
+                        <p>keep creating,</p>
+                        <p>and <strong className="text-white/80 font-semibold">find a way forward.</strong></p>
                       </div>
                     ),
                   },
