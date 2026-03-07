@@ -34,3 +34,27 @@
 .lux-cursor {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>') 12 12, auto;
 }
+
+@keyframes text-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-text-shine {
+  background: linear-gradient(to right,
+      rgba(212, 175, 55, 1) 20%,
+      rgba(255, 252, 224, 1) 40%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 252, 224, 1) 60%,
+      rgba(212, 175, 55, 1) 80%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shine 6s linear infinite;
+}
