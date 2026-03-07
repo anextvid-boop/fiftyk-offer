@@ -435,7 +435,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 variants={itemVariants}
                 onClick={() => playTick()}
-                className="relative w-full max-w-xl bg-black/60 backdrop-blur-xl flex flex-col items-center justify-center py-20 px-8 cursor-pointer group overflow-hidden shadow-[0_0_25px_rgba(212,175,55,0.08),0_0_0_1px_rgba(212,175,55,0.12)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(212,175,55,0.15)] origin-center transition-all duration-300"
+                className="relative w-full max-w-xl bg-black/60 backdrop-blur-xl flex flex-col items-center justify-center py-10 px-6 cursor-pointer group overflow-hidden shadow-[0_0_25px_rgba(212,175,55,0.08),0_0_0_1px_rgba(212,175,55,0.12)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(212,175,55,0.15)] origin-center transition-all duration-300"
               >
                 {/* Hardware-accelerated glow pulse */}
                 <div className="absolute inset-0 pointer-events-none shadow-[0_0_40px_rgba(212,175,55,0.1),0_0_0_1px_rgba(212,175,55,0.2)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
@@ -449,18 +449,18 @@ export default function Home() {
                 ].map((cls, i) => (
                   <div
                     key={i}
-                    className={`absolute w-12 h-12 ${cls} border-[#d4af37]/40 flex p-[3px]`}
+                    className={`absolute w-10 h-10 ${cls} border-[#d4af37]/40 flex p-[3px]`}
                   >
                     <div className="w-[4px] h-[4px] rounded-full bg-[#d4af37]/60" />
                   </div>
                 ))}
 
                 {/* Content - High Impact */}
-                <div className="flex flex-col items-center gap-6 w-full text-center">
-                  <p className="text-[#d4af37] tracking-[0.5em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-black drop-shadow-[0_0_20px_rgba(212,175,55,0.6)] mb-2 leading-none">I NEED HELP</p>
-                  <p className="text-[#d4af37]/90 tracking-[0.3em] text-sm sm:text-base md:text-lg uppercase font-black">SUPPORT THE MISSION</p>
-                  <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/70 to-transparent my-1" />
-                  <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight leading-none group-hover:text-[#d4af37] transition-all duration-300 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                <div className="flex flex-col items-center gap-4 w-full text-center">
+                  <p className="text-[#d4af37] tracking-[0.4em] text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase font-black drop-shadow-[0_0_15px_rgba(212,175,55,0.5)] mb-1 leading-none">I NEED HELP</p>
+                  <p className="text-[#d4af37]/90 tracking-[0.2em] text-xs sm:text-sm md:text-base uppercase font-black">SUPPORT THE MISSION</p>
+                  <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/70 to-transparent my-1" />
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-none group-hover:text-[#d4af37] transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">
                     MAKE A <br className="sm:hidden" /> DONATION
                   </h2>
                 </div>
