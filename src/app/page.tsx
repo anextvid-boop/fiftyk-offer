@@ -497,14 +497,14 @@ export default function Home() {
                 {/* Content */}
                 <div className="flex flex-col items-center gap-10 w-full">
                   {/* Name & Context */}
-                  <div className="flex flex-col items-center gap-4">
+                  <div className="flex flex-col items-center gap-6">
                     <motion.p
                       variants={itemVariants}
-                      className="text-[#d4af37] tracking-[0.6em] text-lg sm:text-xl md:text-2xl uppercase font-black mr-[-0.6em]"
+                      className="text-[#d4af37] tracking-[1.2em] text-xl sm:text-2xl md:text-3xl uppercase font-black mr-[-1.2em]"
                     >
                       Jahronimo
                     </motion.p>
-                    <div className="flex flex-wrap justify-center text-2xl sm:text-3xl md:text-4xl tracking-[0.2em] font-medium uppercase m-0 mr-[-0.2em] text-white/70">
+                    <div className="flex flex-nowrap justify-center text-2xl sm:text-3xl md:text-5xl tracking-[0.1em] font-medium uppercase m-0 text-white/80">
                       {["f", "o", "r", " ", "s", "i", "z", "e", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
                         <motion.span
                           key={index}
@@ -526,16 +526,16 @@ export default function Home() {
                   <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
                   {/* Main Offer Title */}
-                  <div className="flex flex-col items-center gap-6">
+                  <div className="flex flex-col items-center gap-8">
                     <motion.h2
                       variants={itemVariants}
-                      className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-white uppercase m-0"
+                      className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight text-white uppercase m-0"
                     >
                       1 of 1&apos;s
                     </motion.h2>
                     <motion.h1
                       variants={itemVariants}
-                      className="text-6xl sm:text-7xl md:text-9xl font-black tracking-tight leading-none text-transparent bg-clip-text m-0
+                      className="text-7xl sm:text-8xl md:text-[12rem] font-black tracking-tighter leading-none text-transparent bg-clip-text m-0
                         bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
                         bg-[length:200%_100%] animate-[shine:6s_linear_infinite]"
                     >
@@ -553,7 +553,7 @@ export default function Home() {
                       </h2>
                       <div className="mt-2 flex items-center justify-center">
                         <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                        <p className="px-4 text-[#d4af37]/90 tracking-[0.4em] text-sm md:text-base font-black uppercase">
+                        <p className="px-6 text-[#d4af37] tracking-[0.6em] text-xl md:text-3xl font-black uppercase">
                           I MAKE
                         </p>
                         <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-[#d4af37]/30" />
