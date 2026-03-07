@@ -788,18 +788,6 @@ jahronimo1@hotmail.com
               {(() => {
                 const sections = [
                   {
-                    title: "Something Special",
-                    content: (
-                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I have something lined up.<br />Something I really want to do.</p>
-                        <p className="pt-1">Although right now, I need help getting there.<br />I&apos;m looking for support.</p>
-                        <p className="pt-1">I&apos;ve tried reaching people before…<br />Nothing really came of it.</p>
-                        <p className="pt-1">So now I&apos;m doing this differently.</p>
-                        <p className="text-white/80 font-medium pt-1">More direct. More interesting.</p>
-                      </div>
-                    ),
-                  },
-                  {
                     title: "About Me",
                     content: (
                       <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
@@ -809,6 +797,41 @@ jahronimo1@hotmail.com
                         <p className="pt-1">I&apos;ve done many forms of art my whole life.<br />Art takes a lot of time — and a lot of visibility I haven&apos;t had.</p>
                         <p className="pt-1">I plan to make something special.<br />I think I&apos;m capable of most of it.</p>
                         <p className="text-white/80 font-medium pt-1">But I need support to get there.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "Current Situation",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>For the past 2–3 months, I&apos;ve mostly been eating cheap noodles and £1.40 pizzas.<br />Keeping costs as low as possible.</p>
+                        <p className="pt-1">I&apos;m not homeless — I live in supported accommodation, which helps with housing.<br />But I cannot currently make rent. Around 7 months behind.</p>
+                        <p className="pt-2">Right now…</p>
+                        <p className="text-white text-base font-black tracking-tight">I have about £1.50 to my name.</p>
+                        <p className="pt-1">No money for food, software, or anything else.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "Why I&apos;m Asking",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>I come from a large, low-income family.<br />That&apos;s about as much as I&apos;d like to share about that.</p>
+                        <p className="pt-1">Jobs haven&apos;t come through. Visibility hasn&apos;t come easily.<br />I&apos;m not complaining — just being honest.</p>
+                        <p className="pt-1">I&apos;m trying to keep going, keep creating, and build something that matters.</p>
+                        <p className="text-white/80 font-medium pt-1">Any help gets me closer to that.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "Something Special",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>I have something lined up.<br />Something I really want to do.</p>
+                        <p className="pt-1">Although right now, I need help getting there.<br />I&apos;m looking for support.</p>
+                        <p className="pt-1">I&apos;ve tried reaching people before…<br />Nothing really came of it.</p>
+                        <p className="pt-1">So now I&apos;m doing this differently.</p>
+                        <p className="text-white/80 font-medium pt-1">More direct. More interesting.</p>
                       </div>
                     ),
                   },
@@ -842,29 +865,6 @@ jahronimo1@hotmail.com
                     ),
                   },
                   {
-                    title: "Current Situation",
-                    content: (
-                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>For the past 2–3 months, I&apos;ve mostly been eating cheap noodles and £1.40 pizzas.<br />Keeping costs as low as possible.</p>
-                        <p className="pt-1">I&apos;m not homeless — I live in supported accommodation, which helps with housing.<br />But I cannot currently make rent. Around 7 months behind.</p>
-                        <p className="pt-2">Right now…</p>
-                        <p className="text-white text-base font-black tracking-tight">I have about £1.50 to my name.</p>
-                        <p className="pt-1">No money for food, software, or anything else.</p>
-                      </div>
-                    ),
-                  },
-                  {
-                    title: "Why I'm Asking",
-                    content: (
-                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I come from a large, low-income family.<br />That&apos;s about as much as I&apos;d like to share about that.</p>
-                        <p className="pt-1">Jobs haven&apos;t come through. Visibility hasn&apos;t come easily.<br />I&apos;m not complaining — just being honest.</p>
-                        <p className="pt-1">I&apos;m trying to keep going, keep creating, and build something that matters.</p>
-                        <p className="text-white/80 font-medium pt-1">Any help gets me closer to that.</p>
-                      </div>
-                    ),
-                  },
-                  {
                     title: "Support the Project",
                     content: (
                       <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
@@ -891,16 +891,16 @@ jahronimo1@hotmail.com
                 </div>
                 <div className="flex flex-col gap-4">
                   {[
+                    `${BASE_PATH}/work10.jpg`,
                     `${BASE_PATH}/work1.jpg`,
-                    `${BASE_PATH}/work2.jpg`,
-                    `${BASE_PATH}/work3.jpg`,
-                    `${BASE_PATH}/work4.jpg`,
-                    `${BASE_PATH}/work5.jpg`,
                     `${BASE_PATH}/work6.jpg`,
                     `${BASE_PATH}/work7.jpg`,
+                    `${BASE_PATH}/work2.jpg`,
+                    `${BASE_PATH}/work5.jpg`,
                     `${BASE_PATH}/work8.jpg`,
+                    `${BASE_PATH}/work3.jpg`,
                     `${BASE_PATH}/work9.jpg`,
-                    `${BASE_PATH}/work10.jpg`,
+                    `${BASE_PATH}/work4.jpg`,
                   ].map((src, i) => (
                     <div
                       key={i}
