@@ -829,18 +829,6 @@ jahronimo1@hotmail.com
                     ),
                   },
                   {
-                    title: "Why I'm Asking",
-                    content: (
-                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I come from a large family with a <strong className="text-white/80 font-semibold">low-income background.</strong></p>
-                        <p>That&apos;s about as much as I&apos;d like to say about that.</p>
-                        <p>Right now I&apos;m just trying to keep going,</p>
-                        <p>keep creating,</p>
-                        <p>and <strong className="text-white/80 font-semibold">build something meaningful.</strong></p>
-                      </div>
-                    ),
-                  },
-                  {
                     title: "The One-of-One Project",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
