@@ -305,6 +305,34 @@ const ExpandableFileField = ({ name, label, description }: { name: string; label
   );
 };
 
+const GalleryAccordion = ({ sections }: { sections: { title: string; content: React.ReactNode }[] }) => {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+
+  return (
+    <div className="max-w-2xl mx-auto pb-10">
+      {sections.map((section, i) => (
+        <div key={i} className="border-b border-[#d4af37]/15">
+          <button
+            type="button"
+            onClick={() => setOpenIdx(openIdx === i ? null : i)}
+            className="w-full py-4 flex justify-between items-center text-left outline-none group"
+          >
+            <span className={`text-xs uppercase tracking-[0.35em] font-semibold transition-colors duration-200 ${openIdx === i ? "text-[#d4af37]" : "text-white/50 group-hover:text-white/80"}`}>
+              {section.title}
+            </span>
+            <span className={`text-lg font-thin transition-all duration-300 flex-shrink-0 ml-4 ${openIdx === i ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/35"}`}>+</span>
+          </button>
+          {openIdx === i && (
+            <div className="pb-6 pr-2">
+              {section.content}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
@@ -756,170 +784,122 @@ jahronimo1@hotmail.com
             {/* Scrollable content area */}
             <div className="overflow-y-auto flex-1 p-6 sm:p-10">
 
-              {/* ── Text Content ─────────────────────────────── */}
-              <div className="max-w-2xl mx-auto flex flex-col gap-10 pb-12">
+              {/* ── Accordion Text Content ─────────────────── */}
+              {(() => {
+                const sections = [
+                  {
+                    title: "Something Special",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>Hey, something special lined up…</p>
+                        <p>Something I want to do…</p>
+                        <p className="pt-1">Although, I&apos;m looking for support.<br />I need help…</p>
+                        <p className="pt-1">I would appreciate it a lot.</p>
+                        <p className="pt-1">I have a donations page.<br />Any help would be wonderful.</p>
+                        <p className="pt-1">I&apos;ve tried this before…<br />Nothing really happened.</p>
+                        <p className="pt-1">So now…</p>
+                        <p className="text-white/80 font-medium">This is way more interesting.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "The One-of-One Project",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>For sizable contributions,<br />I&apos;m offering art commissions.</p>
+                        <p className="pt-1 text-white/80 font-medium">The One-of-One Project.</p>
+                        <p className="pt-1">Something non-replicable.<br />Secret. Special. Specific…<br />Created for you.</p>
+                        <p className="pt-1">Projects that are not just digital.<br />Something… different.</p>
+                        <p className="pt-1">Mixed media.<br />Physical + creative experimentation.</p>
+                        <p className="pt-1">No saying exactly what…<br />That&apos;s part of it.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "About the Art",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>I&apos;ve been doing mixed media art styles most of my life — since I was a kid.</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
+                          <p>A++ Art Foundation.</p>
+                          <p>Then Games Design.</p>
+                          <p>3D Animation.</p>
+                          <p>Video production.</p>
+                          <p>Advertising work.</p>
+                        </div>
+                        <p className="pt-1">My art has always been about combining things:</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
+                          <p>Paints · Inks · Glues · Buttons · Objects · Materials</p>
+                          <p>And an entire line of experimental approaches.</p>
+                        </div>
+                        <p className="pt-2">Working on something…<br />Not saying what exactly.<br />Just part of it.</p>
+                        <p className="text-white/80 font-medium pt-1">I think it will be good.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "About Me",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>My name is Jahronimo.</p>
+                        <p className="pt-1">I&apos;m looking for help.<br />Rent, food, basic things.</p>
+                        <p>Things are not looking good right now.</p>
+                        <p className="pt-1">I&apos;ve done many forms of art my whole life.<br />But art takes a lot of time.</p>
+                        <p className="pt-1">There has been some support, but very little overall.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "Current Situation",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>Recently I&apos;ve mostly been eating:</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
+                          <p>Cheap noodles for about a month.<br />Maybe more like 2–3 months.</p>
+                          <p className="pt-1">Also cheap pizzas — about £1.40.</p>
+                        </div>
+                        <p className="pt-2">Just trying to keep costs low.</p>
+                        <p className="pt-1">Thankfully I&apos;m not homeless.<br />I live in supported accommodation.</p>
+                        <p className="pt-1">But I cannot currently make rent.<br />Around 7 months behind.</p>
+                        <p className="pt-2">And right now…</p>
+                        <p className="text-white text-base font-black tracking-tight">I have about £1.50 to my name.</p>
+                        <p className="pt-1">No money for food, software, or anything really.</p>
+                        <p className="pt-2 text-white/80">If you can support in any way,<br />it would be greatly appreciated.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "Why I'm Asking",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>I come from a large family with a low-income background.</p>
+                        <p>That&apos;s about as much as I&apos;d like to say about that.</p>
+                        <p className="pt-1">Right now I&apos;m just trying to keep going, keep creating, and build something meaningful.</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "Support the Project",
+                    content: (
+                      <div className="flex flex-col gap-2 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        <p>If you want to support:</p>
+                        <p className="pt-1">Donations are appreciated.</p>
+                        <p>Large contributions can receive One-of-One art commissions.</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-2">
+                          <p>Unique.</p>
+                          <p>Non-replicable.</p>
+                          <p>Created specifically for you.</p>
+                        </div>
+                        <p className="pt-2 text-white/80 font-medium">Part of the £50,000 One-of-One Project.</p>
+                      </div>
+                    ),
+                  },
+                ];
 
-                {/* Opener */}
-                <div className="flex flex-col gap-4">
-                  <h2 className="text-white text-2xl sm:text-3xl font-black tracking-tight leading-tight">Something Special</h2>
-                  <div className="w-10 h-[1px] bg-[#d4af37]/40" />
-                  <div className="flex flex-col gap-2 text-white/60 text-sm sm:text-base font-light leading-relaxed tracking-wide">
-                    <p>Hey, something special lined up…</p>
-                    <p>Something I want to do…</p>
-                    <p className="pt-1">Although, I&apos;m looking for support.<br />I need help…</p>
-                    <p className="pt-1">I would appreciate it a lot.</p>
-                    <p className="pt-1">I have a donations page.<br />Any help would be wonderful.</p>
-                    <p className="pt-1">I&apos;ve tried this before…<br />Nothing really happened.</p>
-                    <p className="pt-1">So now…</p>
-                    <p className="text-white/80 font-medium">This is way more interesting.</p>
-                  </div>
-                </div>
-
-                {/* Section divider */}
-                <div className="flex items-center gap-4">
-                  <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/40 text-[10px] tracking-[0.4em] uppercase">·</span>
-                  <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/30" />
-                </div>
-
-                {/* The One-of-One Project */}
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-semibold">The One-of-One Project</h3>
-                  <div className="flex flex-col gap-2 text-white/60 text-sm sm:text-base font-light leading-relaxed tracking-wide">
-                    <p>For sizable contributions,<br />I&apos;m offering art commissions.</p>
-                    <p className="pt-1 text-white/80 font-medium">The One-of-One Project.</p>
-                    <p className="pt-1">Something non-replicable.<br />Secret. Special. Specific…<br />Created for you.</p>
-                    <p className="pt-1">Projects that are not just digital.<br />Something… different.</p>
-                    <p className="pt-1">Mixed media.<br />Physical + creative experimentation.</p>
-                    <p className="pt-1">No saying exactly what…<br />That&apos;s part of it.</p>
-                  </div>
-                </div>
-
-                {/* Section divider */}
-                <div className="flex items-center gap-4">
-                  <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/40 text-[10px] tracking-[0.4em] uppercase">·</span>
-                  <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/30" />
-                </div>
-
-                {/* About the Art */}
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-semibold">About the Art</h3>
-                  <div className="flex flex-col gap-2 text-white/60 text-sm sm:text-base font-light leading-relaxed tracking-wide">
-                    <p>I&apos;ve been doing mixed media art styles most of my life — since I was a kid.</p>
-                    <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-2">
-                      <p>A++ Art Foundation.</p>
-                      <p>Then Games Design.</p>
-                      <p>3D Animation.</p>
-                      <p>Video production.</p>
-                      <p>Advertising work.</p>
-                    </div>
-                    <p className="pt-1">My art has always been about combining things:</p>
-                    <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
-                      <p>Paints</p>
-                      <p>Inks</p>
-                      <p>Glues</p>
-                      <p>Buttons</p>
-                      <p>Objects</p>
-                      <p>Materials</p>
-                      <p>And an entire line of experimental approaches.</p>
-                    </div>
-                    <p className="pt-2">Working on something…</p>
-                    <p>Not saying what exactly.</p>
-                    <p className="pt-1">Just part of it.</p>
-                    <p className="text-white/80 font-medium pt-1">I think it will be good.</p>
-                  </div>
-                </div>
-
-                {/* Section divider */}
-                <div className="flex items-center gap-4">
-                  <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/40 text-[10px] tracking-[0.4em] uppercase">·</span>
-                  <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/30" />
-                </div>
-
-                {/* About Me */}
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-semibold">About Me</h3>
-                  <div className="flex flex-col gap-2 text-white/60 text-sm sm:text-base font-light leading-relaxed tracking-wide">
-                    <p>My name is Jahronimo.</p>
-                    <p className="pt-1">I&apos;m looking for help.</p>
-                    <p>Rent, food, basic things.</p>
-                    <p>Things are not looking good right now.</p>
-                    <p className="pt-1">I&apos;ve done many forms of art my whole life.<br />But art takes a lot of time.</p>
-                    <p className="pt-1">There has been some support, but very little overall.</p>
-                  </div>
-                </div>
-
-                {/* Section divider */}
-                <div className="flex items-center gap-4">
-                  <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/40 text-[10px] tracking-[0.4em] uppercase">·</span>
-                  <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/30" />
-                </div>
-
-                {/* Current Situation */}
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-semibold">Current Situation</h3>
-                  <div className="flex flex-col gap-2 text-white/60 text-sm sm:text-base font-light leading-relaxed tracking-wide">
-                    <p>Recently I&apos;ve mostly been eating:</p>
-                    <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-1">
-                      <p>Cheap noodles for about a month.<br />Maybe more like 2–3 months.</p>
-                      <p className="pt-1">Also cheap pizzas — about £1.40.</p>
-                    </div>
-                    <p className="pt-2">Just trying to keep costs low.</p>
-                    <p className="pt-1">Thankfully I&apos;m not homeless.</p>
-                    <p>I live in supported accommodation, which helps with housing.</p>
-                    <p className="pt-1">But I cannot currently make rent.</p>
-                    <p>At the moment I am around 7 months behind on rent.</p>
-                    <p className="pt-2">And right now…</p>
-                    <p className="text-white text-lg font-black tracking-tight">I have about £1.50 to my name.</p>
-                    <p className="pt-1">No money for food, software, or anything really.</p>
-                    <p className="pt-2 text-white/80">If you can support in any way,<br />it would be greatly appreciated.</p>
-                  </div>
-                </div>
-
-                {/* Section divider */}
-                <div className="flex items-center gap-4">
-                  <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/40 text-[10px] tracking-[0.4em] uppercase">·</span>
-                  <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/30" />
-                </div>
-
-                {/* Why I'm Asking */}
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-semibold">Why I&apos;m Asking</h3>
-                  <div className="flex flex-col gap-2 text-white/60 text-sm sm:text-base font-light leading-relaxed tracking-wide">
-                    <p>I come from a large family with a low-income background.</p>
-                    <p>That&apos;s about as much as I&apos;d like to say about that.</p>
-                    <p className="pt-1">Right now I&apos;m just trying to keep going, keep creating, and build something meaningful.</p>
-                  </div>
-                </div>
-
-                {/* Section divider */}
-                <div className="flex items-center gap-4">
-                  <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                  <span className="text-[#d4af37]/40 text-[10px] tracking-[0.4em] uppercase">·</span>
-                  <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/30" />
-                </div>
-
-                {/* Support the Project */}
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-semibold">Support the Project</h3>
-                  <div className="flex flex-col gap-2 text-white/60 text-sm sm:text-base font-light leading-relaxed tracking-wide">
-                    <p>If you want to support:</p>
-                    <p className="pt-1">Donations are appreciated.</p>
-                    <p>Large contributions can receive One-of-One art commissions.</p>
-                    <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 mt-2">
-                      <p>Unique.</p>
-                      <p>Non-replicable.</p>
-                      <p>Created specifically for you.</p>
-                    </div>
-                    <p className="pt-2 text-white/80 font-medium">Part of the £50,000 One-of-One Project.</p>
-                  </div>
-                </div>
-
-              </div>
+                return (
+                  <GalleryAccordion sections={sections} />
+                );
+              })()}
 
               {/* ── Images ─────────────────────────────────────── */}
               <div className="max-w-5xl mx-auto">
