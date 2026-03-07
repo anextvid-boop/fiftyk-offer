@@ -497,15 +497,15 @@ export default function Home() {
                 {/* Content */}
                 <div className="flex flex-col items-center gap-10 w-full">
                   {/* Name & Context */}
-                  <div className="flex flex-col items-center gap-4 w-full">
+                  <div className="flex flex-col items-center gap-4 w-full px-2">
                     <motion.p
                       variants={itemVariants}
-                      className="text-[#d4af37] tracking-[0.8em] sm:tracking-[1em] text-lg sm:text-xl md:text-2xl uppercase font-black mr-[-0.8em] sm:mr-[-1em]"
+                      className="text-[#d4af37] tracking-[0.8em] sm:tracking-[1em] text-[clamp(0.8rem,3vw,1.5rem)] uppercase font-black mr-[-0.8em] sm:mr-[-1em]"
                     >
                       Jahronimo
                     </motion.p>
-                    <div className="w-full text-center">
-                      <div className="inline-flex flex-nowrap justify-center text-[clamp(1rem,4vw,3.5rem)] tracking-[0.1em] font-medium uppercase m-0 text-white/90 whitespace-nowrap">
+                    <div className="w-full text-center overflow-hidden">
+                      <div className="inline-flex justify-center text-[clamp(0.7rem,3.5vw,3.5rem)] tracking-[0.1em] font-medium uppercase m-0 text-white/90 whitespace-nowrap">
                         {["f", "o", "r", " ", "s", "i", "z", "e", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
                           <motion.span
                             key={index}
@@ -529,16 +529,16 @@ export default function Home() {
                   <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
                   {/* Main Offer Title */}
-                  <div className="flex flex-col items-center gap-6">
+                  <div className="flex flex-col items-center gap-6 px-4">
                     <motion.h2
                       variants={itemVariants}
-                      className="text-[clamp(2.5rem,8vw,5.5rem)] font-black tracking-tighter text-white uppercase m-0 leading-tight"
+                      className="text-[clamp(2.2rem,8vw,5.5rem)] font-black tracking-tighter text-white uppercase m-0 leading-tight whitespace-nowrap"
                     >
                       1 of 1&apos;s
                     </motion.h2>
                     <motion.h1
                       variants={itemVariants}
-                      className="text-[clamp(4.5rem,14vw,9.5rem)] font-black tracking-tighter leading-none text-transparent bg-clip-text m-0
+                      className="text-[clamp(3.5rem,14vw,9.5rem)] font-black tracking-tighter leading-none text-transparent bg-clip-text m-0 whitespace-nowrap
                         bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
                         bg-[length:200%_100%] animate-[shine:6s_linear_infinite]"
                     >
@@ -549,14 +549,14 @@ export default function Home() {
                   <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
                   {/* Strategy & Footer */}
-                  <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 w-full text-center mt-6">
+                  <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 w-full text-center mt-6 px-2">
                     <div className="relative w-full flex flex-col items-center">
-                      <h2 className="text-[clamp(3.5rem,11vw,7.5rem)] font-black text-white uppercase tracking-[-0.08em] leading-none m-0 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] whitespace-nowrap">
+                      <h2 className="text-[clamp(2.5rem,11vw,7.5rem)] font-black text-white uppercase tracking-[-0.08em] leading-none m-0 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] whitespace-nowrap">
                         no saying
                       </h2>
-                      <div className="mt-4 flex items-center justify-center w-full max-w-sm">
+                      <div className="mt-4 flex items-center justify-center w-full max-w-lg">
                         <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                        <p className="px-4 sm:px-8 text-[#d4af37] tracking-[0.4em] sm:tracking-[0.6em] text-[clamp(1.5rem,5vw,3rem)] font-black uppercase whitespace-nowrap">
+                        <p className="px-2 sm:px-6 text-[#d4af37] tracking-[0.2em] sm:tracking-[0.6em] text-[clamp(1.2rem,5vw,3rem)] font-black uppercase whitespace-nowrap">
                           I MAKE
                         </p>
                         <div className="h-[1px] flex-grow bg-gradient-to-l from-transparent to-[#d4af37]/30" />
