@@ -497,46 +497,48 @@ export default function Home() {
                 {/* Content */}
                 <div className="flex flex-col items-center gap-10 w-full">
                   {/* Name & Context */}
-                  <div className="flex flex-col items-center gap-6 w-full">
+                  <div className="flex flex-col items-center gap-4 w-full">
                     <motion.p
                       variants={itemVariants}
-                      className="text-[#d4af37] tracking-[1.5em] text-2xl sm:text-3xl md:text-4xl uppercase font-black mr-[-1.5em]"
+                      className="text-[#d4af37] tracking-[0.8em] sm:tracking-[1em] text-lg sm:text-xl md:text-2xl uppercase font-black mr-[-0.8em] sm:mr-[-1em]"
                     >
                       Jahronimo
                     </motion.p>
-                    <div className="flex flex-nowrap justify-center text-xl sm:text-3xl md:text-5xl lg:text-6xl tracking-[0.05em] font-medium uppercase m-0 text-white/90 w-full overflow-visible whitespace-nowrap">
-                      {["f", "o", "r", " ", "s", "i", "z", "e", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
-                        <motion.span
-                          key={index}
-                          custom={index}
-                          variants={letterVariants}
-                          initial="hidden"
-                          animate="visible"
-                          className="flex-shrink-0"
-                          style={{
-                            animation: "letter-glow 4s ease-in-out infinite",
-                            animationDelay: `${index * 0.05}s`
-                          }}
-                        >
-                          {letter === " " ? "\u00A0" : letter}
-                        </motion.span>
-                      ))}
+                    <div className="w-full text-center">
+                      <div className="inline-flex flex-nowrap justify-center text-[clamp(1rem,4vw,3.5rem)] tracking-[0.1em] font-medium uppercase m-0 text-white/90 whitespace-nowrap">
+                        {["f", "o", "r", " ", "s", "i", "z", "e", "a", "b", "l", "e", " ", "d", "o", "n", "a", "t", "i", "o", "n", "s"].map((letter, index) => (
+                          <motion.span
+                            key={index}
+                            custom={index}
+                            variants={letterVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="flex-shrink-0"
+                            style={{
+                              animation: "letter-glow 4s ease-in-out infinite",
+                              animationDelay: `${index * 0.05}s`
+                            }}
+                          >
+                            {letter === " " ? "\u00A0" : letter}
+                          </motion.span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
                   <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
 
                   {/* Main Offer Title */}
-                  <div className="flex flex-col items-center gap-10">
+                  <div className="flex flex-col items-center gap-6">
                     <motion.h2
                       variants={itemVariants}
-                      className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter text-white uppercase m-0"
+                      className="text-[clamp(2.5rem,8vw,5.5rem)] font-black tracking-tighter text-white uppercase m-0 leading-tight"
                     >
                       1 of 1&apos;s
                     </motion.h2>
                     <motion.h1
                       variants={itemVariants}
-                      className="text-8xl sm:text-[10rem] md:text-[14rem] font-black tracking-tighter leading-none text-transparent bg-clip-text m-0
+                      className="text-[clamp(4.5rem,14vw,9.5rem)] font-black tracking-tighter leading-none text-transparent bg-clip-text m-0
                         bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)]
                         bg-[length:200%_100%] animate-[shine:6s_linear_infinite]"
                     >
@@ -548,16 +550,16 @@ export default function Home() {
 
                   {/* Strategy & Footer */}
                   <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 w-full text-center mt-6">
-                    <div className="relative">
-                      <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-[-0.08em] leading-none m-0 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                    <div className="relative w-full flex flex-col items-center">
+                      <h2 className="text-[clamp(3.5rem,11vw,7.5rem)] font-black text-white uppercase tracking-[-0.08em] leading-none m-0 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] whitespace-nowrap">
                         no saying
                       </h2>
-                      <div className="mt-2 flex items-center justify-center">
-                        <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                        <p className="px-10 text-[#d4af37] tracking-[0.8em] text-3xl sm:text-5xl md:text-7xl font-black uppercase">
+                      <div className="mt-4 flex items-center justify-center w-full max-w-sm">
+                        <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-[#d4af37]/30" />
+                        <p className="px-4 sm:px-8 text-[#d4af37] tracking-[0.4em] sm:tracking-[0.6em] text-[clamp(1.5rem,5vw,3rem)] font-black uppercase whitespace-nowrap">
                           I MAKE
                         </p>
-                        <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-[#d4af37]/30" />
+                        <div className="h-[1px] flex-grow bg-gradient-to-l from-transparent to-[#d4af37]/30" />
                       </div>
                     </div>
                   </motion.div>
