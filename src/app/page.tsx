@@ -791,12 +791,17 @@ jahronimo1@hotmail.com
                     title: "About Me",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>My name is Jahronimo.</p>
-                        <p>I&apos;m looking for help.<br />Rent, food, basic things.</p>
+                        <p>My name is <strong className="text-white font-semibold">Jahronimo.</strong></p>
+                        <p>I&apos;m looking for help.</p>
+                        <p>Rent, food, basic things.</p>
                         <p>Things are not looking good right now.</p>
-                        <p>I&apos;ve done many forms of art my whole life.<br />But art takes a lot of time.</p>
-                        <p>I&apos;ve applied for jobs.<br />Games design, animation, video production, video editing.<br />I hear nothing back.</p>
-                        <p>Not many people can see me.<br />Not much engagement. Not much help with things.</p>
+                        <p>I&apos;ve done many forms of art my whole life.</p>
+                        <p>But art takes a lot of time.</p>
+                        <p>I&apos;ve applied for jobs.</p>
+                        <p>Games design, animation, video production, video editing.</p>
+                        <p><strong className="text-white/80 font-semibold">I hear nothing back.</strong></p>
+                        <p>Not many people can see me.</p>
+                        <p>Not much engagement. Not much help with things.</p>
                         <p>There has been some support, but very little overall.</p>
                       </div>
                     ),
@@ -807,12 +812,15 @@ jahronimo1@hotmail.com
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>Recently I&apos;ve mostly been eating:</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>Cheap noodles for about a month.<br />Maybe more like 2&ndash;3 months.</p>
+                          <p>Cheap noodles for about a month.</p>
+                          <p>Maybe more like 2&ndash;3 months.</p>
                           <p>Also cheap pizzas, about £1.40.</p>
                         </div>
                         <p>Just trying to keep costs low.</p>
-                        <p>Thankfully I&apos;m not homeless.<br />I live in supported accommodation.</p>
-                        <p>But I cannot currently make rent.<br />At the moment I am around 7 months behind.</p>
+                        <p>Thankfully I&apos;m not homeless.</p>
+                        <p>I live in supported accommodation.</p>
+                        <p>But I cannot currently make rent.</p>
+                        <p>At the moment I am around <strong className="text-white/80 font-semibold">7 months behind.</strong></p>
                         <p>And right now&hellip;</p>
                         <p className="text-white text-base font-black tracking-tight">I have about £1.50 to my name.</p>
                         <p>No money for food, software, or anything really.</p>
@@ -834,12 +842,15 @@ jahronimo1@hotmail.com
                     title: "Something Special",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>Hey, something special lined up&hellip;<br />Something I want to do&hellip;</p>
-                        <p>Although, I&apos;m looking for support.<br />I need help&hellip;</p>
+                        <p>Hey, something special lined up&hellip;</p>
+                        <p>Something I want to do&hellip;</p>
+                        <p>Although, I&apos;m looking for support.</p>
+                        <p>I need help&hellip;</p>
                         <p>I would appreciate it a lot.</p>
-                        <p>I&apos;ve tried this before&hellip;<br />Nothing really happened.</p>
+                        <p>I&apos;ve tried this before&hellip;</p>
+                        <p>Nothing really happened.</p>
                         <p>So now&hellip;</p>
-                        <p className="text-white/80 font-medium">This is way more interesting.</p>
+                        <p className="text-white/80 font-semibold">This is way more interesting.</p>
                       </div>
                     ),
                   },
@@ -847,11 +858,17 @@ jahronimo1@hotmail.com
                     title: "The One-of-One Project",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>For sizable contributions,<br />I&apos;m offering art commissions.</p>
-                        <p>Something non-replicable.<br />Secret. Special. Specific&hellip;<br />Created for you.</p>
-                        <p>Projects that are not just digital.<br />Something&hellip; different.</p>
-                        <p>Mixed media.<br />Physical + creative experimentation.</p>
-                        <p>No saying exactly what&hellip;<br />That&apos;s part of it.</p>
+                        <p>For sizable contributions,</p>
+                        <p>I&apos;m offering art commissions.</p>
+                        <p><strong className="text-white/80 font-semibold">Something non-replicable.</strong></p>
+                        <p>Secret. Special. Specific&hellip;</p>
+                        <p>Created for you.</p>
+                        <p>Projects that are not just digital.</p>
+                        <p>Something&hellip; different.</p>
+                        <p>Mixed media.</p>
+                        <p>Physical + creative experimentation.</p>
+                        <p>No saying exactly what&hellip;</p>
+                        <p>That&apos;s part of it.</p>
                       </div>
                     ),
                   },
@@ -859,9 +876,10 @@ jahronimo1@hotmail.com
                     title: "About the Art",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I&apos;ve been doing mixed media art styles most of my life,<br />since I was a kid.</p>
+                        <p>I&apos;ve been doing mixed media art styles most of my life,</p>
+                        <p>since I was a kid.</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>A++ Art Foundation.</p>
+                          <p><strong className="text-white/70 font-semibold">A++ Art Foundation.</strong></p>
                           <p>Then Games Design.</p>
                           <p>3D Animation.</p>
                           <p>Video production.</p>
@@ -880,7 +898,7 @@ jahronimo1@hotmail.com
                         <p>Working on something&hellip;</p>
                         <p>Not saying what exactly.</p>
                         <p>Just part of it.</p>
-                        <p className="text-white/80 font-medium">I think it will be good.</p>
+                        <p className="text-white/80 font-semibold">I think it will be good.</p>
                       </div>
                     ),
                   },
@@ -896,7 +914,7 @@ jahronimo1@hotmail.com
                           <p>Non-replicable.</p>
                           <p>Created specifically for you.</p>
                         </div>
-                        <p className="text-white/80 font-medium pt-1">Part of the £50,000 One-of-One Project.</p>
+                        <p className="text-white/80 font-semibold pt-1">Part of the <strong className="text-[#d4af37]/80">£50,000</strong> One-of-One Project.</p>
                       </div>
                     ),
                   },
@@ -919,10 +937,8 @@ jahronimo1@hotmail.com
                   {[
                     `${BASE_PATH}/work10.jpg`,
                     `${BASE_PATH}/work1.jpg`,
-                    `${BASE_PATH}/work6.jpg`,
-                    `${BASE_PATH}/work7.jpg`,
-                    `${BASE_PATH}/work2.jpg`,
                     `${BASE_PATH}/work5.jpg`,
+                    `${BASE_PATH}/work2.jpg`,
                     `${BASE_PATH}/work8.jpg`,
                     `${BASE_PATH}/work3.jpg`,
                     `${BASE_PATH}/work9.jpg`,
