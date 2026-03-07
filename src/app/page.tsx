@@ -829,7 +829,7 @@ jahronimo1@hotmail.com
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>For sizable contributions,</p>
                         <p>I&apos;m offering art commissions.</p>
-                        <p><strong className="text-white/80 font-semibold">Something non-replicable.</strong></p>
+                        <p><strong className="text-white font-semibold">Something non-replicable.</strong></p>
                         <p><strong className="text-white font-semibold">Secret. Special. Specific&hellip;</strong></p>
                         <p>Created for you.</p>
                         <p>Projects that are not just digital.</p>
