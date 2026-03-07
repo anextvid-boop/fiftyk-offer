@@ -894,13 +894,17 @@ jahronimo1@hotmail.com
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>If you want to support:</p>
                         <p>Donations are appreciated.</p>
-                        <p>Large contributions can receive <strong className="text-white/80 font-semibold">One-of-One art commissions.</strong></p>
+                        <p>For large contributions,</p>
+                        <p><strong className="text-white/80 font-semibold">One-of-One art commissions.</strong></p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>Unique.</p>
-                          <p>Non-replicable.</p>
-                          <p>Created specifically for you.</p>
+                          <p>Unique,</p>
+                          <p>could be big, small,</p>
+                          <p>colour, shape, meaning,</p>
+                          <p>style, anything&hellip;</p>
                         </div>
-                        <p className="text-white/80 font-semibold pt-1">Part of the <strong className="text-[#d4af37]/80">£50,000</strong> One-of-One Project.</p>
+                        <p>Created specifically for you.</p>
+                        <p className="text-white/80 font-semibold pt-1">Part of the <strong className="text-[#d4af37]/80">&pound;50,000</strong></p>
+                        <p className="text-white/80 font-semibold">One-of-One Project.</p>
                       </div>
                     ),
                   },
