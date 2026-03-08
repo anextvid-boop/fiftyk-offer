@@ -807,7 +807,8 @@ jahronimo1@hotmail.com
                         <p>It&apos;s something I&apos;ve always been committed to.</p>
                         <p>Over the years I&apos;ve studied and trained across several creative fields, including:</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>Foundational arts,</p>
+                          <p>Traditional drawing,</p>
+                          <p><strong className="text-white/70 font-semibold">A++ Foundational arts,</strong></p>
                           <p>Games design,</p>
                           <p>3D animation,</p>
                           <p>2D animation,</p>
@@ -820,13 +821,13 @@ jahronimo1@hotmail.com
                           <p>Mix media with textiles,</p>
                           <p>Advertising and branding,</p>
                           <p>Personal content creation.</p>
-                          <p>etc.</p>
+                          <p>etc. I can list more&hellip;</p>
                         </div>
-                        <p>Along with a range of other creative projects.</p>
-                        <p>I&apos;ve applied for many jobs in these areas&hellip; nope.</p>
                         <p>There has been some help along the way, but very little.</p>
-                        <p>Right now, I&apos;m just trying to <strong className="text-white/80 font-semibold">do this project.</strong></p>
-                        <p>and stuff.</p>
+                        <p>I need support.</p>
+                        <p>Right now, I&apos;m just trying to <strong className="text-white/80 font-semibold">do this project.</strong> and stuff.</p>
+                        <p>Hope you&apos;re onboard.</p>
+                        <p>Interested to see.</p>
                       </div>
                     ),
                   },
