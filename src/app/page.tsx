@@ -793,9 +793,12 @@ jahronimo1@hotmail.com
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>Hey, something special lined up&hellip;</p>
                         <p>Something I want to do&hellip;</p>
-                        <p>Although I&apos;m looking for support.</p>
-                        <p>I would appreciate it.</p>
-                        <p className="text-white/80 font-semibold">I have something interesting.</p>
+                        <p>Looking for support.</p>
+                        <p>I have a donations page.</p>
+                        <p>Help would be appreciated.</p>
+                        <p>Then, came to another idea&hellip;</p>
+                        <p className="text-white/80 font-semibold">Something way more interesting.</p>
+                        <p>A bigger ask for bigger ideas.</p>
                       </div>
                     ),
                   },
@@ -812,8 +815,17 @@ jahronimo1@hotmail.com
                           <p>Foundational arts,</p>
                           <p>Games design,</p>
                           <p>3D animation,</p>
+                          <p>2D animation,</p>
+                          <p>3D modelling,</p>
+                          <p>3D environment art,</p>
+                          <p>Architectural visualisation,</p>
+                          <p>Music videos,</p>
                           <p>Video production,</p>
-                          <p>and video editing. etc.</p>
+                          <p>Photography,</p>
+                          <p>Mix media with textiles,</p>
+                          <p>Advertising and branding,</p>
+                          <p>Personal content creation.</p>
+                          <p>etc.</p>
                         </div>
                         <p>Along with a range of other creative projects.</p>
                         <p>I&apos;ve applied for many jobs in these areas&hellip; nope.</p>
@@ -845,29 +857,38 @@ jahronimo1@hotmail.com
                     title: "About the Art",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I&apos;ve been doing mixed media art styles most of my life,</p>
-                        <p>since I was a kid.</p>
+                        <p>I&apos;ve been doing mixed media art most of my life.</p>
+                        <p>From a kid, experimenting with:</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p><strong className="text-white/70 font-semibold">A++ Art Foundation.</strong></p>
-                          <p>Then Games Design.</p>
-                          <p>3D Animation.</p>
-                          <p>Video production.</p>
-                          <p>Advertising work.</p>
+                          <p>Types of paints, inks,</p>
+                          <p>Buttons, glues,</p>
+                          <p>Paper mache,</p>
+                          <p>Traditional drawing.</p>
+                          <p>All sorts.</p>
                         </div>
-                        <p>My art has always been about combining things:</p>
+                        <p>Then on with:</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>Paints</p>
-                          <p>Inks</p>
-                          <p>Glues</p>
-                          <p>Buttons</p>
-                          <p>Objects</p>
-                          <p>Materials</p>
-                          <p>And an entire line of experimental approaches.</p>
+                          <p><strong className="text-white/70 font-semibold">A++ Art Foundation</strong> (mixed media)</p>
+                          <p>Game design,</p>
+                          <p>3D animation,</p>
+                          <p>Some 2D animation,</p>
+                          <p>3D modelling,</p>
+                          <p>3D environment art,</p>
+                          <p>Realtime architectural visualisation,</p>
+                          <p>Music videos,</p>
+                          <p>Types of video production,</p>
+                          <p>Mix media with textiles,</p>
+                          <p>Photography,</p>
+                          <p>Advertising style,</p>
+                          <p>Personal brand and branding,</p>
+                          <p>General content creation.</p>
+                          <p>Many forms of art.</p>
                         </div>
+                        <p>Sometimes with crazy combinations&hellip;</p>
+                        <p>Blending skills into <strong className="text-white/80 font-semibold">unique work.</strong></p>
                         <p>Working on something&hellip;</p>
-                        <p>Not saying what exactly.</p>
+                        <p>No saying what.</p>
                         <p>Just part of it.</p>
-                        <p className="text-white/80 font-semibold">I think it will be good.</p>
                       </div>
                     ),
                   },
