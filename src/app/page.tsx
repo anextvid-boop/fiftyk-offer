@@ -595,14 +595,14 @@ export default function Home() {
                       </h2>
                       <div className="flex items-center justify-center w-full max-w-lg">
                         <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent to-[#d4af37]/30" />
-                        <p className="px-2 sm:px-4 text-[#d4af37] tracking-[0.2em] sm:tracking-[0.4em] md:tracking-[0.6em] text-[clamp(0.9rem,4vw,3rem)] font-black uppercase whitespace-nowrap overflow-visible">
+                        <p className="px-2 sm:px-4 text-[#d4af37] tracking-[0.2em] sm:tracking-[0.4em] md:tracking-[0.6em] text-[clamp(1.8rem,7vw,5rem)] font-black uppercase whitespace-nowrap overflow-visible">
                           I MAKE.
                         </p>
                         <div className="h-[1px] flex-grow bg-gradient-to-l from-transparent to-[#d4af37]/30" />
                       </div>
                       <motion.p
                         variants={itemVariants}
-                        className="text-white/60 tracking-[0.2em] text-[clamp(0.6rem,2.2vw,1rem)] uppercase font-semibold whitespace-nowrap"
+                        className="text-white/70 tracking-[0.2em] text-[clamp(1.2rem,5vw,3.5rem)] uppercase font-black whitespace-nowrap"
                       >
                         unique 1 of 1&apos;s
                       </motion.p>
