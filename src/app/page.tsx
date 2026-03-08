@@ -935,30 +935,42 @@ jahronimo1@hotmail.com
                         <div className="flex flex-col gap-2 mb-5">
                           <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">01</p>
                           <p><strong className="text-white font-semibold">Press the button.</strong></p>
-                          <p>The donate or contact button on the page.</p>
+                          <p>There is a donate page.</p>
+                          <p className="text-white/50 italic">1 of 1.</p>
                         </div>
                         {/* Step 2 */}
                         <div className="flex flex-col gap-2 mb-5">
                           <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">02</p>
                           <p><strong className="text-white font-semibold">Fill me in.</strong></p>
                           <p>Fill out your details.</p>
+                          <p>There is a range &mdash; <strong className="text-white/80 font-semibold">this is an important start point.</strong></p>
                           <p>Contact information.</p>
-                          <p>Whatever you&apos;re thinking.</p>
+                          <p>And whatever you&apos;re thinking.</p>
                         </div>
                         {/* Step 3 */}
                         <div className="flex flex-col gap-2 mb-5">
                           <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">03</p>
-                          <p><strong className="text-white font-semibold">I&apos;ll start researching.</strong></p>
+                          <p><strong className="text-white font-semibold">I&apos;ll start researching&hellip;</strong></p>
+                          <p className="text-white/80 font-medium">Important.</p>
                           <p>More before anything happens.</p>
-                          <p>No rush. No pressure.</p>
                         </div>
                         {/* Step 4 */}
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 mb-5">
                           <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">04</p>
                           <p><strong className="text-white font-semibold">We figure out what it becomes.</strong></p>
-                          <p>Something big, something small.</p>
+                          <p>Could be something big, something small.</p>
+                          <p>Pick colours and things within the range of details.</p>
+                          <p>I need creative freedom within the bounds of how you fill me in.</p>
+                          <p>Also, where my research goes.</p>
                           <p>In person. Sent to you.</p>
+                          <p>Don&apos;t mind.</p>
                           <p className="text-white/50 italic">All sorts.</p>
+                        </div>
+                        {/* Contact */}
+                        <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
+                          <p>If you have concerns or questions &mdash;</p>
+                          <p className="text-white/80 font-medium">jahronimo1@hotmail.com</p>
+                          <p className="text-white/80 font-medium">07538 068 550</p>
                         </div>
                       </div>
                     ),
