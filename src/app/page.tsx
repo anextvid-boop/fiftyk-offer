@@ -927,6 +927,42 @@ jahronimo1@hotmail.com
                       </div>
                     ),
                   },
+                  {
+                    title: "The Steps",
+                    content: (
+                      <div className="flex flex-col text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        {/* Step 1 */}
+                        <div className="flex flex-col gap-2 mb-5">
+                          <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">01</p>
+                          <p><strong className="text-white font-semibold">Press the button.</strong></p>
+                          <p>The donate or contact button on the page.</p>
+                        </div>
+                        {/* Step 2 */}
+                        <div className="flex flex-col gap-2 mb-5">
+                          <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">02</p>
+                          <p><strong className="text-white font-semibold">Fill me in.</strong></p>
+                          <p>Fill out your details.</p>
+                          <p>Contact information.</p>
+                          <p>Whatever you&apos;re thinking.</p>
+                        </div>
+                        {/* Step 3 */}
+                        <div className="flex flex-col gap-2 mb-5">
+                          <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">03</p>
+                          <p><strong className="text-white font-semibold">I&apos;ll start researching.</strong></p>
+                          <p>More before anything happens.</p>
+                          <p>No rush. No pressure.</p>
+                        </div>
+                        {/* Step 4 */}
+                        <div className="flex flex-col gap-2">
+                          <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">04</p>
+                          <p><strong className="text-white font-semibold">We figure out what it becomes.</strong></p>
+                          <p>Something big, something small.</p>
+                          <p>In person. Sent to you.</p>
+                          <p className="text-white/50 italic">All sorts.</p>
+                        </div>
+                      </div>
+                    ),
+                  },
                 ];
 
 
