@@ -792,13 +792,8 @@ jahronimo1@hotmail.com
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>Hey, something special lined up&hellip;</p>
-                        <p>Something I want to do&hellip;</p>
-                        <p>Looking for support.</p>
-                        <p>I have a donations page.</p>
-                        <p>Help would be appreciated.</p>
-                        <p>Then, came to another idea&hellip;</p>
-                        <p className="text-white/80 font-semibold">Something way more interesting.</p>
-                        <p>A bigger ask for bigger ideas.</p>
+                        <p>Need support.</p>
+                        <p className="text-white/80 font-semibold">1 of 1 project.</p>
                       </div>
                     ),
                   },
