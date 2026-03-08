@@ -835,7 +835,9 @@ jahronimo1@hotmail.com
                     title: "The One-of-One Project",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>For sizable contributions,</p>
+                        <p>Needed support.</p>
+                        <p>Now <strong className="text-white font-semibold">1 of 1 project.</strong></p>
+                        <p>For sizable contributions&hellip;</p>
                         <p>I&apos;m offering art commissions.</p>
                         <p><strong className="text-white font-semibold">Something non-replicable.</strong></p>
                         <p><strong className="text-white font-semibold">Secret. Special. Specific&hellip;</strong></p>
@@ -844,6 +846,8 @@ jahronimo1@hotmail.com
                         <p><strong className="text-white font-semibold">Something&hellip; different.</strong></p>
                         <p>Mixed media.</p>
                         <p>Physical + creative experimentation.</p>
+                        <p>Able to take many shapes and forms.</p>
+                        <p>Colours, styles, medias&hellip;</p>
                         <p>No saying exactly what&hellip;</p>
                         <p>That&apos;s part of it.</p>
                       </div>
