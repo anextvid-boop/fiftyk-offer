@@ -696,8 +696,10 @@ jahronimo1@hotmail.com
                 {[
                   { name: "name", placeholder: "Your Name", type: "text", required: true },
                   { name: "email", placeholder: "Email Address", type: "email", required: true },
+                  { name: "phone", placeholder: "Phone Number (optional)", type: "tel", required: false },
                   { name: "location", placeholder: "Where you're from", type: "text", required: true },
-                  { name: "contact", placeholder: "How best to find you?", type: "text", required: true },
+                  { name: "contact", placeholder: "Best way to reach you? (WhatsApp / Call / Email / DM)", type: "text", required: true },
+                  { name: "social", placeholder: "Instagram or social handle", type: "text", required: false },
                 ].map((field) => (
                   <div key={field.name} className="relative group">
                     <input
@@ -717,7 +719,7 @@ jahronimo1@hotmail.com
 
                 {/* Expandable optional fields */}
                 <div className="flex flex-col w-full mt-2 border-t border-white/8">
-                  <ExpandableField name="your_type" label="Your Type" fields={["What's your type?", "Big or small?", "Pick a colour"]} />
+                  <ExpandableField name="your_type" label="Your Type" fields={["What's your type? (aesthetic, vibe, style)", "Big or small? (scale of the piece)", "Indoor or outdoor?", "Pick a colour or palette", "A mood or feeling you want it to carry", "Anything you don't want"]} />
                   <ExpandableField name="personal_life" label="Personal Life" fields={["Who are you?", "Personal Ambition", "Lifestyle Focus", "Values & Beliefs", "Current Challenges"]} />
                   <ExpandableField name="business_life" label="Business Life" fields={["What you do", "Why?", "Current Project", "Business Goal", "Vision"]} />
                   <ExpandableField name="social_links" label="Socials & Links" fields={["Primary Link", "Secondary Link", "Portfolio", "Recent Work", "Reference Link"]} />
