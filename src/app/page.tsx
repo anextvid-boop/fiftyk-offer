@@ -834,22 +834,37 @@ jahronimo1@hotmail.com
                   {
                     title: "The One-of-One Project",
                     content: (
-                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>Needed support.</p>
-                        <p>Now <strong className="text-white font-semibold">1 of 1 project.</strong></p>
-                        <p>For sizable contributions&hellip;</p>
-                        <p>I&apos;m offering art commissions.</p>
-                        <p><strong className="text-white font-semibold">Something non-replicable.</strong></p>
-                        <p><strong className="text-white font-semibold">Secret. Special. Specific&hellip;</strong></p>
-                        <p>Created for you.</p>
-                        <p>Projects that are not just digital.</p>
-                        <p><strong className="text-white font-semibold">Something&hellip; different.</strong></p>
-                        <p>Mixed media.</p>
-                        <p>Physical + creative experimentation.</p>
-                        <p>Able to take many shapes and forms.</p>
-                        <p>Colours, styles, medias&hellip;</p>
-                        <p>No saying exactly what&hellip;</p>
-                        <p>That&apos;s part of it.</p>
+                      <div className="flex flex-col text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                        {/* Intro group */}
+                        <div className="flex flex-col gap-2 mb-5">
+                          <p>Needed support.</p>
+                          <p>Now <strong className="text-white font-semibold">1 of 1 project.</strong></p>
+                          <p>For sizable contributions&hellip;</p>
+                        </div>
+                        {/* Commission identity */}
+                        <div className="flex flex-col gap-2 mb-5">
+                          <p>I&apos;m offering <strong className="text-[#d4af37]/90 font-semibold">art commissions.</strong></p>
+                          <p><strong className="text-white font-semibold">Something non-replicable.</strong></p>
+                          <p><strong className="text-white font-semibold">Secret. Special. Specific&hellip;</strong></p>
+                          <p className="text-white/80 font-medium">Created for you.</p>
+                        </div>
+                        {/* What it is */}
+                        <div className="flex flex-col gap-2 mb-5">
+                          <p>Projects that are <strong className="text-white/80 font-semibold">not just digital.</strong></p>
+                          <p><strong className="text-white font-semibold">Something&hellip; different.</strong></p>
+                          <p className="text-white/80 font-medium">Mixed media.</p>
+                        </div>
+                        {/* Range */}
+                        <div className="flex flex-col gap-2 mb-5">
+                          <p><strong className="text-white/80 font-semibold">Physical + creative experimentation.</strong></p>
+                          <p>Able to take many shapes and forms.</p>
+                          <p className="text-white/50 italic">Colours, styles, medias&hellip;</p>
+                        </div>
+                        {/* Mystery close */}
+                        <div className="flex flex-col gap-2">
+                          <p className="text-white/70 font-medium">No saying exactly what&hellip;</p>
+                          <p>That&apos;s part of it.</p>
+                        </div>
                       </div>
                     ),
                   },
