@@ -800,22 +800,35 @@ jahronimo1@hotmail.com
                     ),
                   },
                   {
-                    title: "The Artist & His Craft",
+                    title: "The Artist",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>My name is <strong className="text-white font-semibold">Jahronimo.</strong></p>
-                        <p>I&apos;ve spent my entire life immersed in the arts, starting from a kid experimenting with paints, inks, and paper mache, through to formal training and professional practice.</p>
-                        <p>Creative work takes time, dedication, and patience. Over the years, I&apos;ve trained across a vast spectrum of creative disciplines:</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 font-medium">
-                          <p><strong className="text-white/70">A++ Foundational Arts</strong> (Mixed Media)</p>
-                          <p>Game Design & 3D Environment Art</p>
-                          <p>Animation (2D & 3D Modelling)</p>
-                          <p>Architectural Visualisation</p>
-                          <p>Photography & Music Video Production</p>
-                          <p>Advertising, Branding & Textiles</p>
-                          <p>Experimental Multi-media</p>
+                        <p>I&apos;ve been doing mixed media art most of my life&hellip;</p>
+                        <p>From a kid experimenting with:</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 font-medium italic">
+                          <p>Types of paints, inks,</p>
+                          <p>Mixing buttons, glues, paper mache&hellip;</p>
+                          <p>Traditional drawing,</p>
+                          <p>Graffiti.</p>
+                          <p>All sorts&hellip;</p>
                         </div>
-                        <p>This diverse background allows for <strong className="text-white/80 font-semibold">unique combinations</strong> of media, blending techniques into pieces that defy simple categorization.</p>
+                        <p>Then on with:</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 font-medium">
+                          <p><strong className="text-white/70">A++ Art Foundation</strong> (Mixed Media)</p>
+                          <p>Then Game Design,</p>
+                          <p>3D Animation & some 2D Animation,</p>
+                          <p>3D Modelling & 3D Environment Design,</p>
+                          <p>Realtime Architectural Visualisation,</p>
+                          <p>Music Videos & Video Production,</p>
+                          <p>Mixed Media with Textiles,</p>
+                          <p>Photography & Advertising style,</p>
+                          <p>Personal brand stuff & Branding,</p>
+                          <p>General Content creation.</p>
+                          <p>Many forms of Art&hellip;</p>
+                          <p className="opacity-50 text-[10px]">I can list more&hellip;</p>
+                        </div>
+                        <p>Blending these skills into <strong className="text-white/80 font-semibold">unique combinations</strong> is what defines my work.</p>
                         <p>Right now, I am dedicated to bringing this project to life. While some help has come, I need support to continue. I hope you&apos;re onboard for this journey.</p>
                       </div>
                     ),
