@@ -645,10 +645,10 @@ export default function Home() {
                       >
                         <div className="flex flex-col items-center gap-6 py-8 border-t border-[#d4af37]/20">
                           <div className="flex flex-col gap-4 text-white/90 text-sm md:text-base font-normal leading-relaxed tracking-wide text-center">
-                            <p>I&apos;m offering large scale <strong className="text-[#d4af37] font-bold tracking-tight">art commissions.</strong></p>
-                            <p>Something completely unique. Non-replicable. Secret. Specific.</p>
-                            <p className="text-[#d4af37]/80">Physical + creative experimentation that takes many shapes.</p>
-                            <p>Created specifically for you based on the details you fill me in with.</p>
+                            <p>I&apos;m offering <strong className="text-[#d4af37] font-bold tracking-tight">art commissions.</strong></p>
+                            <p>Something unique. Non-replicable. Secret. Specific.</p>
+                            <p className="text-[#d4af37]/80">Physical + creative experimentation. that takes many shapes.</p>
+                            <p>Created specifically for you. based on the details you fill me in with.</p>
                           </div>
                           <button
                             onClick={() => { playTick(); setShowForm(true); }}
