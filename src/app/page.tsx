@@ -459,7 +459,7 @@ export default function Home() {
             >
               {/* Donation Card (Enhanced Visibility) */}
               <motion.a
-                href="https://gofund.me/1bdc2d15c"
+                href="https://gofund.me/1b96ee5b4"
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
@@ -800,36 +800,23 @@ jahronimo1@hotmail.com
                     ),
                   },
                   {
-                    title: "About Me",
+                    title: "The Artist & His Craft",
                     content: (
                       <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
                         <p>My name is <strong className="text-white font-semibold">Jahronimo.</strong></p>
-                        <p>I&apos;ve spent most of my life working in different forms of art.</p>
-                        <p>Creative work takes time, dedication, and patience.</p>
-                        <p>It&apos;s something I&apos;ve always been committed to.</p>
-                        <p>Over the years I&apos;ve studied and trained across several creative fields, including:</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>Traditional drawing,</p>
-                          <p><strong className="text-white/70 font-semibold">A++ Foundational arts,</strong></p>
-                          <p>Games design,</p>
-                          <p>3D animation,</p>
-                          <p>2D animation,</p>
-                          <p>3D modelling,</p>
-                          <p>3D environment art,</p>
-                          <p>Architectural visualisation,</p>
-                          <p>Music videos,</p>
-                          <p>Video production,</p>
-                          <p>Photography,</p>
-                          <p>Mix media with textiles,</p>
-                          <p>Advertising and branding,</p>
-                          <p>Personal content creation.</p>
-                          <p>etc. I can list more&hellip;</p>
+                        <p>I&apos;ve spent my entire life immersed in the arts, starting from a kid experimenting with paints, inks, and paper mache, through to formal training and professional practice.</p>
+                        <p>Creative work takes time, dedication, and patience. Over the years, I&apos;ve trained across a vast spectrum of creative disciplines:</p>
+                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 font-medium">
+                          <p><strong className="text-white/70">A++ Foundational Arts</strong> (Mixed Media)</p>
+                          <p>Game Design & 3D Environment Art</p>
+                          <p>Animation (2D & 3D Modelling)</p>
+                          <p>Architectural Visualisation</p>
+                          <p>Photography & Music Video Production</p>
+                          <p>Advertising, Branding & Textiles</p>
+                          <p>Experimental Multi-media</p>
                         </div>
-                        <p>There has been some help along the way, but very little.</p>
-                        <p>I need support.</p>
-                        <p>Right now, I&apos;m just trying to <strong className="text-white/80 font-semibold">do this project.</strong> and stuff.</p>
-                        <p>Hope you&apos;re onboard.</p>
-                        <p>Interested to see.</p>
+                        <p>This diverse background allows for <strong className="text-white/80 font-semibold">unique combinations</strong> of media, blending techniques into pieces that defy simple categorization.</p>
+                        <p>Right now, I am dedicated to bringing this project to life. While some help has come, I need support to continue. I hope you&apos;re onboard for this journey.</p>
                       </div>
                     ),
                   },
@@ -870,45 +857,7 @@ jahronimo1@hotmail.com
                       </div>
                     ),
                   },
-                  {
-                    title: "About the Art",
-                    content: (
-                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
-                        <p>I&apos;ve been doing mixed media art most of my life.</p>
-                        <p>From a kid, experimenting with:</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p>Types of paints, inks,</p>
-                          <p>Buttons, glues,</p>
-                          <p>Paper mache,</p>
-                          <p>Traditional drawing.</p>
-                          <p>All sorts.</p>
-                        </div>
-                        <p>Then on with:</p>
-                        <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20">
-                          <p><strong className="text-white/70 font-semibold">A++ Art Foundation</strong> (mixed media)</p>
-                          <p>Game design,</p>
-                          <p>3D animation,</p>
-                          <p>Some 2D animation,</p>
-                          <p>3D modelling,</p>
-                          <p>3D environment art,</p>
-                          <p>Realtime architectural visualisation,</p>
-                          <p>Music videos,</p>
-                          <p>Types of video production,</p>
-                          <p>Mix media with textiles,</p>
-                          <p>Photography,</p>
-                          <p>Advertising style,</p>
-                          <p>Personal brand and branding,</p>
-                          <p>General content creation.</p>
-                          <p>Many forms of art.</p>
-                        </div>
-                        <p>Sometimes with crazy combinations&hellip;</p>
-                        <p>Blending skills into <strong className="text-white/80 font-semibold">unique work.</strong></p>
-                        <p>Working on something&hellip;</p>
-                        <p>No saying what.</p>
-                        <p>Just part of it.</p>
-                      </div>
-                    ),
-                  },
+
                   {
                     title: "Support the Project",
                     content: (
