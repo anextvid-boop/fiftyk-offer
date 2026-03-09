@@ -215,7 +215,7 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
         onClick={() => { playTick(); setExpanded(!expanded); }}
         className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light active:scale-[0.99] active:brightness-90 origin-center"
       >
-        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/50"}`}>{label}</span>
+        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/80"}`}>{label}</span>
         <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
       </button>
       <AnimatePresence>
@@ -241,7 +241,7 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
                       onChange={(e) => {
                         if (e.target.value.length % 5 === 0) playKeystroke(); // Occasional tactile click when typing
                       }}
-                      className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/15 font-light text-base resize-none"
+                      className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/35 font-light text-base resize-none"
                     />
                   );
                 })
@@ -254,7 +254,7 @@ const ExpandableField = ({ name, label, fields }: { name: string; label: string;
                   onChange={(e) => {
                     if (e.target.value.length % 5 === 0) playKeystroke();
                   }}
-                  className="w-full bg-transparent py-4 text-white tracking-wide outline-none placeholder:text-white/15 font-light text-base resize-none border-b border-white/8 focus:border-[#d4af37]/50 transition-all"
+                  className="w-full bg-transparent py-4 text-white tracking-wide outline-none placeholder:text-white/35 font-light text-base resize-none border-b border-white/8 focus:border-[#d4af37]/50 transition-all"
                 />
               )}
             </div>
@@ -276,7 +276,7 @@ const ExpandableFileField = ({ name, label, description }: { name: string; label
         onClick={() => { playTick(); setExpanded(!expanded); }}
         className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light active:scale-[0.99] active:brightness-90 origin-center"
       >
-        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/50"}`}>{label}</span>
+        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/80"}`}>{label}</span>
         <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
       </button>
       <AnimatePresence>
@@ -317,7 +317,7 @@ const GalleryAccordion = ({ sections }: { sections: { title: string; content: Re
             onClick={() => setOpenIdx(openIdx === i ? null : i)}
             className="w-full py-4 flex justify-between items-center text-left outline-none group"
           >
-            <span className={`text-xs uppercase tracking-[0.35em] font-semibold transition-colors duration-200 ${openIdx === i ? "text-[#d4af37]" : "text-white/50 group-hover:text-white/80"}`}>
+            <span className={`text-sm uppercase tracking-[0.35em] font-bold transition-colors duration-200 ${openIdx === i ? "text-[#d4af37]" : "text-white/70 group-hover:text-white"}`}>
               {section.title}
             </span>
             <span className={`text-lg font-thin transition-all duration-300 flex-shrink-0 ml-4 ${openIdx === i ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/35"}`}>+</span>
@@ -336,6 +336,7 @@ const GalleryAccordion = ({ sections }: { sections: { title: string; content: Re
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
+  const [showOfferDetails, setShowOfferDetails] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { playSuccessSweep, playTick, playKeystroke, playError, playOpeningSting } = useSensoryFeedback();
 
@@ -508,8 +509,8 @@ export default function Home() {
 
               <motion.div
                 variants={itemVariants}
-                onClick={() => { playTick(); setShowForm(true); }}
-                className="relative w-full bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-20 px-10 sm:px-16 cursor-pointer group animate-card-entrance overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:scale-[0.98] active:brightness-90 hover:scale-[1.01] hover:shadow-[0_0_60px_rgba(212,175,55,0.12)] origin-center transition-all duration-300"
+                className="relative w-full bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center py-12 px-10 sm:px-16 cursor-pointer group animate-card-entrance overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] active:brightness-95 hover:shadow-[0_0_60px_rgba(212,175,55,0.12)] origin-center transition-all duration-300"
+                onClick={() => { playTick(); setShowOfferDetails(!showOfferDetails); }}
               >
                 {/* Hardware-accelerated glow pulse */}
                 <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
@@ -628,10 +629,37 @@ export default function Home() {
                       }}
                       className="text-[#d4af37] tracking-[0.5em] text-xs uppercase font-bold mr-[-0.5em]"
                     >
-                      press to enter
+                      {showOfferDetails ? "press to hide" : "press to expand"}
                     </motion.span>
                     <div className="w-4 h-[1px] bg-[#d4af37]/30" />
                   </motion.div>
+
+                  <AnimatePresence>
+                    {showOfferDetails && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="w-full mt-10 overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <div className="flex flex-col items-center gap-6 py-8 border-t border-[#d4af37]/20">
+                          <div className="flex flex-col gap-4 text-white/90 text-sm md:text-base font-normal leading-relaxed tracking-wide text-center">
+                            <p>I&apos;m offering large scale <strong className="text-[#d4af37] font-bold tracking-tight">art commissions.</strong></p>
+                            <p>Something completely unique. Non-replicable. Secret. Specific.</p>
+                            <p className="text-[#d4af37]/80">Physical + creative experimentation that takes many shapes.</p>
+                            <p>Created specifically for you based on the details you fill me in with.</p>
+                          </div>
+                          <button
+                            onClick={() => { playTick(); setShowForm(true); }}
+                            className="mt-6 px-10 py-4 border border-[#d4af37] text-[#d4af37] tracking-[0.4em] text-xs uppercase font-black hover:bg-[#d4af37] hover:text-black transition-all duration-300"
+                          >
+                            continue to access
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
             </motion.div>
@@ -792,17 +820,17 @@ jahronimo1@hotmail.com
                   {
                     title: "Something Special",
                     content: (
-                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                      <div className="flex flex-col gap-3 text-white/90 text-base font-normal leading-relaxed tracking-wide">
                         <p>Hey, something special lined up&hellip;</p>
                         <p>Need support.</p>
-                        <p className="text-white/80 font-semibold">1 of 1 project.</p>
+                        <p className="text-white font-bold tracking-tight">1 of 1 project.</p>
                       </div>
                     ),
                   },
                   {
                     title: "The Artist",
                     content: (
-                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                      <div className="flex flex-col gap-3 text-white/90 text-base font-normal leading-relaxed tracking-wide">
                         <p>My name is <strong className="text-white font-semibold">Jahronimo.</strong></p>
                         <p>I&apos;ve been doing mixed media art most of my life&hellip;</p>
                         <p>From a kid experimenting with:</p>
@@ -843,7 +871,7 @@ jahronimo1@hotmail.com
                   {
                     title: "The One-of-One Project",
                     content: (
-                      <div className="flex flex-col text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                      <div className="flex flex-col text-white/90 text-base font-normal leading-relaxed tracking-wide">
                         {/* Intro group */}
                         <div className="flex flex-col gap-2 mb-5">
                           <p>Needed support.</p>
@@ -881,7 +909,7 @@ jahronimo1@hotmail.com
                   {
                     title: "Support the Project",
                     content: (
-                      <div className="flex flex-col gap-3 text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                      <div className="flex flex-col gap-3 text-white/90 text-base font-normal leading-relaxed tracking-wide">
                         <p>If you want to support:</p>
                         <p>Donations are appreciated.</p>
                         <p>For large contributions,</p>
@@ -901,7 +929,7 @@ jahronimo1@hotmail.com
                   {
                     title: "The Steps",
                     content: (
-                      <div className="flex flex-col text-white/60 text-sm font-light leading-relaxed tracking-wide">
+                      <div className="flex flex-col text-white/90 text-base font-normal leading-relaxed tracking-wide">
                         {/* Step 1 */}
                         <div className="flex flex-col gap-2 mb-5">
                           <p className="text-[#d4af37]/70 tracking-widest text-xs uppercase font-semibold">01</p>
