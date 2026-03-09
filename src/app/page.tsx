@@ -808,7 +808,9 @@ jahronimo1@hotmail.com
                         <p>From a kid experimenting with:</p>
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 font-medium italic">
                           <p>Types of paints, inks,</p>
-                          <p>Mixing buttons, glues, paper mache&hellip;</p>
+                          <p>Mixing buttons,</p>
+                          <p>Glues,</p>
+                          <p>Paper mache&hellip;</p>
                           <p>Traditional drawing,</p>
                           <p>Graffiti.</p>
                           <p>All sorts&hellip;</p>
@@ -817,16 +819,21 @@ jahronimo1@hotmail.com
                         <div className="flex flex-col gap-1 pl-4 border-l border-[#d4af37]/20 font-medium">
                           <p><strong className="text-white/70">A++ Art Foundation</strong> (Mixed Media)</p>
                           <p>Then Game Design,</p>
-                          <p>3D Animation & some 2D Animation,</p>
-                          <p>3D Modelling & 3D Environment Design,</p>
-                          <p>Realtime Architectural Visualisation,</p>
-                          <p>Music Videos & Video Production,</p>
-                          <p>Mixed Media with Textiles,</p>
-                          <p>Photography & Advertising style,</p>
-                          <p>Personal brand stuff & Branding,</p>
+                          <p>3D Animation,</p>
+                          <p>Some 2D animation,</p>
+                          <p>3D Modelling,</p>
+                          <p>3D Environment artist stuff,</p>
+                          <p>Realtime Architectural visualisation,</p>
+                          <p>Music videos,</p>
+                          <p>Types of video production,</p>
+                          <p>Mix media with textiles,</p>
+                          <p>Photography,</p>
+                          <p>Advertising style,</p>
+                          <p>Personal brand stuff,</p>
+                          <p>Branding,</p>
                           <p>General Content creation.</p>
                           <p>Many forms of Art&hellip;</p>
-                          <p className="opacity-50 text-[10px]">I can list more&hellip;</p>
+                          <p className="opacity-50 text-[10px] mt-2">I can list more&hellip;</p>
                         </div>
                         <p>Blending these skills into <strong className="text-white/80 font-semibold">unique combinations</strong> is what defines my work.</p>
                         <p>Right now, I am dedicated to bringing this project to life. While some help has come, I need support to continue. I hope you&apos;re onboard for this journey.</p>
