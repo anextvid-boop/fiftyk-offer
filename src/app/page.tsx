@@ -378,11 +378,10 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
       </AnimatePresence>
     </div>
   );
-};
-
-const SHUFFLE_ICONS = [
+};const SHUFFLE_ICONS = [
+  // 1-10: Basic Geometrics
   <svg key="1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14zM17 7H7v10h10V7z" /></svg>,
-  <svg key="2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4zM6 22h12v-1H6v1z" /></svg>,
+  <svg key="2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM12 12c-4.4 0-8 1.8-8 4v2h16v-2c0-2.2-3.6-4-8-4z" /></svg>,
   <svg key="3" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="8" /></svg>,
   <svg key="4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4l-9 16h18L12 4z" /></svg>,
   <svg key="5" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="5" y="5" width="14" height="14" /></svg>,
@@ -391,40 +390,56 @@ const SHUFFLE_ICONS = [
   <svg key="8" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>,
   <svg key="9" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4 12l8 10 8-10L12 2z" /></svg>,
   <svg key="10" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>,
-  <svg key="11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>,
-  <svg key="12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>,
-  <svg key="13" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" /></svg>,
-  <svg key="14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" /></svg>,
-  <svg key="15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.58L12 11.23 9.17 8.2c-.97-1.02-2.33-1.58-3.77-1.58-2.97 0-5.4 2.43-5.4 5.4s2.43 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.58L12 12.77l2.83 3.03c.97 1.02 2.33 1.58 3.77 1.58 2.97 0 5.4-2.43 5.4-5.38s-2.43-5.4-5.4-5.4zM5.4 15.58c-1.99 0-3.6-1.61-3.6-3.58s1.61-3.6 3.6-3.6c.97 0 1.88.4 2.48 1.05L10.33 12l-2.45 2.53c-.6.65-1.51 1.05-2.48 1.05zm13.2 0c-.97 0-1.88-.4-2.48-1.05L13.67 12l2.45-2.53c.6-.65 1.51-1.05 2.48-1.05 1.99 0 3.6 1.61 3.6 3.6s-1.61 3.58-3.6 3.58z" /></svg>,
-  // 16+ New Abstract/Geometric
-  <svg key="16" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>,
-  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="10" strokeWidth="2" fill="none"/><path d="M12 2v20M2 12h20"/></svg>,
-  <svg key="18" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v6H9V9z" /></svg>,
-  <svg key="19" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.87L12 17.77l-6.18 3.24L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>,
-  <svg key="20" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>,
-  <svg key="21" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>,
-  <svg key="22" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13,3h-2v10h2V3z M17.83,5.17l-1.42,1.42C17.99,7.86,19,9.81,19,12c0,3.87-3.13,7-7,7s-7-3.13-7-7 c0-2.19,1.01-4.14,2.58-5.42L6.17,5.17C4.23,6.82,3,9.26,3,12c0,4.97,4.03,9,9,9s9-4.03,9-9C21,9.26,19.77,6.82,17.83,5.17z"/></svg>,
-  <svg key="23" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c-4 0-8 2-8 6v10c0 1 1 2 2 2h12c1 0 2-1 2-2V8c0-4-4-6-8-6zm0 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>,
-  <svg key="24" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99z"/></svg>,
-  <svg key="25" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z"/></svg>,
-  <svg key="26" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /><circle cx="12" cy="12" r="3"/></svg>,
-  <svg key="27" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><circle cx="12" cy="12" r="3"/></svg>,
-  <svg key="28" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>,
+
+  // 11-20: Recognizable Objects
+  <svg key="11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>, // Heart
+  <svg key="12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt
+  <svg key="13" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zm0 10.5c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z" /></svg>, // Eye
+  <svg key="14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4z" /></svg>, // Shield
+  <svg key="15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>, // Plane
+  <svg key="16" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 18H4l-2-5h20l-2 5zM12 4v11m-3-1l3-1 3 1V4H9v10z" /></svg>, // Boat
+  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree (Stylized)
+  <svg key="18" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zm-1-15h2v6h-2V7zm0 8h2v2h-2v-2z" /></svg>, // Warning
+  <svg key="19" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13 3h-2v10h2V3zM17.8 5.2l-1.4 1.4C18 7.9 19 9.8 19 12c0 3.9-3.1 7-7 7s-7-3.1-7-7c0-2.2 1-4.1 2.6-5.4L6.2 5.2C4.2 6.8 3 9.3 3 12c0 5 4 9 9 9s9-4 9-9c0-2.7-1.2-5.2-3.2-6.8z" /></svg>, // Power
+  <svg key="20" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" /></svg>, // Add
+
+  // 21-30: More Objects
+  <svg key="21" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>, // Layers
+  <svg key="22" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M18 16.1c-.8 0-1.4.3-2 .8l-7.1-4.2V11c0-.2 0-.3.1-.5l7.1-4.2c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3v.3l-7.1 4.2c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.1 4.2v.3c0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3z" /></svg>, // Share
+  <svg key="23" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.3l4.3 2.5-1.1-4.8 3.8-3.3-5-.4L12 6.7l-2 4.6-5 .4 3.8 3.3-1.1 4.8z" /></svg>, // Star 2
+  <svg key="24" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" /><circle cx="12" cy="12" r="3" /></svg>, // Target
+  <svg key="25" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 10c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" /></svg>, // Disc
+  <svg key="26" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14z" /><path d="M7 14.5l3-3 4 4 3-3 3 3V17H1V7h22v10" /></svg>, // Graph
+  <svg key="27" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>, // House
+  <svg key="28" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z" /></svg>, // Location
+  <svg key="29" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 4H4c-1.1 0-1.9.9-1.9 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>, // Mail
+  <svg key="30" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" /></svg>, // Phone
+
+  // 31-40: More Silhouettes
+  <svg key="31" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L1 21h22L12 2zm0 4l7.5 13H4.5L12 6z" /></svg>, // Triangle Outline
+  <svg key="32" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zM12 21c-4.1-1.1-7-5.3-7-9.5V6.4l7-3.1 7 3.1v5.9c0 4.2-2.9 8.4-7 9.5z" /></svg>, // Shield Outline
+  <svg key="33" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zM12 17c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z" /></svg>, // Eye Outline
+  <svg key="34" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M4.5 11h15c.8 0 1.5-.7 1.5-1.5S20.3 8 19.5 8h-15C3.7 8 3 8.7 3 9.5S3.7 11 4.5 11zM19.5 13h-15c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h15c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5z" /></svg>, // Parallel Lines
+  <svg key="35" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2zm0 2c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" /></svg>, // Circle Outline
 ];
 
 const SpeedShuffler = () => {
   const [index, setIndex] = useState(0);
 
+  // Diverse silhouette-style containers
   const containerShapes = [
     "rounded-none",
     "rounded-full",
     "rounded-xl",
-    "rounded-tr-2xl rounded-bl-2xl",
-    "rounded-tl-full rounded-br-full",
-    "rounded-3xl",
-    "rounded-lg",
-    "rounded-[20px_60px_20px_60px]",
-    "rounded-[60px_20px_60px_20px]",
+    "rounded-tr-[40px] rounded-bl-[40px]",
+    "rounded-tl-[40px] rounded-br-[40px]",
+    "rounded-[50%_20%_50%_20%]",
+    "rounded-[20%_50%_20%_50%]",
+    "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]",
+    "rounded-[70%_30%_30%_70%/70%_70%_30%_30%]",
+    "rounded-[40%_40%_40%_40%]",
+    "rounded-[10px_50px_10px_50px]",
+    "rounded-[50px_10px_50px_10px]",
   ];
 
   const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
@@ -432,7 +447,7 @@ const SpeedShuffler = () => {
   useEffect(() => {
     const shuffleInterval = setInterval(() => {
       setIndex((prev) => (prev + 1) % SHUFFLE_ICONS.length);
-    }, 100);
+    }, 90); // Fast shuffler
     return () => clearInterval(shuffleInterval);
   }, []);
 
@@ -440,29 +455,34 @@ const SpeedShuffler = () => {
   const rotation = rotations[index % rotations.length];
 
   return (
-    <div className="flex justify-center mb-8 relative z-20 scale-100 sm:scale-110">
+    <div className="flex justify-center mb-10 relative z-20 scale-110 sm:scale-120">
       <div className="relative">
-        <div className="absolute inset-0 bg-[#d4af37]/40 blur-2xl rounded-full animate-pulse" />
+        {/* Glow backdrop */}
+        <div className="absolute inset-0 bg-[#d4af37]/40 blur-3xl rounded-full animate-pulse" />
+        
         <div
-          className={`relative w-16 h-16 flex items-center justify-center border-2 border-[#d4af37]/70 bg-black/95 p-3.5 shadow-[0_0_40px_rgba(212,175,55,0.4)] overflow-hidden transition-all duration-100 ${containerShapes[shapeIdx]}`}
+          className={`relative w-16 h-16 flex items-center justify-center border-[1.5px] border-[#d4af37] bg-black/95 p-3.5 shadow-[0_0_40px_rgba(212,175,55,0.4)] overflow-hidden transition-all duration-75 ${containerShapes[shapeIdx]}`}
           style={{ 
-            animation: 'flicker 0.15s infinite',
+            animation: 'flicker 0.1s infinite',
             transform: `rotate(${rotation}deg)`
           }}
         >
-          <div className="absolute inset-0 w-full h-[1.5px] bg-[#d4af37]/50 animate-[scan_2s_linear_infinite]" style={{ top: '50%' }} />
+          {/* Scanning line */}
+          <div className="absolute inset-0 w-full h-[1.5px] bg-[#d4af37]/40 animate-[scan_2s_linear_infinite]" style={{ top: '50%' }} />
 
+          {/* Inner Silhouette Icon */}
           <div 
-            className="w-full h-full text-[#d4af37] drop-shadow-[0_0_12px_rgba(212,175,55,1)] transition-transform duration-100"
+            className="w-full h-full text-[#d4af37] drop-shadow-[0_0_12px_rgba(212,175,55,1)] transition-transform duration-75"
             style={{ transform: `rotate(${-rotation}deg)` }}
           >
             {SHUFFLE_ICONS[index]}
           </div>
 
-          <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t-2 border-l-2 border-[#d4af37]" />
-          <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t-2 border-r-2 border-[#d4af37]" />
-          <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b-2 border-l-2 border-[#d4af37]" />
-          <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b-2 border-r-2 border-[#d4af37]" />
+          {/* Minimal Corner markers */}
+          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#d4af37]/60" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#d4af37]/60" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#d4af37]/60" />
+          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#d4af37]/60" />
         </div>
       </div>
     </div>
