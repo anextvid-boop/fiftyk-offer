@@ -260,8 +260,8 @@ const ExpandableField = ({ name, label, fields, onTick, onKeystroke }: { name: s
         onClick={() => { onTick(); setExpanded(!expanded); }}
         className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light active:scale-[0.99] active:brightness-90 origin-center"
       >
-        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/80"}`}>{label}</span>
-        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
+        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/95"}`}>{label}</span>
+        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/60"}`}>+</span>
       </button>
       <AnimatePresence>
         {expanded && (
@@ -286,7 +286,7 @@ const ExpandableField = ({ name, label, fields, onTick, onKeystroke }: { name: s
                       onChange={(e) => {
                         if (e.target.value.length % 5 === 0) onKeystroke();
                       }}
-                      className="w-full bg-transparent border-b border-white/8 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/35 font-light text-base resize-none"
+                      className="w-full bg-transparent border-b border-white/20 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/70 transition-all placeholder:text-white/50 font-light text-base resize-none"
                     />
                   );
                 })
@@ -320,8 +320,8 @@ const ExpandableSection = ({ label, children, onTick, defaultOpen = false }: { l
         onClick={() => { onTick(); setExpanded(!expanded); }}
         className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light active:scale-[0.99] active:brightness-90 origin-center"
       >
-        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/80"}`}>{label}</span>
-        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
+        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/95"}`}>{label}</span>
+        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/60"}`}>+</span>
       </button>
       <AnimatePresence>
         {expanded && (
@@ -351,8 +351,8 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
         onClick={() => { onTick(); setExpanded(!expanded); }}
         className="w-full py-5 flex justify-between items-center uppercase tracking-[0.15em] text-sm md:text-base outline-none transition-all hover:text-[#d4af37] font-light active:scale-[0.99] active:brightness-90 origin-center"
       >
-        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/80"}`}>{label}</span>
-        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/40"}`}>+</span>
+        <span className={`transition-colors duration-300 ${expanded ? "text-[#d4af37]" : "text-white/95"}`}>{label}</span>
+        <span className={`text-xl font-thin transition-all duration-300 ${expanded ? "text-[#d4af37] rotate-45" : "text-[#d4af37]/60"}`}>+</span>
       </button>
       <AnimatePresence>
         {expanded && (
@@ -1125,7 +1125,7 @@ jahronimo1@hotmail.com
                         onChange={(e) => {
                           if (e.target.value.length % 5 === 0) playKeystroke();
                         }}
-                        className="w-full bg-transparent border-b border-white/10 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/12 font-light"
+                        className="w-full bg-transparent border-b border-white/25 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/45 font-light"
                       />
                       <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#d4af37] to-[#fff3a6] group-focus-within:w-full transition-all duration-700" />
                     </div>
