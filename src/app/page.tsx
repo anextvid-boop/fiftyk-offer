@@ -1026,9 +1026,7 @@ export default function Home() {
                   THE PROJECT <br /> ACCESS
                 </h2>
                 <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent mx-auto mb-3" />
-                <div className="flex flex-col items-center gap-1 text-sm tracking-[0.4em] font-black uppercase text-[#d4af37]/80 mr-[-0.4em]">
-                  <span>FILL ME IN</span>
-                </div>
+
               </div>
 
               {/* Intro text — Concise instruction to avoid repetition */}
