@@ -1033,7 +1033,7 @@ export default function Home() {
 
               {/* Intro text — Concise instruction to avoid repetition */}
               <div className="flex flex-col gap-1 text-[#d4af37]/70 text-sm tracking-widest uppercase font-bold text-center mb-10">
-                <p>fill me in details</p>
+                <p>fill me in details..</p>
               </div>
 
               <form className="flex flex-col gap-8 w-full" encType="multipart/form-data">
