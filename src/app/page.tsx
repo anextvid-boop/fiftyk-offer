@@ -286,7 +286,7 @@ const ExpandableField = ({ name, label, fields, onTick, onKeystroke }: { name: s
                       onChange={(e) => {
                         if (e.target.value.length % 5 === 0) onKeystroke();
                       }}
-                      className="w-full bg-transparent border-b border-white/20 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/70 transition-all placeholder:text-white/50 font-light text-base resize-none"
+                      className="w-full bg-transparent border-b border-white/30 py-4 text-white tracking-wider outline-none focus:border-[#d4af37]/70 transition-all placeholder:text-white/60 font-light text-base resize-none"
                     />
                   );
                 })
@@ -1081,7 +1081,7 @@ export default function Home() {
               </div>
 
               {/* Intro text — Concise instruction to avoid repetition */}
-              <div className="flex flex-col gap-1 text-[#d4af37]/70 text-sm tracking-widest uppercase font-bold text-center mb-10">
+              <div className="flex flex-col gap-1 text-[#d4af37] text-sm tracking-widest uppercase font-bold text-center mb-10">
                 <p>fill me in details..</p>
               </div>
 
@@ -1125,7 +1125,7 @@ jahronimo1@hotmail.com
                         onChange={(e) => {
                           if (e.target.value.length % 5 === 0) playKeystroke();
                         }}
-                        className="w-full bg-transparent border-b border-white/25 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/45 font-light"
+                        className="w-full bg-transparent border-b border-white/40 py-4 text-lg md:text-2xl text-white tracking-widest outline-none transition-all placeholder:text-white/70 font-light"
                       />
                       <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-gradient-to-r from-[#d4af37] to-[#fff3a6] group-focus-within:w-full transition-all duration-700" />
                     </div>
