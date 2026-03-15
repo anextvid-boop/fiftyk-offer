@@ -455,30 +455,55 @@ const SpeedShuffler = () => {
   const [index2, setIndex2] = useState(0);
   const [index3, setIndex3] = useState(0);
   const [showBorder, setShowBorder] = useState(true);
+  const [glitchScale, setGlitchScale] = useState(1);
+  const [glitchOffset, setGlitchOffset] = useState({ x: 0, y: 0 });
 
   // Massive variety of silhouette-style containers
   const containerShapes = [
     "rounded-xl", "rounded-none", "rounded-full",
-    "rounded-tr-[3rem]", "rounded-bl-[3rem]",
+    "rounded-tr-[4rem]", "rounded-bl-[4rem]",
     "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]",
+    "rounded-[60%_40%_30%_70%/60%_30%_70%_40%]",
     "rounded-[100%_0_100%_0]", "rounded-[0_100%_0_100%]",
     "rounded-[10%_90%_10%_90%/90%_10%_90%_10%]",
     "rounded-[50%_0_50%_0]", "rounded-[0_50%_0_50%]",
     "rounded-[30%_30%_100%_30%]", "rounded-[100%_30%_30%_30%]",
-    "rounded-b-[50px] rounded-t-[5px]", "rounded-t-[50px] rounded-b-[5px]",
+    "rounded-b-[60px] rounded-t-[5px]", "rounded-t-[60px] rounded-b-[5px]",
+    "rounded-[100%_0_0_0]", "rounded-[0_100%_0_0]", "rounded-[0_0_100%_0]", "rounded-[0_0_0_100%]",
   ];
 
   const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
 
   useEffect(() => {
-    const timer1 = setInterval(() => setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length), 60); // Ultra fast
+    let timeoutId: NodeJS.Timeout;
+    
+    const shuffle = () => {
+      setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length);
+      
+      // Dynamic Size Pulse (0.85 to 1.3)
+      setGlitchScale(0.85 + Math.random() * 0.45);
+      
+      // Jitter Offset
+      setGlitchOffset({ 
+        x: (Math.random() - 0.5) * 10, 
+        y: (Math.random() - 0.5) * 10 
+      });
+
+      // Variable Speed: Sweeps between 30ms (ultra-fast) and 150ms (slow)
+      const speed = 30 + Math.abs(Math.sin(Date.now() / 2500)) * 120;
+      timeoutId = setTimeout(shuffle, speed);
+    };
+
+    shuffle();
     const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % SHUFFLE_ICONS.length), 110);
     const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % SHUFFLE_ICONS.length), 180);
     const borderTimer = setInterval(() => setShowBorder(prev => Math.random() > 0.35), 200);
 
     return () => {
-      clearInterval(timer1); clearInterval(timer2);
-      clearInterval(timer3); clearInterval(borderTimer);
+      clearTimeout(timeoutId);
+      clearInterval(timer2);
+      clearInterval(timer3);
+      clearInterval(borderTimer);
     };
   }, []);
 
@@ -487,7 +512,12 @@ const SpeedShuffler = () => {
 
   return (
     <div className="flex justify-center mb-10 relative z-20 scale-125 sm:scale-150">
-      <div className="relative w-24 h-24">
+      <div 
+        className="relative w-24 h-24 transition-transform duration-[60ms]"
+        style={{ 
+          transform: `scale(${glitchScale}) translate(${glitchOffset.x}px, ${glitchOffset.y}px)` 
+        }}
+      >
         {/* Deep Glow backdrop */}
         <div className="absolute inset-[-30%] bg-[#d4af37]/20 blur-3xl animate-pulse z-0" />
         
@@ -524,8 +554,8 @@ const SpeedShuffler = () => {
           <div 
             className="w-full h-full text-[#d4af37] drop-shadow-[2px_0_0_rgba(255,0,0,0.3)] drop-shadow-[-2px_0_0_rgba(0,255,255,0.3)] filter contrast-125"
             style={{ 
-              transform: `rotate(${-rotation}deg)`,
-              filter: `drop-shadow(0 0 10px rgba(212,175,55,0.8))`
+              transform: `rotate(${-rotation}deg) scale(${1.2 - glitchScale * 0.2})`, // Inverse scaling for secondary effect
+              filter: `drop-shadow(0 0 ${10 * glitchScale}px rgba(212,175,55,0.8))`
             }}
           >
             {SHUFFLE_ICONS[index1]}
