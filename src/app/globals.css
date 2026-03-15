@@ -58,3 +58,15 @@
   background-clip: text;
   animation: text-shine 6s linear infinite;
 }
+
+@keyframes flicker {
+  0% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 5px rgba(212, 175, 55, 0.8)); }
+  25% { opacity: 0.8; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.5) drop-shadow(0 0 10px rgba(212, 175, 55, 1)); }
+  75% { opacity: 0.9; filter: brightness(1.1); }
+  100% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 5px rgba(212, 175, 55, 0.8)); }
+}
+
+.animate-flicker {
+  animation: flicker 0.1s infinite;
+}
