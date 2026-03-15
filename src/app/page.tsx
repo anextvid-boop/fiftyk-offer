@@ -786,7 +786,6 @@ export default function Home() {
 
                 {/* Content */}
                 <div className="flex flex-col items-center gap-10 w-full">
-                  <SpeedShuffler />
                   {/* Name & Context */}
                   <div className="flex flex-col items-center gap-3 w-full px-2">
                     <motion.p
@@ -995,6 +994,7 @@ export default function Home() {
               exit="exit"
               className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] overflow-hidden"
             >
+              <SpeedShuffler />
               {/* Hardware-accelerated glow pulse */}
               <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
               {/* Shimmer sweep */}
@@ -1022,7 +1022,6 @@ export default function Home() {
                   <span className="w-5 h-5 border border-[#d4af37]/20 group-hover:border-[#d4af37]/60 flex items-center justify-center transition-all text-xs font-thin">‹</span>
                   <span className="hidden sm:inline">back</span>
                 </button>
-                <SpeedShuffler />
                 <h2 className="text-xl md:text-3xl tracking-[0.25em] font-black uppercase mb-3 mr-[-0.25em] text-transparent bg-clip-text bg-[linear-gradient(110deg,#d4af37_0%,#fff3a6_30%,#c5a059_50%,#fceea7_70%,#b8860b_100%)] bg-[length:200%_100%] animate-[shine_6s_linear_infinite] leading-tight">
                   THE PROJECT <br /> ACCESS
                 </h2>
