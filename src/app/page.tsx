@@ -387,12 +387,12 @@ const SHUFFLE_ICONS = [
   <svg key="obj4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>, // Plane
   <svg key="obj5" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 18H4l-2-5h20l-2 5zM12 4v11m-3-1l3-1 3 1V4H9v10z" /></svg>, // Boat
   <svg key="obj6" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree
-  <svg key="obj7" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>, // Star
+  <svg key="obj7" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>, // Star 5
   <svg key="obj8" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L8 12h3v4H8l4 6 4-6h-3v-4h3L12 2z" /></svg>, // Pine Tree
   <svg key="obj9" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Rocket
   <svg key="obj10" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M18 2H6v2H2v7c0 2.21 1.79 4 4 4h2c.4 1.63 1.51 3.01 3 3.7V20H9v2h6v-2h-2v-1.3c1.49-.69 2.6-2.07 3-3.7h2c2.21 0 4-1.79 4-4V4h-4V2z" /></svg>, // Trophy
   <svg key="obj11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" /></svg>, // Cloud
-  <svg key="obj12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 0L9 9H0l7 5L5 24l7-9 7 9-2-10 7-5h-9l-2.5-9z" /></svg>, // Sparkle
+  <svg key="obj12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z" /></svg>, // Starburst 8
   <svg key="obj13" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 7l-3.3 2.5a5.5 5.5 0 0 0-10.4 0L4 7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2l1 3h10l1-3h2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>, // Shark
   <svg key="obj14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6.4 6.4 9 1.7 4.3C.6 6.7 1 9.7 3 11.7c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1.1 0-1.5z" /></svg>, // Wrench
   <svg key="obj15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>, // Key
@@ -404,6 +404,23 @@ const SHUFFLE_ICONS = [
   <svg key="obj21" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a9 9 0 0 0-9 9v7.5a2.5 2.5 0 0 0 5 0V11a4 4 0 0 1 8 0v7.5a2.5 2.5 0 0 0 5 0V11a9 9 0 0 0-9-9z" /></svg>, // Ghost
   <svg key="obj22" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c-3.3 0-6 2.7-6 6v2l-3-1v2l3 2v2l-4 4v2h2l4-4h2v4h2v-4h2l4 4h2v-2l-4-4v-2l3-2v-2l-3 1V8c0-3.3-2.7-6-6-6z" /></svg>, // Alien
   <svg key="obj23" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21c-4.4 0-8-3.6-8-8 0-4.4 3.6-8 8-8 1.1 0 2.1.2 3 .6-2.5 1.5-4 4.3-4 7.4 0 3.1 1.5 5.9 4 7.4-.9.4-1.9.6-3 .6z" /></svg>, // Moon
+  <svg key="obj24" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" /></svg>, // Picture Frame
+  <svg key="obj25" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" /></svg>, // Camera
+  <svg key="obj26" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3z" /></svg>, // Mug
+  <svg key="obj27" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c4.32 0 7.94 3.01 8.82 7H13v11c0 1.1.9 2 2 2h2v2h-2c-2.21 0-4-1.79-4-4V9H3.18C4.06 5.01 7.68 2 12 2z" /></svg>, // Umbrella
+  <svg key="obj28" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M6 15c.6 0 1-.4 1-1V4c0-.6-.4-1-1-1s-1 .4-1 1v10c0 .6.4 1 1 1z M12 2h-1v16h1v-16z M18 10h-1v11h1v-11z" /></svg>, // Abstract Bars
+  <svg key="obj29" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM17 7H7v10h10V7zm-2 8H9V9h6v6z" /></svg>, // Nested Square Frame
+  <svg key="obj30" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2l1 2 2 1-2 1-1 2-1-2-2-1 2-1z M17 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1z M12 7l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" /></svg>, // Star Cluster
+  <svg key="obj31" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" /></svg>, // Music Note
+  <svg key="obj32" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l2.4 7.2h7.6l-6.2 4.4 2.4 7.2-6.2-4.4-6.2 4.4 2.4-7.2-6.2-4.4h7.6z" /></svg>, // Sharp 5-point Star
+  <svg key="obj33" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 17h-2V7h2v10zM18 17h-2V7h2v10zM14 17h-2V7h2v10zM10 17H8V7h2v10zM6 17H4V7h2v10zM2 17H0V7h2v10z" /></svg>, // Barcode Style
+  <svg key="obj34" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" /></svg>, // Info Circle
+  <svg key="obj35" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-.9.18-1.75.48-2.54l-2.6-1.53C2.32 9.17 2 10.55 2 12c0 5.18 3.95 9.45 9 9.95v-3.03c-3.39-.49-6-3.39-6-6.92z" /></svg>, // Tech Brackets
+  <svg key="obj36" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 15.01L18 12c.6-.6 1-1.45 1-2.39 0-1.92-1.55-3.47-3.47-3.47w.01c-.94 0-1.79.4-2.39 1l-3-3.01L11 3.27l9 9.03-9 9.03.86.84 3-3.01c.6.6 1.45 1 2.39 1 1.92 0 3.47-1.55 3.47-3.47 0-.94-.4-1.79-1-2.39L21 15.01z" /></svg>, // Scissors
+  <svg key="obj37" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zM9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z" /></svg>, // Lightbulb
+  <svg key="obj38" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l4 4-4 4-4-4 4-4zm0 14l4 4-4 4-4-4 4-4zm10-10l-4 4 4 4 4-4-4-4zM2 6l4 4-4 4-4-4 4-4z" /></svg>, // Diamond Cluster
+  <svg key="obj39" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm3 2h6v4H9v-4z" /></svg>, // Polaroid Style Frame
+  <svg key="obj40" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 0L14.5 9.5H24L16.5 15.5L19 25L12 19L5 25L7.5 15.5L0 9.5H9.5L12 0Z" /></svg>, // Grand Star
 ];
 
 const SpeedShuffler = () => {
@@ -429,6 +446,9 @@ const SpeedShuffler = () => {
     "rounded-b-[60px] rounded-t-[5px]", "rounded-t-[60px] rounded-b-[5px]",
     "rounded-[100%_0_0_0]", "rounded-[0_100%_0_0]", "rounded-[0_0_100%_0]", "rounded-[0_0_0_100%]",
     "rounded-[70%_30%_30%_70%/50%_50%_50%_50%]",
+    "rounded-[20px_0_20px_0]", "rounded-[0_20px_0_20px]",
+    "rounded-[60%_40%_30%_70%/100%_20%_80%_0]", "rounded-[0_80%_20%_100%/70%_30%_40%_60%]",
+    "rounded-[15%_85%_15%_85%/85%_15%_85%_15%]", // Extreme Ornate
   ];
 
   const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
@@ -452,8 +472,8 @@ const SpeedShuffler = () => {
       // Rotation Glitch
       setGlitchRotate((Math.random() - 0.5) * 12);
 
-      // Stable Variable Speed (closer rhythm)
-      const nextSpeed = 80 + Math.random() * 60;
+      // Versatile Variable Speed (wider organic rhythm)
+      const nextSpeed = 60 + Math.random() * 120;
       setGlitchSpeed(nextSpeed);
       
       timeoutId = setTimeout(shuffle, nextSpeed);
