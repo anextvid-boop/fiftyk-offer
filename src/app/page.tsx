@@ -461,10 +461,10 @@ const SpeedShuffler = () => {
   const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
 
   useEffect(() => {
-    const timer1 = setInterval(() => setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length), 80);
-    const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % SHUFFLE_ICONS.length), 140);
-    const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % SHUFFLE_ICONS.length), 210);
-    const borderTimer = setInterval(() => setShowBorder(prev => Math.random() > 0.4), 250); // Faster border flicker for more glitch
+    const timer1 = setInterval(() => setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length), 60); // Ultra fast
+    const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % SHUFFLE_ICONS.length), 110);
+    const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % SHUFFLE_ICONS.length), 180);
+    const borderTimer = setInterval(() => setShowBorder(prev => Math.random() > 0.35), 200);
 
     return () => {
       clearInterval(timer1); clearInterval(timer2);
@@ -737,6 +737,18 @@ export default function Home() {
         @keyframes diamond-glint {
           0%, 85%, 100% { opacity: 0; transform: scaleX(0); }
           90%, 95%      { opacity: 1; transform: scaleX(1); }
+        }
+        @keyframes flicker {
+          0%, 100% { opacity: 1; filter: brightness(1); }
+          50%      { opacity: 0.8; filter: brightness(1.3); }
+        }
+        @keyframes scan {
+          0% { transform: translateY(-120%); }
+          100% { transform: translateY(120%); }
+        }
+        @keyframes glow-pulse-gold {
+          0%, 100% { filter: drop-shadow(0 0 5px #d4af37) brightness(1); }
+          50%      { filter: drop-shadow(0 0 15px #d4af37) brightness(1.2); }
         }
       `}</style>
 
