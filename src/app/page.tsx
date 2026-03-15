@@ -438,6 +438,16 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
   <svg key="48" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10c5.53 0 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /></svg>, // Circle Shell 2
   <svg key="49" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13 3h-2v10h2V3z M17.83,5.17l-1.42,1.42C17.99,7.86,19,9.81,19,12c0,3.87-3.13,7-7,7s-7-3.13-7-7" /></svg>, // Power 2
   <svg key="50" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2zm0 2c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" /></svg>, // Minimal Circle
+  <svg key="51" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 7l-3.3 2.5a5.5 5.5 0 0 0-10.4 0L4 7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2l1 3h10l1-3h2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>, // Shark-ish
+  <svg key="52" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M17.5 19c-3 0-5.5-2.5-5.5-5.5 0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5c0 3-2.5 5.5-5.5 5.5zM6.5 17c-2.5 0-4.5-2-4.5-4.5S4 8 6.5 8s4.5 2 4.5 4.5S9 17 6.5 17z" /></svg>, // Cloud/Bubbles
+  <svg key="53" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6.4 6.4 9 1.7 4.3C.6 6.7 1 9.7 3 11.7c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1.1 0-1.5z" /></svg>, // Wrench
+  <svg key="54" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>, // Key
+  <svg key="55" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M5 16l3-8 4 5 4-5 3 8H5zm14 2H5v2h14v-2z" /></svg>, // Crown
+  <svg key="56" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt 2
+  <svg key="57" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 11h-4.2l2.4-2.4-1.4-1.4-3.4 3.4c.1-.4.1-.9.1-1.3 0-1.1-.3-2.1-.8-3l3.4-3.4-1.4-1.4L14.3 5c-.9-.5-1.9-.8-3-.8s-2.1.3-3 .8L4.9 1.6 3.5 3l3.4 3.4c-.5.9-.8 1.9-.8 3 0 .4 0 .9.1 1.3L2.8 7.3 1.4 8.7 3.8 11.1H1v2h2.8l-2.4 2.4 1.4 1.4 3.4-3.4c.1.4.1.9.1 1.3 0 1.1.3 2.1.8 3L3.7 21l1.4 1.4L8.5 19c.9.5 1.9.8 3 .8s2.1-.3 3-.8l3.4 3.4 1.4-1.4-3.4-3.4c.5-.9.8-1.9.8-3 0-.4 0-.9-.1-1.3l3.4 3.4 1.4-1.4-2.4-2.4H23v-2z" /></svg>, // Snowflake
+  <svg key="58" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21c-4.4 0-8-3.6-8-8 0-4.4 3.6-8 8-8 1.1 0 2.1.2 3 .6-2.5 1.5-4 4.3-4 7.4 0 3.1 1.5 5.9 4 7.4-.9.4-1.9.6-3 .6z" /></svg>, // Moon
+  <svg key="59" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 7c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 12c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 5l2 2" /></svg>, // Sun 2
+  <svg key="60" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c-4 0-8 3-8 8 0 4.4 3.6 8 8 8s8-3.6 8-8c0-5-4-8-8-8zM7 10c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5z" /></svg>, // Flame/Droplet
 ];
 
 const SpeedShuffler = () => {
@@ -448,13 +458,13 @@ const SpeedShuffler = () => {
 
   // Massive variety of silhouette-style containers
   const containerShapes = [
-    "rounded-none", "rounded-full", "rounded-xl",
-    "rounded-tr-[40px] rounded-bl-[40px]", "rounded-tl-[40px] rounded-br-[40px]",
-    "rounded-[50%_20%_50%_20%]", "rounded-[20%_50%_20%_50%]",
-    "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]", "rounded-[70%_30%_30%_70%/70%_70%_30%_30%]",
-    "rounded-[40%_40%_40%_40%]", "rounded-[10px_60px_10px_60px]", "rounded-[60px_10px_60px_10px]",
-    "rounded-[60px_0px_60px_0px]", "rounded-[0px_60px_0px_60px]", "rounded-[20px_20px_120px_20px]",
-    "rounded-[20px_120px_20px_20px]", "rounded-[120px_20px_20px_20px]", "rounded-[20px_20px_20px_120px]",
+    "rounded-xl", "rounded-none", "rounded-full",
+    "rounded-tr-[3rem]", "rounded-bl-[3rem]",
+    "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]",
+    "rounded-[100%_0_100%_0]", "rounded-[0_100%_0_100%]",
+    "rounded-[10%_90%_10%_90%/90%_10%_90%_10%]",
+    "rounded-[50%_0_50%_0]", "rounded-[0_50%_0_50%]",
+    "rounded-[30%_30%_100%_30%]", "rounded-[100%_30%_30%_30%]",
     "rounded-b-[50px] rounded-t-[5px]", "rounded-t-[50px] rounded-b-[5px]",
   ];
 
@@ -476,10 +486,10 @@ const SpeedShuffler = () => {
   const shapeIdx = index1 % containerShapes.length;
 
   return (
-    <div className="flex justify-center mb-10 relative z-20 scale-110 sm:scale-125">
-      <div className="relative w-20 h-20">
+    <div className="flex justify-center mb-10 relative z-20 scale-125 sm:scale-150">
+      <div className="relative w-24 h-24">
         {/* Deep Glow backdrop */}
-        <div className="absolute inset-[-20%] bg-[#d4af37]/25 blur-2xl rounded-full animate-pulse z-0" />
+        <div className="absolute inset-[-30%] bg-[#d4af37]/20 blur-3xl animate-pulse z-0" />
         
         {/* Layer 2: Ghostly Background Icon (Borderless, slower) */}
         <div className="absolute inset-0 flex items-center justify-center text-[#d4af37]/15 scale-150 rotate-12 blur-[1px]">
@@ -530,6 +540,13 @@ const SpeedShuffler = () => {
               <div className="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-[#d4af37]/80" />
             </>
           )}
+
+          {/* Status Indicator */}
+          <div className="absolute inset-x-0 bottom-[-20%] flex justify-center pointer-events-none">
+            <span className="text-[8px] tracking-[0.4em] font-black text-[#d4af37] animate-[flicker_0.5s_infinite]">
+               STATUS: READY_
+            </span>
+          </div>
         </div>
       </div>
     </div>
