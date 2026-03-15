@@ -464,7 +464,7 @@ const SpeedShuffler = () => {
     const timer1 = setInterval(() => setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length), 80);
     const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % SHUFFLE_ICONS.length), 140);
     const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % SHUFFLE_ICONS.length), 210);
-    const borderTimer = setInterval(() => setShowBorder(prev => Math.random() > 0.3), 500);
+    const borderTimer = setInterval(() => setShowBorder(prev => Math.random() > 0.4), 250); // Faster border flicker for more glitch
 
     return () => {
       clearInterval(timer1); clearInterval(timer2);
@@ -499,8 +499,9 @@ const SpeedShuffler = () => {
             transform: `rotate(${rotation}deg)`
           }}
         >
-          {/* Scanning line */}
-          <div className="absolute inset-0 w-full h-[2px] bg-[#d4af37]/50 animate-[scan_1.5s_linear_infinite]" style={{ top: '50%' }} />
+          {/* Dual Scanning lines */}
+          <div className="absolute inset-0 w-full h-[1.5px] bg-[#d4af37]/60 animate-[scan_1.5s_linear_infinite]" style={{ top: '50%' }} />
+          <div className="absolute inset-0 w-full h-[1px] bg-[#d4af37]/30 animate-[scan_2s_linear_infinite_reverse]" style={{ top: '50%' }} />
 
           {/* Data Overlay */}
           <div className="absolute top-1 left-2 text-[6px] font-mono text-[#d4af37]/40 leading-none">
@@ -510,10 +511,12 @@ const SpeedShuffler = () => {
              REC_{index1}
           </div>
 
-          {/* Main Foreground Icon */}
           <div 
-            className="w-full h-full text-[#d4af37] drop-shadow-[0_0_15px_rgba(212,175,55,1)]"
-            style={{ transform: `rotate(${-rotation}deg)` }}
+            className="w-full h-full text-[#d4af37] drop-shadow-[2px_0_0_rgba(255,0,0,0.3)] drop-shadow-[-2px_0_0_rgba(0,255,255,0.3)] filter contrast-125"
+            style={{ 
+              transform: `rotate(${-rotation}deg)`,
+              filter: `drop-shadow(0 0 10px rgba(212,175,55,0.8))`
+            }}
           >
             {SHUFFLE_ICONS[index1]}
           </div>
