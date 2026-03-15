@@ -441,73 +441,92 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
 ];
 
 const SpeedShuffler = () => {
-  const [index, setIndex] = useState(0);
+  const [index1, setIndex1] = useState(0);
+  const [index2, setIndex2] = useState(0);
+  const [index3, setIndex3] = useState(0);
+  const [showBorder, setShowBorder] = useState(true);
 
   // Massive variety of silhouette-style containers
   const containerShapes = [
-    "rounded-none",
-    "rounded-full",
-    "rounded-xl",
-    "rounded-tr-[40px] rounded-bl-[40px]",
-    "rounded-tl-[40px] rounded-br-[40px]",
-    "rounded-[50%_20%_50%_20%]",
-    "rounded-[20%_50%_20%_50%]",
-    "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]",
-    "rounded-[70%_30%_30%_70%/70%_70%_30%_30%]",
-    "rounded-[40%_40%_40%_40%]",
-    "rounded-[10px_60px_10px_60px]",
-    "rounded-[60px_10px_60px_10px]",
-    "rounded-[60px_0px_60px_0px]",
-    "rounded-[0px_60px_0px_60px]",
-    "rounded-[20px_20px_120px_20px]",
-    "rounded-[20px_120px_20px_20px]",
-    "rounded-[120px_20px_20px_20px]",
-    "rounded-[20px_20px_20px_120px]",
-    "rounded-b-[50px] rounded-t-[5px]",
-    "rounded-t-[50px] rounded-b-[5px]",
+    "rounded-none", "rounded-full", "rounded-xl",
+    "rounded-tr-[40px] rounded-bl-[40px]", "rounded-tl-[40px] rounded-br-[40px]",
+    "rounded-[50%_20%_50%_20%]", "rounded-[20%_50%_20%_50%]",
+    "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]", "rounded-[70%_30%_30%_70%/70%_70%_30%_30%]",
+    "rounded-[40%_40%_40%_40%]", "rounded-[10px_60px_10px_60px]", "rounded-[60px_10px_60px_10px]",
+    "rounded-[60px_0px_60px_0px]", "rounded-[0px_60px_0px_60px]", "rounded-[20px_20px_120px_20px]",
+    "rounded-[20px_120px_20px_20px]", "rounded-[120px_20px_20px_20px]", "rounded-[20px_20px_20px_120px]",
+    "rounded-b-[50px] rounded-t-[5px]", "rounded-t-[50px] rounded-b-[5px]",
   ];
 
   const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
 
   useEffect(() => {
-    const shuffleInterval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % SHUFFLE_ICONS.length);
-    }, 90); // Fast shuffler
-    return () => clearInterval(shuffleInterval);
+    const timer1 = setInterval(() => setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length), 80);
+    const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % SHUFFLE_ICONS.length), 140);
+    const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % SHUFFLE_ICONS.length), 210);
+    const borderTimer = setInterval(() => setShowBorder(prev => Math.random() > 0.3), 500);
+
+    return () => {
+      clearInterval(timer1); clearInterval(timer2);
+      clearInterval(timer3); clearInterval(borderTimer);
+    };
   }, []);
 
-  const shapeIdx = index % containerShapes.length;
-  const rotation = rotations[index % rotations.length];
+  const rotation = rotations[index1 % rotations.length];
+  const shapeIdx = index1 % containerShapes.length;
 
   return (
-    <div className="flex justify-center mb-10 relative z-20 scale-110 sm:scale-120">
-      <div className="relative">
-        {/* Glow backdrop */}
-        <div className="absolute inset-0 bg-[#d4af37]/40 blur-3xl rounded-full animate-pulse" />
+    <div className="flex justify-center mb-10 relative z-20 scale-110 sm:scale-125">
+      <div className="relative w-20 h-20">
+        {/* Deep Glow backdrop */}
+        <div className="absolute inset-[-20%] bg-[#d4af37]/25 blur-2xl rounded-full animate-pulse z-0" />
         
+        {/* Layer 2: Ghostly Background Icon (Borderless, slower) */}
+        <div className="absolute inset-0 flex items-center justify-center text-[#d4af37]/15 scale-150 rotate-12 blur-[1px]">
+          {SHUFFLE_ICONS[index2]}
+        </div>
+
+        {/* Layer 3: Rapid Fragment Layer (Offset, flickering) */}
+        <div className="absolute inset-0 flex items-center justify-center text-[#d4af37]/10 -translate-y-2 -translate-x-1 scale-90">
+          {SHUFFLE_ICONS[index3]}
+        </div>
+
+        {/* Main Morphing Container */}
         <div
-          className={`relative w-16 h-16 flex items-center justify-center border-[1.5px] border-[#d4af37] bg-black/95 p-3.5 shadow-[0_0_40px_rgba(212,175,55,0.4)] overflow-hidden transition-all duration-75 ${containerShapes[shapeIdx]}`}
+          className={`relative w-full h-full flex items-center justify-center bg-black/90 p-4 shadow-[0_0_50px_rgba(212,175,55,0.3)] overflow-hidden transition-all duration-100 ${containerShapes[shapeIdx]} ${showBorder ? 'border-[1.5px] border-[#d4af37]' : 'border-transparent'}`}
           style={{ 
             animation: 'flicker 0.1s infinite',
             transform: `rotate(${rotation}deg)`
           }}
         >
           {/* Scanning line */}
-          <div className="absolute inset-0 w-full h-[1.5px] bg-[#d4af37]/40 animate-[scan_2s_linear_infinite]" style={{ top: '50%' }} />
+          <div className="absolute inset-0 w-full h-[2px] bg-[#d4af37]/50 animate-[scan_1.5s_linear_infinite]" style={{ top: '50%' }} />
 
-          {/* Inner Silhouette Icon */}
-          <div 
-            className="w-full h-full text-[#d4af37] drop-shadow-[0_0_12px_rgba(212,175,55,1)] transition-transform duration-75"
-            style={{ transform: `rotate(${-rotation}deg)` }}
-          >
-            {SHUFFLE_ICONS[index]}
+          {/* Data Overlay */}
+          <div className="absolute top-1 left-2 text-[6px] font-mono text-[#d4af37]/40 leading-none">
+            {Math.random() > 0.5 ? "01101" : "A7X9"}
+          </div>
+          <div className="absolute bottom-1 right-2 text-[6px] font-mono text-[#d4af37]/40 leading-none">
+             REC_{index1}
           </div>
 
-          {/* Minimal Corner markers */}
-          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#d4af37]/60" />
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#d4af37]/60" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#d4af37]/60" />
-          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#d4af37]/60" />
+          {/* Main Foreground Icon */}
+          <div 
+            className="w-full h-full text-[#d4af37] drop-shadow-[0_0_15px_rgba(212,175,55,1)]"
+            style={{ transform: `rotate(${-rotation}deg)` }}
+          >
+            {SHUFFLE_ICONS[index1]}
+          </div>
+
+          {/* Corner markers (flicker with border) */}
+          {showBorder && (
+            <>
+              <div className="absolute top-1 left-1 w-2 h-2 border-t border-l border-[#d4af37]/80" />
+              <div className="absolute top-1 right-1 w-2 h-2 border-t border-r border-[#d4af37]/80" />
+              <div className="absolute bottom-1 left-1 w-2 h-2 border-b border-l border-[#d4af37]/80" />
+              <div className="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-[#d4af37]/80" />
+            </>
+          )}
         </div>
       </div>
     </div>
