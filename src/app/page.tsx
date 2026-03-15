@@ -619,7 +619,66 @@ const GalleryAccordion = ({ sections }: { sections: { title: string; content: Re
   );
 };
 
+const IS_SITE_LOCKED = true;
+
 export default function Home() {
+  if (IS_SITE_LOCKED) {
+    return (
+      <main className="min-h-screen bg-[#050505] flex flex-col items-center justify-center p-6 text-center font-mono selection:bg-[#d4af37] selection:text-black">
+        {/* Subtle background noise/grid effect */}
+        <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#d4af37 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative group max-w-md w-full"
+        >
+           {/* Outer glow aura */}
+           <div className="absolute inset-[-20px] bg-[#d4af37]/5 blur-[60px] rounded-full" />
+           
+           <div className="relative bg-black/80 border border-[#d4af37]/20 p-12 backdrop-blur-xl shadow-[0_0_100px_rgba(0,0,0,1)]">
+              {/* Corner Accents */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#d4af37]/40" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#d4af37]/40" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#d4af37]/40" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#d4af37]/40" />
+
+              <div className="mb-10 flex justify-center">
+                 <div className="relative w-24 h-[1px] bg-[#d4af37]/10">
+                    <motion.div 
+                      animate={{ x: [-48, 48] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                      className="absolute top-0 left-1/2 w-8 h-full bg-[#d4af37]/60" 
+                    />
+                 </div>
+              </div>
+              
+              <h1 className="text-[#d4af37] text-2xl font-black tracking-[0.3em] mb-2 uppercase leading-none">
+                System Locked
+              </h1>
+              
+              <div className="flex items-center justify-center gap-3 my-8">
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#d4af37]/20" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#d4af37]/20" />
+              </div>
+              
+              <p className="text-[#d4af37]/50 text-xs tracking-[0.4em] uppercase font-light">
+                Locked for now.
+              </p>
+              
+              <div className="mt-16 pt-8 border-t border-[#d4af37]/5">
+                <div className="text-[7px] text-[#d4af37]/30 uppercase tracking-[0.5em] leading-relaxed">
+                  Terminal ID: ALPHA-9 // STATUS: STANDBY<br/>
+                  JAHRONIMO_CORE_ENCRYPTION_ACTIVE
+                </div>
+              </div>
+           </div>
+        </motion.div>
+      </main>
+    );
+  }
+
   const [showForm, setShowForm] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [showOfferDetails, setShowOfferDetails] = useState(false);
