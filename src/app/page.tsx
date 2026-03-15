@@ -378,76 +378,25 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
       </AnimatePresence>
     </div>
   );
-};const SHUFFLE_ICONS = [
-  // 1-10: Basic Geometrics
-  <svg key="1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14zM17 7H7v10h10V7z" /></svg>,
-  <svg key="2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM12 12c-4.4 0-8 1.8-8 4v2h16v-2c0-2.2-3.6-4-8-4z" /></svg>,
-  <svg key="3" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="8" /></svg>,
-  <svg key="4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4l-9 16h18L12 4z" /></svg>,
-  <svg key="5" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="5" y="5" width="14" height="14" /></svg>,
-  <svg key="6" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2.5l7.5 5.5-2.9 8.9H7.4L4.5 8z" /></svg>,
-  <svg key="7" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z" /></svg>,
-  <svg key="8" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>,
-  <svg key="9" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4 12l8 10 8-10L12 2z" /></svg>,
-  <svg key="10" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>,
+};
 
-  // 11-20: Objects (Refined)
+const SHUFFLE_ICONS = [
   <svg key="11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>, // Heart
   <svg key="12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt
-  <svg key="13" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zm0 10.5c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z" /></svg>, // Eye
   <svg key="14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4z" /></svg>, // Shield
   <svg key="15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>, // Plane
   <svg key="16" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 18H4l-2-5h20l-2 5zM12 4v11m-3-1l3-1 3 1V4H9v10z" /></svg>, // Boat
-  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Original Tree
-  <svg key="18" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zm-1-15h2v6h-2V7zm0 8h2v2h-2v-2z" /></svg>, // Warning
-  <svg key="19" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13 3h-2v10h2V3zM17.8 5.2l-1.4 1.4C18 7.9 19 9.8 19 12c0 3.9-3.1 7-7 7s-7-3.1-7-7c0-2.2 1-4.1 2.6-5.4L6.2 5.2C4.2 6.8 3 9.3 3 12c0 5 4 9 9 9s9-4 9-9c0-2.7-1.2-5.2-3.2-6.8z" /></svg>, // Power
-  <svg key="20" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" /></svg>, // Add
-
-  // 21-30: Layers & Tech
-  <svg key="21" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>, // Layers
-  <svg key="22" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M18 16.1c-.8 0-1.4.3-2 .8l-7.1-4.2V11c0-.2 0-.3.1-.5l7.1-4.2c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3v.3l-7.1 4.2c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.1 4.2v.3c0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3z" /></svg>, // Share
-  <svg key="23" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.3l4.3 2.5-1.1-4.8 3.8-3.3-5-.4L12 6.7l-2 4.6-5 .4 3.8 3.3-1.1 4.8z" /></svg>, // Star 2
-  <svg key="24" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" /><circle cx="12" cy="12" r="3" /></svg>, // Target
-  <svg key="25" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 10c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" /></svg>, // Disc
-  <svg key="26" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14z" /><path d="M7 14.5l3-3 4 4 3-3 3 3V17H1V7h22v10" /></svg>, // Graph
-  <svg key="27" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>, // House
-  <svg key="28" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z" /></svg>, // Location
-  <svg key="29" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 4H4c-1.1 0-1.9.9-1.9 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>, // Mail
-  <svg key="30" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" /></svg>, // Phone
-
-  // 31-40: THE REQUESTED ONES (Cat, Pine Tree, etc.)
-  <svg key="31" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L8 12h3v4H8l4 6 4-6h-3v-4h3L12 2z" /></svg>, // Pine Tree Silhouette
-  <svg key="32" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" /></svg>, // Person/Cat Stand-in
-  <svg key="33" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" /></svg>, // Down Arrow
-  <svg key="34" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 3a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9c0-4.97-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" /><circle cx="12" cy="12" r="3" /></svg>, // Target 3
-  <svg key="35" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Rocket/Pointer
-  <svg key="36" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm0 2c3.4 1 6.3 4.2 6.3 7.5 0 3.3-2.9 6.5-6.3 7.5-3.4-1-6.3-4.2-6.3-7.5 0-3.3 2.9-6.5 6.3-7.5z" /></svg>, // Shield Shell
-  <svg key="37" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12H10v2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H10v2h10v14z" /></svg>, // Exit/Warp
-  <svg key="38" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" /></svg>, // Info
-  <svg key="39" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z" /></svg>, // Image
-  <svg key="40" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zM12 21c-4.1-1.1-7-5.3-7-9.5V6.4l7-3.1 7 3.1v5.9c0 4.2-2.9 8.4-7 9.5z" /></svg>, // Shield Outline 2
-
-  // 41-50: Abstract Objects & Nature
-  <svg key="41" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L1 21h22L12 2zm0 3.45L18.85 19H5.15L12 5.45z" /></svg>, // Delta
-  <svg key="42" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" /></svg>, // Circle Frame
-  <svg key="43" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13.17 4l1.41 1.41L10.59 9.41l1.41 1.41 5.41-5.41L18.83 6.83l-5.41 5.41 1.41 1.41 5.41-5.41 1.41 1.41L12 20.24 3.17 11.41l1.41-1.41 5.41 5.41 1.41-1.41-5.41-5.41 1.41-1.41 5.41 5.41z"/></svg>, // DNA
-  <svg key="44" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Compass
-  <svg key="45" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree Block
-  <svg key="46" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 8l-6 2.1L12.4 7l-2.1 6L3.9 14.4 7 16l-2.1 6 6-2.1 3.6 5.4 1.6-6 6 2.1-2.1-6 5.4-3.6-6-1.6z" /></svg>, // Explode/Sun
-  <svg key="47" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM12 12c-4.4 0-8 1.8-8 4v2h16v-2c0-2.2-3.6-4-8-4z" /></svg>, // User
-  <svg key="48" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10c5.53 0 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /></svg>, // Circle Shell 2
-  <svg key="49" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13 3h-2v10h2V3z M17.83,5.17l-1.42,1.42C17.99,7.86,19,9.81,19,12c0,3.87-3.13,7-7,7s-7-3.13-7-7" /></svg>, // Power 2
-  <svg key="50" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2zm0 2c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" /></svg>, // Minimal Circle
-  <svg key="51" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 7l-3.3 2.5a5.5 5.5 0 0 0-10.4 0L4 7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2l1 3h10l1-3h2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>, // Shark-ish
-  <svg key="52" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M17.5 19c-3 0-5.5-2.5-5.5-5.5 0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5c0 3-2.5 5.5-5.5 5.5zM6.5 17c-2.5 0-4.5-2-4.5-4.5S4 8 6.5 8s4.5 2 4.5 4.5S9 17 6.5 17z" /></svg>, // Cloud/Bubbles
+  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree
+  <svg key="31" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L8 12h3v4H8l4 6 4-6h-3v-4h3L12 2z" /></svg>, // Pine Tree
+  <svg key="35" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Rocket
+  <svg key="40" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zM12 21c-4.1-1.1-7-5.3-7-9.5V6.4l7-3.1 7 3.1v5.9c0 4.2-2.9 8.4-7 9.5z" /></svg>, // Shield Outline
+  <svg key="51" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 7l-3.3 2.5a5.5 5.5 0 0 0-10.4 0L4 7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2l1 3h10l1-3h2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>, // Shark
   <svg key="53" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6.4 6.4 9 1.7 4.3C.6 6.7 1 9.7 3 11.7c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1.1 0-1.5z" /></svg>, // Wrench
   <svg key="54" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>, // Key
   <svg key="55" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M5 16l3-8 4 5 4-5 3 8H5zm14 2H5v2h14v-2z" /></svg>, // Crown
   <svg key="56" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt 2
   <svg key="57" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 11h-4.2l2.4-2.4-1.4-1.4-3.4 3.4c.1-.4.1-.9.1-1.3 0-1.1-.3-2.1-.8-3l3.4-3.4-1.4-1.4L14.3 5c-.9-.5-1.9-.8-3-.8s-2.1.3-3 .8L4.9 1.6 3.5 3l3.4 3.4c-.5.9-.8 1.9-.8 3 0 .4 0 .9.1 1.3L2.8 7.3 1.4 8.7 3.8 11.1H1v2h2.8l-2.4 2.4 1.4 1.4 3.4-3.4c.1.4.1.9.1 1.3 0 1.1.3 2.1.8 3L3.7 21l1.4 1.4L8.5 19c.9.5 1.9.8 3 .8s2.1-.3 3-.8l3.4 3.4 1.4-1.4-3.4-3.4c.5-.9.8-1.9.8-3 0-.4 0-.9-.1-1.3l3.4 3.4 1.4-1.4-2.4-2.4H23v-2z" /></svg>, // Snowflake
   <svg key="58" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21c-4.4 0-8-3.6-8-8 0-4.4 3.6-8 8-8 1.1 0 2.1.2 3 .6-2.5 1.5-4 4.3-4 7.4 0 3.1 1.5 5.9 4 7.4-.9.4-1.9.6-3 .6z" /></svg>, // Moon
-  <svg key="59" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 7c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 12c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 5l2 2" /></svg>, // Sun 2
-  <svg key="60" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c-4 0-8 3-8 8 0 4.4 3.6 8 8 8s8-3.6 8-8c0-5-4-8-8-8zM7 10c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5z" /></svg>, // Flame/Droplet
 ];
 
 const SpeedShuffler = () => {
@@ -483,21 +432,21 @@ const SpeedShuffler = () => {
     const shuffle = () => {
       setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length);
       
-      // Extreme Dynamic Size Pulse (0.5 to 1.8)
-      const nextScale = 0.5 + Math.random() * 1.3;
+      // Moderate Size Pulse (0.9 to 1.1)
+      const nextScale = 0.9 + Math.random() * 0.2;
       setGlitchScale(nextScale);
       
-      // Aggressive Jitter
+      // Subtle Jitter
       setGlitchOffset({ 
-        x: (Math.random() - 0.5) * 20, 
-        y: (Math.random() - 0.5) * 20 
+        x: (Math.random() - 0.5) * 8, 
+        y: (Math.random() - 0.5) * 8 
       });
 
       // Rotation Glitch
-      setGlitchRotate((Math.random() - 0.5) * 30);
+      setGlitchRotate((Math.random() - 0.5) * 12);
 
-      // Variable Speed: Drifts between 20ms and 500ms for chaotic rhythm
-      const nextSpeed = 20 + Math.pow(Math.abs(Math.sin(Date.now() / 4000)), 3) * 480;
+      // Stable Variable Speed (closer rhythm)
+      const nextSpeed = 80 + Math.random() * 60;
       setGlitchSpeed(nextSpeed);
       
       timeoutId = setTimeout(shuffle, nextSpeed);
@@ -520,9 +469,9 @@ const SpeedShuffler = () => {
   const shapeIdx = index1 % containerShapes.length;
 
   return (
-    <div className="flex justify-center mb-10 relative z-20 scale-125 sm:scale-150 py-4">
+    <div className="flex justify-center mb-10 relative z-20 scale-110 sm:scale-125 py-2">
       <div 
-        className="relative w-24 h-24 transition-all duration-[40ms] ease-out"
+        className="relative w-20 h-20 transition-all duration-[40ms] ease-out"
         style={{ 
           transform: `scale(${glitchScale}) translate(${glitchOffset.x}px, ${glitchOffset.y}px) rotate(${glitchRotate}deg)` 
         }}
