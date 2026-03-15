@@ -457,6 +457,8 @@ const SpeedShuffler = () => {
   const [showBorder, setShowBorder] = useState(true);
   const [glitchScale, setGlitchScale] = useState(1);
   const [glitchOffset, setGlitchOffset] = useState({ x: 0, y: 0 });
+  const [glitchRotate, setGlitchRotate] = useState(0);
+  const [glitchSpeed, setGlitchSpeed] = useState(60);
 
   // Massive variety of silhouette-style containers
   const containerShapes = [
@@ -470,6 +472,7 @@ const SpeedShuffler = () => {
     "rounded-[30%_30%_100%_30%]", "rounded-[100%_30%_30%_30%]",
     "rounded-b-[60px] rounded-t-[5px]", "rounded-t-[60px] rounded-b-[5px]",
     "rounded-[100%_0_0_0]", "rounded-[0_100%_0_0]", "rounded-[0_0_100%_0]", "rounded-[0_0_0_100%]",
+    "rounded-[70%_30%_30%_70%/50%_50%_50%_50%]",
   ];
 
   const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
@@ -480,18 +483,24 @@ const SpeedShuffler = () => {
     const shuffle = () => {
       setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length);
       
-      // Dynamic Size Pulse (0.85 to 1.3)
-      setGlitchScale(0.85 + Math.random() * 0.45);
+      // Extreme Dynamic Size Pulse (0.5 to 1.8)
+      const nextScale = 0.5 + Math.random() * 1.3;
+      setGlitchScale(nextScale);
       
-      // Jitter Offset
+      // Aggressive Jitter
       setGlitchOffset({ 
-        x: (Math.random() - 0.5) * 10, 
-        y: (Math.random() - 0.5) * 10 
+        x: (Math.random() - 0.5) * 20, 
+        y: (Math.random() - 0.5) * 20 
       });
 
-      // Variable Speed: Sweeps between 30ms (ultra-fast) and 150ms (slow)
-      const speed = 30 + Math.abs(Math.sin(Date.now() / 2500)) * 120;
-      timeoutId = setTimeout(shuffle, speed);
+      // Rotation Glitch
+      setGlitchRotate((Math.random() - 0.5) * 30);
+
+      // Variable Speed: Drifts between 20ms and 500ms for chaotic rhythm
+      const nextSpeed = 20 + Math.pow(Math.abs(Math.sin(Date.now() / 4000)), 3) * 480;
+      setGlitchSpeed(nextSpeed);
+      
+      timeoutId = setTimeout(shuffle, nextSpeed);
     };
 
     shuffle();
@@ -511,15 +520,18 @@ const SpeedShuffler = () => {
   const shapeIdx = index1 % containerShapes.length;
 
   return (
-    <div className="flex justify-center mb-10 relative z-20 scale-125 sm:scale-150">
+    <div className="flex justify-center mb-10 relative z-20 scale-125 sm:scale-150 py-4">
       <div 
-        className="relative w-24 h-24 transition-transform duration-[60ms]"
+        className="relative w-24 h-24 transition-all duration-[40ms] ease-out"
         style={{ 
-          transform: `scale(${glitchScale}) translate(${glitchOffset.x}px, ${glitchOffset.y}px)` 
+          transform: `scale(${glitchScale}) translate(${glitchOffset.x}px, ${glitchOffset.y}px) rotate(${glitchRotate}deg)` 
         }}
       >
         {/* Deep Glow backdrop */}
-        <div className="absolute inset-[-30%] bg-[#d4af37]/20 blur-3xl animate-pulse z-0" />
+        <div 
+          className="absolute inset-[-40%] bg-[#d4af37]/30 blur-3xl animate-pulse z-0" 
+          style={{ opacity: 0.2 + (Math.random() * 0.4) }}
+        />
         
         {/* Layer 2: Ghostly Background Icon (Borderless, slower) */}
         <div className="absolute inset-0 flex items-center justify-center text-[#d4af37]/15 scale-150 rotate-12 blur-[1px]">
@@ -544,11 +556,11 @@ const SpeedShuffler = () => {
           <div className="absolute inset-0 w-full h-[1px] bg-[#d4af37]/30 animate-[scan_2s_linear_infinite_reverse]" style={{ top: '50%' }} />
 
           {/* Data Overlay */}
-          <div className="absolute top-1 left-2 text-[6px] font-mono text-[#d4af37]/40 leading-none">
-            {Math.random() > 0.5 ? "01101" : "A7X9"}
+          <div className="absolute top-1 left-2 text-[6px] font-mono text-[#d4af37]/60 leading-none">
+            {Math.random() > 0.5 ? "ERROR_A7" : `0x${Math.floor(glitchSpeed)}`}
           </div>
-          <div className="absolute bottom-1 right-2 text-[6px] font-mono text-[#d4af37]/40 leading-none">
-             REC_{index1}
+          <div className="absolute bottom-1 right-2 text-[6px] font-mono text-[#d4af37]/60 leading-none">
+             REF:{Math.floor(glitchScale * 100)}%
           </div>
 
           <div 
