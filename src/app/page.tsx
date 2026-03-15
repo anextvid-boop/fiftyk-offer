@@ -380,58 +380,89 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
   );
 };
 
+const SHUFFLE_ICONS = [
+  <svg key="1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14zM17 7H7v10h10V7z" /></svg>,
+  <svg key="2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4zM6 22h12v-1H6v1z" /></svg>,
+  <svg key="3" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="8" /></svg>,
+  <svg key="4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4l-9 16h18L12 4z" /></svg>,
+  <svg key="5" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="5" y="5" width="14" height="14" /></svg>,
+  <svg key="6" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2.5l7.5 5.5-2.9 8.9H7.4L4.5 8z" /></svg>,
+  <svg key="7" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z" /></svg>,
+  <svg key="8" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>,
+  <svg key="9" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4 12l8 10 8-10L12 2z" /></svg>,
+  <svg key="10" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>,
+  <svg key="11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>,
+  <svg key="12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>,
+  <svg key="13" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" /></svg>,
+  <svg key="14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" /></svg>,
+  <svg key="15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.58L12 11.23 9.17 8.2c-.97-1.02-2.33-1.58-3.77-1.58-2.97 0-5.4 2.43-5.4 5.4s2.43 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.58L12 12.77l2.83 3.03c.97 1.02 2.33 1.58 3.77 1.58 2.97 0 5.4-2.43 5.4-5.38s-2.43-5.4-5.4-5.4zM5.4 15.58c-1.99 0-3.6-1.61-3.6-3.58s1.61-3.6 3.6-3.6c.97 0 1.88.4 2.48 1.05L10.33 12l-2.45 2.53c-.6.65-1.51 1.05-2.48 1.05zm13.2 0c-.97 0-1.88-.4-2.48-1.05L13.67 12l2.45-2.53c.6-.65 1.51-1.05 2.48-1.05 1.99 0 3.6 1.61 3.6 3.6s-1.61 3.58-3.6 3.58z" /></svg>,
+  // 16+ New Abstract/Geometric
+  <svg key="16" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>,
+  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="10" strokeWidth="2" fill="none"/><path d="M12 2v20M2 12h20"/></svg>,
+  <svg key="18" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v6H9V9z" /></svg>,
+  <svg key="19" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.87L12 17.77l-6.18 3.24L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>,
+  <svg key="20" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>,
+  <svg key="21" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>,
+  <svg key="22" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13,3h-2v10h2V3z M17.83,5.17l-1.42,1.42C17.99,7.86,19,9.81,19,12c0,3.87-3.13,7-7,7s-7-3.13-7-7 c0-2.19,1.01-4.14,2.58-5.42L6.17,5.17C4.23,6.82,3,9.26,3,12c0,4.97,4.03,9,9,9s9-4.03,9-9C21,9.26,19.77,6.82,17.83,5.17z"/></svg>,
+  <svg key="23" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c-4 0-8 2-8 6v10c0 1 1 2 2 2h12c1 0 2-1 2-2V8c0-4-4-6-8-6zm0 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>,
+  <svg key="24" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99z"/></svg>,
+  <svg key="25" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z"/></svg>,
+  <svg key="26" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /><circle cx="12" cy="12" r="3"/></svg>,
+  <svg key="27" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><circle cx="12" cy="12" r="3"/></svg>,
+  <svg key="28" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>,
+];
+
 const SpeedShuffler = () => {
   const [index, setIndex] = useState(0);
-  const icons = [
-    // 1. Picture Frame
-    <svg key="frame" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14zM17 7H7v10h10V7z" /></svg>,
-    // 2. Statue (Bust)
-    <svg key="statue" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4zM6 22h12v-1H6v1z" /></svg>,
-    // 3. Circle
-    <svg key="circle" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="8" /></svg>,
-    // 4. Triangle
-    <svg key="triangle" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4l-9 16h18L12 4z" /></svg>,
-    // 5. Square
-    <svg key="square" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="5" y="5" width="14" height="14" /></svg>,
-    // 6. Pentagon
-    <svg key="pentagon" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2.5l7.5 5.5-2.9 8.9H7.4L4.5 8z" /></svg>,
-    // 7. Hexagon
-    <svg key="hexagon" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z" /></svg>,
-    // 8. Star
-    <svg key="star" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>,
-    // 9. Diamond
-    <svg key="diamond" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4 12l8 10 8-10L12 2z" /></svg>,
-    // 10. Plus/Cross
-    <svg key="plus" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
+
+  const containerShapes = [
+    "rounded-none",
+    "rounded-full",
+    "rounded-xl",
+    "rounded-tr-2xl rounded-bl-2xl",
+    "rounded-tl-full rounded-br-full",
+    "rounded-3xl",
+    "rounded-lg",
+    "rounded-[20px_60px_20px_60px]",
+    "rounded-[60px_20px_60px_20px]",
   ];
+
+  const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
 
   useEffect(() => {
     const shuffleInterval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % icons.length);
-    }, 120); // Slightly slower for 'logo icon' feel but still shuffling
+      setIndex((prev) => (prev + 1) % SHUFFLE_ICONS.length);
+    }, 100);
     return () => clearInterval(shuffleInterval);
-  }, [icons.length]);
+  }, []);
+
+  const shapeIdx = index % containerShapes.length;
+  const rotation = rotations[index % rotations.length];
 
   return (
-    <div className="flex justify-center mb-8 relative z-20 scale-90 sm:scale-100">
+    <div className="flex justify-center mb-8 relative z-20 scale-100 sm:scale-110">
       <div className="relative">
         <div className="absolute inset-0 bg-[#d4af37]/40 blur-2xl rounded-full animate-pulse" />
         <div
-          className="relative w-12 h-12 flex items-center justify-center border border-[#d4af37]/60 bg-black/90 p-2.5 shadow-[0_0_30px_rgba(212,175,55,0.3)] overflow-hidden"
-          style={{ animation: 'flicker 0.15s infinite' }}
+          className={`relative w-16 h-16 flex items-center justify-center border-2 border-[#d4af37]/70 bg-black/95 p-3.5 shadow-[0_0_40px_rgba(212,175,55,0.4)] overflow-hidden transition-all duration-100 ${containerShapes[shapeIdx]}`}
+          style={{ 
+            animation: 'flicker 0.15s infinite',
+            transform: `rotate(${rotation}deg)`
+          }}
         >
-          {/* Scanning line effect */}
-          <div className="absolute inset-0 w-full h-[1px] bg-[#d4af37]/30 animate-[scan_2s_linear_infinite]" style={{ top: '50%' }} />
+          <div className="absolute inset-0 w-full h-[1.5px] bg-[#d4af37]/50 animate-[scan_2s_linear_infinite]" style={{ top: '50%' }} />
 
-          <div className="w-full h-full text-[#d4af37] drop-shadow-[0_0_8px_rgba(212,175,55,1)]">
-            {icons[index]}
+          <div 
+            className="w-full h-full text-[#d4af37] drop-shadow-[0_0_12px_rgba(212,175,55,1)] transition-transform duration-100"
+            style={{ transform: `rotate(${-rotation}deg)` }}
+          >
+            {SHUFFLE_ICONS[index]}
           </div>
 
-          {/* Corner accents */}
-          <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#d4af37]" />
-          <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-[#d4af37]" />
-          <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-[#d4af37]" />
-          <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#d4af37]" />
+          <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t-2 border-l-2 border-[#d4af37]" />
+          <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t-2 border-r-2 border-[#d4af37]" />
+          <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b-2 border-l-2 border-[#d4af37]" />
+          <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b-2 border-r-2 border-[#d4af37]" />
         </div>
       </div>
     </div>
