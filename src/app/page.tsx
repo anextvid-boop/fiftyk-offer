@@ -391,19 +391,19 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
   <svg key="9" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4 12l8 10 8-10L12 2z" /></svg>,
   <svg key="10" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>,
 
-  // 11-20: Recognizable Objects
+  // 11-20: Objects (Refined)
   <svg key="11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>, // Heart
   <svg key="12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt
   <svg key="13" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zm0 10.5c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z" /></svg>, // Eye
   <svg key="14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4z" /></svg>, // Shield
   <svg key="15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>, // Plane
   <svg key="16" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 18H4l-2-5h20l-2 5zM12 4v11m-3-1l3-1 3 1V4H9v10z" /></svg>, // Boat
-  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree (Stylized)
+  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Original Tree
   <svg key="18" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zm-1-15h2v6h-2V7zm0 8h2v2h-2v-2z" /></svg>, // Warning
   <svg key="19" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13 3h-2v10h2V3zM17.8 5.2l-1.4 1.4C18 7.9 19 9.8 19 12c0 3.9-3.1 7-7 7s-7-3.1-7-7c0-2.2 1-4.1 2.6-5.4L6.2 5.2C4.2 6.8 3 9.3 3 12c0 5 4 9 9 9s9-4 9-9c0-2.7-1.2-5.2-3.2-6.8z" /></svg>, // Power
   <svg key="20" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" /></svg>, // Add
 
-  // 21-30: More Objects
+  // 21-30: Layers & Tech
   <svg key="21" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>, // Layers
   <svg key="22" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M18 16.1c-.8 0-1.4.3-2 .8l-7.1-4.2V11c0-.2 0-.3.1-.5l7.1-4.2c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3v.3l-7.1 4.2c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.1 4.2v.3c0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3z" /></svg>, // Share
   <svg key="23" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.3l4.3 2.5-1.1-4.8 3.8-3.3-5-.4L12 6.7l-2 4.6-5 .4 3.8 3.3-1.1 4.8z" /></svg>, // Star 2
@@ -415,18 +415,35 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
   <svg key="29" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 4H4c-1.1 0-1.9.9-1.9 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>, // Mail
   <svg key="30" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" /></svg>, // Phone
 
-  // 31-40: More Silhouettes
-  <svg key="31" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L1 21h22L12 2zm0 4l7.5 13H4.5L12 6z" /></svg>, // Triangle Outline
-  <svg key="32" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zM12 21c-4.1-1.1-7-5.3-7-9.5V6.4l7-3.1 7 3.1v5.9c0 4.2-2.9 8.4-7 9.5z" /></svg>, // Shield Outline
-  <svg key="33" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zM12 17c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z" /></svg>, // Eye Outline
-  <svg key="34" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M4.5 11h15c.8 0 1.5-.7 1.5-1.5S20.3 8 19.5 8h-15C3.7 8 3 8.7 3 9.5S3.7 11 4.5 11zM19.5 13h-15c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h15c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5z" /></svg>, // Parallel Lines
-  <svg key="35" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2zm0 2c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" /></svg>, // Circle Outline
+  // 31-40: THE REQUESTED ONES (Cat, Pine Tree, etc.)
+  <svg key="31" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L8 12h3v4H8l4 6 4-6h-3v-4h3L12 2z" /></svg>, // Pine Tree Silhouette
+  <svg key="32" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" /></svg>, // Person/Cat Stand-in
+  <svg key="33" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" /></svg>, // Down Arrow
+  <svg key="34" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 3a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9c0-4.97-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" /><circle cx="12" cy="12" r="3" /></svg>, // Target 3
+  <svg key="35" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Rocket/Pointer
+  <svg key="36" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm0 2c3.4 1 6.3 4.2 6.3 7.5 0 3.3-2.9 6.5-6.3 7.5-3.4-1-6.3-4.2-6.3-7.5 0-3.3 2.9-6.5 6.3-7.5z" /></svg>, // Shield Shell
+  <svg key="37" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12H10v2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H10v2h10v14z" /></svg>, // Exit/Warp
+  <svg key="38" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" /></svg>, // Info
+  <svg key="39" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z" /></svg>, // Image
+  <svg key="40" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zM12 21c-4.1-1.1-7-5.3-7-9.5V6.4l7-3.1 7 3.1v5.9c0 4.2-2.9 8.4-7 9.5z" /></svg>, // Shield Outline 2
+
+  // 41-50: Abstract Objects & Nature
+  <svg key="41" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L1 21h22L12 2zm0 3.45L18.85 19H5.15L12 5.45z" /></svg>, // Delta
+  <svg key="42" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" /></svg>, // Circle Frame
+  <svg key="43" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13.17 4l1.41 1.41L10.59 9.41l1.41 1.41 5.41-5.41L18.83 6.83l-5.41 5.41 1.41 1.41 5.41-5.41 1.41 1.41L12 20.24 3.17 11.41l1.41-1.41 5.41 5.41 1.41-1.41-5.41-5.41 1.41-1.41 5.41 5.41z"/></svg>, // DNA
+  <svg key="44" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Compass
+  <svg key="45" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree Block
+  <svg key="46" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 8l-6 2.1L12.4 7l-2.1 6L3.9 14.4 7 16l-2.1 6 6-2.1 3.6 5.4 1.6-6 6 2.1-2.1-6 5.4-3.6-6-1.6z" /></svg>, // Explode/Sun
+  <svg key="47" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM12 12c-4.4 0-8 1.8-8 4v2h16v-2c0-2.2-3.6-4-8-4z" /></svg>, // User
+  <svg key="48" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10c5.53 0 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /></svg>, // Circle Shell 2
+  <svg key="49" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M13 3h-2v10h2V3z M17.83,5.17l-1.42,1.42C17.99,7.86,19,9.81,19,12c0,3.87-3.13,7-7,7s-7-3.13-7-7" /></svg>, // Power 2
+  <svg key="50" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2zm0 2c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" /></svg>, // Minimal Circle
 ];
 
 const SpeedShuffler = () => {
   const [index, setIndex] = useState(0);
 
-  // Diverse silhouette-style containers
+  // Massive variety of silhouette-style containers
   const containerShapes = [
     "rounded-none",
     "rounded-full",
@@ -438,8 +455,16 @@ const SpeedShuffler = () => {
     "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]",
     "rounded-[70%_30%_30%_70%/70%_70%_30%_30%]",
     "rounded-[40%_40%_40%_40%]",
-    "rounded-[10px_50px_10px_50px]",
-    "rounded-[50px_10px_50px_10px]",
+    "rounded-[10px_60px_10px_60px]",
+    "rounded-[60px_10px_60px_10px]",
+    "rounded-[60px_0px_60px_0px]",
+    "rounded-[0px_60px_0px_60px]",
+    "rounded-[20px_20px_120px_20px]",
+    "rounded-[20px_120px_20px_20px]",
+    "rounded-[120px_20px_20px_20px]",
+    "rounded-[20px_20px_20px_120px]",
+    "rounded-b-[50px] rounded-t-[5px]",
+    "rounded-t-[50px] rounded-b-[5px]",
   ];
 
   const rotations = [0, 45, 90, 135, 180, 225, 270, 315];
