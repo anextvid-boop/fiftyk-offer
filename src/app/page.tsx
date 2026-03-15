@@ -381,22 +381,29 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
 };
 
 const SHUFFLE_ICONS = [
-  <svg key="11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>, // Heart
-  <svg key="12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt
-  <svg key="14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4z" /></svg>, // Shield
-  <svg key="15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>, // Plane
-  <svg key="16" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 18H4l-2-5h20l-2 5zM12 4v11m-3-1l3-1 3 1V4H9v10z" /></svg>, // Boat
-  <svg key="17" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree
-  <svg key="31" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L8 12h3v4H8l4 6 4-6h-3v-4h3L12 2z" /></svg>, // Pine Tree
-  <svg key="35" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Rocket
-  <svg key="40" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zM12 21c-4.1-1.1-7-5.3-7-9.5V6.4l7-3.1 7 3.1v5.9c0 4.2-2.9 8.4-7 9.5z" /></svg>, // Shield Outline
-  <svg key="51" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 7l-3.3 2.5a5.5 5.5 0 0 0-10.4 0L4 7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2l1 3h10l1-3h2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>, // Shark
-  <svg key="53" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6.4 6.4 9 1.7 4.3C.6 6.7 1 9.7 3 11.7c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1.1 0-1.5z" /></svg>, // Wrench
-  <svg key="54" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>, // Key
-  <svg key="55" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M5 16l3-8 4 5 4-5 3 8H5zm14 2H5v2h14v-2z" /></svg>, // Crown
-  <svg key="56" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt 2
-  <svg key="57" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22 11h-4.2l2.4-2.4-1.4-1.4-3.4 3.4c.1-.4.1-.9.1-1.3 0-1.1-.3-2.1-.8-3l3.4-3.4-1.4-1.4L14.3 5c-.9-.5-1.9-.8-3-.8s-2.1.3-3 .8L4.9 1.6 3.5 3l3.4 3.4c-.5.9-.8 1.9-.8 3 0 .4 0 .9.1 1.3L2.8 7.3 1.4 8.7 3.8 11.1H1v2h2.8l-2.4 2.4 1.4 1.4 3.4-3.4c.1.4.1.9.1 1.3 0 1.1.3 2.1.8 3L3.7 21l1.4 1.4L8.5 19c.9.5 1.9.8 3 .8s2.1-.3 3-.8l3.4 3.4 1.4-1.4-3.4-3.4c.5-.9.8-1.9.8-3 0-.4 0-.9-.1-1.3l3.4 3.4 1.4-1.4-2.4-2.4H23v-2z" /></svg>, // Snowflake
-  <svg key="58" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21c-4.4 0-8-3.6-8-8 0-4.4 3.6-8 8-8 1.1 0 2.1.2 3 .6-2.5 1.5-4 4.3-4 7.4 0 3.1 1.5 5.9 4 7.4-.9.4-1.9.6-3 .6z" /></svg>, // Moon
+  <svg key="obj1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>, // Heart
+  <svg key="obj2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 2v11h3v9l7-12h-4l4-8z" /></svg>, // Bolt
+  <svg key="obj3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4z" /></svg>, // Shield
+  <svg key="obj4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>, // Plane
+  <svg key="obj5" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M20 18H4l-2-5h20l-2 5zM12 4v11m-3-1l3-1 3 1V4H9v10z" /></svg>, // Boat
+  <svg key="obj6" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 20l1-5h-3l-1 5h3zm2-5l1-5h-3l-1 5h3zm2-5l1-5H13L12 10zM12 2L8 10h8L12 2z" /></svg>, // Tree
+  <svg key="obj7" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>, // Star
+  <svg key="obj8" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L8 12h3v4H8l4 6 4-6h-3v-4h3L12 2z" /></svg>, // Pine Tree
+  <svg key="obj9" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2z" /></svg>, // Rocket
+  <svg key="obj10" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M18 2H6v2H2v7c0 2.21 1.79 4 4 4h2c.4 1.63 1.51 3.01 3 3.7V20H9v2h6v-2h-2v-1.3c1.49-.69 2.6-2.07 3-3.7h2c2.21 0 4-1.79 4-4V4h-4V2z" /></svg>, // Trophy
+  <svg key="obj11" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" /></svg>, // Cloud
+  <svg key="obj12" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M11 0L9 9H0l7 5L5 24l7-9 7 9-2-10 7-5h-9l-2.5-9z" /></svg>, // Sparkle
+  <svg key="obj13" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 7l-3.3 2.5a5.5 5.5 0 0 0-10.4 0L4 7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2l1 3h10l1-3h2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>, // Shark
+  <svg key="obj14" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6.4 6.4 9 1.7 4.3C.6 6.7 1 9.7 3 11.7c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1.1 0-1.5z" /></svg>, // Wrench
+  <svg key="obj15" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>, // Key
+  <svg key="obj16" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M5 16l3-8 4 5 4-5 3 8H5zm14 2H5v2h14v-2z" /></svg>, // Crown
+  <svg key="obj17" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M7 15h3c0 1.1-.9 2-2 2s-2-.9-2-2zm12-3c0 1.1-.9 2-2 2s-2-.9-2-2V3h4v9zm-10 1V3h4v11h-4zm-2-1V3h4v10H7z" /></svg>, // Anchor
+  <svg key="obj18" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12.45 4L11 3H4v18h2v-7h5l1.45 1H20V4z" /></svg>, // Flag
+  <svg key="obj19" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L3.5 10l8.5 12 8.5-12L12 2z" /></svg>, // Diamond
+  <svg key="obj20" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" /></svg>, // Bell
+  <svg key="obj21" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a9 9 0 0 0-9 9v7.5a2.5 2.5 0 0 0 5 0V11a4 4 0 0 1 8 0v7.5a2.5 2.5 0 0 0 5 0V11a9 9 0 0 0-9-9z" /></svg>, // Ghost
+  <svg key="obj22" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2c-3.3 0-6 2.7-6 6v2l-3-1v2l3 2v2l-4 4v2h2l4-4h2v4h2v-4h2l4 4h2v-2l-4-4v-2l3-2v-2l-3 1V8c0-3.3-2.7-6-6-6z" /></svg>, // Alien
+  <svg key="obj23" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 21c-4.4 0-8-3.6-8-8 0-4.4 3.6-8 8-8 1.1 0 2.1.2 3 .6-2.5 1.5-4 4.3-4 7.4 0 3.1 1.5 5.9 4 7.4-.9.4-1.9.6-3 .6z" /></svg>, // Moon
 ];
 
 const SpeedShuffler = () => {
