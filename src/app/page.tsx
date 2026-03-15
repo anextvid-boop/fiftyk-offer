@@ -1031,45 +1031,11 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Intro text */}
-                <div className="flex flex-col gap-3 text-white/70 text-sm leading-relaxed tracking-wide mb-8">
-                  <p>I&apos;m offering type of art commissions.</p>
-                  <p>Something unique. Non-replicable. Secret. Specific.</p>
-                  <p>Sometimes Physical + creative experimentation.</p>
-                  <p className="text-white/30">&nbsp;</p>
-                  <p>takes many shapes. Created specifically for you.<br />based on the details you fill me in on.</p>
-                  <p className="text-white/30">&nbsp;</p>
-                  <p>This is a sizable amount, but imagine.</p>
-                  <p className="text-[#d4af37]/60">
-                    Time, equipment,<br />
-                    computer, I&apos;m looking at 10,000<br />
-                    3d software and programs add up quickly,<br />
-                    custom fabrics,<br />
-                    Epoxy resin,<br />
-                    gold flakes,<br />
-                    high end 3d printer,<br />
-                    other materials<br />
-                    sublimation printer,<br />
-                    paints,<br />
-                    maybe some outsourcing,<br />
-                    other types of materials..<br />
-                    ummmmm, who knows what…
-                  </p>
-                  <p className="text-white/30">&nbsp;</p>
-                  <p>Adds up fast + living costs food.<br />Other costs.&nbsp; Some people spend<br />This amount is on a logo.</p>
-                  <p className="text-white/30">&nbsp;</p>
-                  <p>I have multiple skill sets also,<br />just want to do something to say thanks.</p>
-                  <p className="text-white/30">&nbsp;</p>
-                  <p>I can&apos;t really justify or say anything...<br />But you can see the quality<br />of some of my other work<br />from over the years.</p>
-                  <p className="text-white/30">&nbsp;</p>
-                  <p>if you are considering contributing,<br />just for consideration,<br />I want to say thanks.</p>
-                  <p className="text-white/30">&nbsp;</p>
-                  <p>This is supportive and fun, different..<br />A bit wacky.. but for big asks, I need to have big ideas.</p>
-                  <div className="mt-4 flex flex-col gap-1">
-                    <p className="text-[#d4af37]/70 font-medium">How this may look depends on how you fill me in.</p>
-                    <p className="text-[#d4af37]/70 font-bold">Don&apos;t overthink filling me in.</p>
-                  </div>
-                </div>
+              {/* Intro text — Concise instruction to avoid repetition */}
+              <div className="flex flex-col gap-1 text-[#d4af37]/70 text-sm tracking-widest uppercase font-bold text-center mb-10">
+                <p>Based on the details you provide,</p>
+                <p>I&apos;ll create something truly unique for you.</p>
+              </div>
 
               <form className="flex flex-col gap-8 w-full" encType="multipart/form-data">
                 <input type="hidden" name="_captcha" value="false" />
@@ -1279,50 +1245,7 @@ jahronimo1@hotmail.com
                       </div>
                     ),
                   },
-                  {
-                    title: "The One-of-One Project",
-                    content: (
-                      <div className="flex flex-col text-white/90 text-base font-normal leading-relaxed tracking-wide">
-                        <div className="flex flex-col gap-3">
-                          <p>I&apos;m offering type of art commissions.</p>
-                          <p>Something unique. Non-replicable. Secret. Specific.</p>
-                          <p>Sometimes Physical + creative experimentation.</p>
-                          <p className="text-white/50">&nbsp;</p>
-                          <p>takes many shapes. Created specifically for you.<br />based on the details you fill me in on.</p>
-                          <p className="text-white/50">&nbsp;</p>
-                          <p>This is a sizable amount, but imagine.</p>
-                          <p className="text-[#d4af37]/80">
-                            Time, equipment,<br />
-                            computer, I&apos;m looking at 10,000<br />
-                            3d software and programs add up quickly,<br />
-                            custom fabrics,<br />
-                            Epoxy resin,<br />
-                            gold flakes,<br />
-                            high end 3d printer,<br />
-                            other materials<br />
-                            sublimation printer,<br />
-                            paints,<br />
-                            maybe some outsourcing,<br />
-                            other types of materials..<br />
-                            ummmmm, who knows what…
-                          </p>
-                          <p className="text-white/50">&nbsp;</p>
-                          <p>Adds up fast + living costs food.<br />Other costs.&nbsp; Some people spend<br />This amount is on a logo.</p>
-                          <p className="text-white/50">&nbsp;</p>
-                          <p>I have multiple skill sets also,<br />just want to do something to say thanks.</p>
-                          <p className="text-white/50">&nbsp;</p>
-                          <p>I can&apos;t really justify or say anything...<br />But you can see the quality<br />of some of my other work<br />from over the years.</p>
-                          <p className="text-white/50">&nbsp;</p>
-                          <p>if you are considering contributing,<br />just for consideration,<br />I want to say thanks.</p>
-                          <p className="text-white/50">&nbsp;</p>
-                          <p>This is supportive and fun, different..<br />A bit wacky.. but for big asks, I need to have big ideas.</p>
-                          <p className="text-[#d4af37]/70 mt-4">How this may look depends on how you fill me in.</p>
-                          <p className="text-[#d4af37]/70 font-bold">Don&apos;t overthink filling me in.</p>
-                        </div>
 
-                      </div>
-                    ),
-                  },
 
                   {
                     title: "Support the Project",
