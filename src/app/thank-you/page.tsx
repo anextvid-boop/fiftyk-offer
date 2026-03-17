@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -20,9 +20,6 @@ const DUST_PARTICLES = [
 ];
 
 export default function ThankYou() {
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => { setMounted(true); }, []);
-
     return (
         <main className="relative min-h-screen w-full bg-[#020202] text-white font-sans overflow-hidden flex flex-col items-center justify-center px-6 py-20">
 

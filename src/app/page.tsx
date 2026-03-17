@@ -9,7 +9,9 @@ const useSensoryFeedback = () => {
 
   useEffect(() => {
     // Initialize AudioContext only on client
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAudioCtx(ctx);
     return () => { ctx.close(); };
   }, []);
@@ -168,6 +170,7 @@ const itemVariants = {
       ease: [0.16, 1, 0.3, 1]
     }
   }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any;
 
 const letterVariants = {
@@ -183,6 +186,7 @@ const letterVariants = {
       ease: [0.16, 1, 0.3, 1]
     }
   })
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any;
 
 // Fixed gold dust positions to prevent hydration mismatch
@@ -482,7 +486,7 @@ const SpeedShuffler = () => {
     shuffle();
     const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % SHUFFLE_ICONS.length), 110);
     const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % SHUFFLE_ICONS.length), 180);
-    const borderTimer = setInterval(() => setShowBorder(prev => Math.random() > 0.35), 200);
+    const borderTimer = setInterval(() => setShowBorder(Math.random() > 0.35), 200);
 
     return () => {
       clearTimeout(timeoutId);
@@ -506,6 +510,7 @@ const SpeedShuffler = () => {
         {/* Deep Glow backdrop */}
         <div 
           className="absolute inset-[-40%] bg-[#d4af37]/30 blur-3xl animate-pulse z-0" 
+          // eslint-disable-next-line react-hooks/purity
           style={{ opacity: 0.2 + (Math.random() * 0.4) }}
         />
         
@@ -533,6 +538,7 @@ const SpeedShuffler = () => {
 
           {/* Data Overlay */}
           <div className="absolute top-1 left-2 text-[6px] font-mono text-[#d4af37]/60 leading-none">
+            {/* eslint-disable-next-line react-hooks/purity */}
             {Math.random() > 0.5 ? "ERROR_A7" : `0x${Math.floor(glitchSpeed)}`}
           </div>
           <div className="absolute bottom-1 right-2 text-[6px] font-mono text-[#d4af37]/60 leading-none">
@@ -619,66 +625,9 @@ const GalleryAccordion = ({ sections }: { sections: { title: string; content: Re
   );
 };
 
-const IS_SITE_LOCKED = true;
+const IS_SITE_LOCKED = false;
 
 export default function Home() {
-  if (IS_SITE_LOCKED) {
-    return (
-      <main className="min-h-screen bg-[#050505] flex flex-col items-center justify-center p-6 text-center font-mono selection:bg-[#d4af37] selection:text-black">
-        {/* Subtle background noise/grid effect */}
-        <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#d4af37 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative group max-w-md w-full"
-        >
-           {/* Outer glow aura */}
-           <div className="absolute inset-[-20px] bg-[#d4af37]/5 blur-[60px] rounded-full" />
-           
-           <div className="relative bg-black/80 border border-[#d4af37]/20 p-12 backdrop-blur-xl shadow-[0_0_100px_rgba(0,0,0,1)]">
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#d4af37]/40" />
-              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#d4af37]/40" />
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#d4af37]/40" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#d4af37]/40" />
-
-              <div className="mb-10 flex justify-center">
-                 <div className="relative w-24 h-[1px] bg-[#d4af37]/10">
-                    <motion.div 
-                      animate={{ x: [-48, 48] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                      className="absolute top-0 left-1/2 w-8 h-full bg-[#d4af37]/60" 
-                    />
-                 </div>
-              </div>
-              
-              <h1 className="text-[#d4af37] text-2xl font-black tracking-[0.3em] mb-2 uppercase leading-none">
-                System Locked
-              </h1>
-              
-              <div className="flex items-center justify-center gap-3 my-8">
-                <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#d4af37]/20" />
-                <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
-                <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#d4af37]/20" />
-              </div>
-              
-              <p className="text-[#d4af37]/50 text-xs tracking-[0.4em] uppercase font-light">
-                Locked for now.
-              </p>
-              
-              <div className="mt-16 pt-8 border-t border-[#d4af37]/5">
-                <div className="text-[7px] text-[#d4af37]/30 uppercase tracking-[0.5em] leading-relaxed">
-                  Terminal ID: ALPHA-9 // STATUS: STANDBY<br/>
-                  JAHRONIMO_CORE_ENCRYPTION_ACTIVE
-                </div>
-              </div>
-           </div>
-        </motion.div>
-      </main>
-    );
-  }
-
   const [showForm, setShowForm] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [showOfferDetails, setShowOfferDetails] = useState(false);
@@ -779,6 +728,63 @@ export default function Home() {
       }
     }
   };
+
+  if (IS_SITE_LOCKED) {
+    return (
+      <main className="min-h-screen bg-[#050505] flex flex-col items-center justify-center p-6 text-center font-mono selection:bg-[#d4af37] selection:text-black">
+        {/* Subtle background noise/grid effect */}
+        <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#d4af37 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative group max-w-md w-full"
+        >
+           {/* Outer glow aura */}
+           <div className="absolute inset-[-20px] bg-[#d4af37]/5 blur-[60px] rounded-full" />
+           
+           <div className="relative bg-black/80 border border-[#d4af37]/20 p-12 backdrop-blur-xl shadow-[0_0_100px_rgba(0,0,0,1)]">
+              {/* Corner Accents */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#d4af37]/40" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#d4af37]/40" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#d4af37]/40" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#d4af37]/40" />
+
+              <div className="mb-10 flex justify-center">
+                 <div className="relative w-24 h-[1px] bg-[#d4af37]/10">
+                    <motion.div 
+                      animate={{ x: [-48, 48] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                      className="absolute top-0 left-1/2 w-8 h-full bg-[#d4af37]/60" 
+                    />
+                 </div>
+              </div>
+              
+              <h1 className="text-[#d4af37] text-2xl font-black tracking-[0.3em] mb-2 uppercase leading-none">
+                System Locked
+              </h1>
+              
+              <div className="flex items-center justify-center gap-3 my-8">
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#d4af37]/20" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#d4af37]/20" />
+              </div>
+              
+              <p className="text-[#d4af37]/50 text-xs tracking-[0.4em] uppercase font-light">
+                Locked for now.
+              </p>
+              
+              <div className="mt-16 pt-8 border-t border-[#d4af37]/5">
+                <div className="text-[7px] text-[#d4af37]/30 uppercase tracking-[0.5em] leading-relaxed">
+                  Terminal ID: ALPHA-9 // STATUS: STANDBY<br/>
+                  JAHRONIMO_CORE_ENCRYPTION_ACTIVE
+                </div>
+              </div>
+           </div>
+        </motion.div>
+      </main>
+    );
+  }
 
   return (
     <main className="block relative min-h-screen w-full bg-[#020202] text-white font-sans overflow-x-hidden">
@@ -907,6 +913,9 @@ export default function Home() {
               exit="exit"
               className="flex flex-col items-center gap-6 w-full max-w-2xl mx-auto"
             >
+              {/* Donation Card (Enhanced Visibility) */}
+
+
               {/* Donation Card (Enhanced Visibility) */}
               <motion.a
                 href="https://gofund.me/1b96ee5b4"
@@ -1287,7 +1296,7 @@ jahronimo1@hotmail.com
 
                 {/* Expandable optional fields */}
                 <div className="flex flex-col w-full mt-2 border-t border-white/8">
-                  <ExpandableField name="your_type" label="Your Type" onTick={playTick} onKeystroke={playKeystroke} fields={["Type of Piece (Temporary / Permanent / Both / Installation / Live Creation)", "What's your type? (aesthetic, vibe, style)", "Soft & smooth or sharp & strong?", "Physical or digital?", "Big or small? (scale of the piece)", "Indoor or outdoor?", "Pick a colour or palette", "A mood or feeling you want it to carry", "Anything you don't want"]} />
+                  <ExpandableField name="your_type" label="Your Type" onTick={playTick} onKeystroke={playKeystroke} fields={["Type of Piece (Statues, paintings, digital, or something else?)", "New or old aesthetic?", "What's your vibe or style?", "Soft & smooth or sharp & strong?", "Big or small? (scale of the piece)", "Indoor or outdoor?", "Pick a colour or palette", "A mood or feeling you want it to carry", "Anything you don't want"]} />
                   <ExpandableField name="personal_life" label="Personal Life" onTick={playTick} onKeystroke={playKeystroke} fields={["Who are you?", "Personal Ambition", "Lifestyle Focus", "Values & Beliefs", "Current Challenges"]} />
                   <ExpandableField name="business_life" label="Business Life" onTick={playTick} onKeystroke={playKeystroke} fields={["What you do", "Why?", "Current Project", "Business Goal", "Vision"]} />
                   <ExpandableField name="social_links" label="Socials & Links" onTick={playTick} onKeystroke={playKeystroke} fields={["Primary Link", "Secondary Link", "Portfolio", "Recent Work", "Reference Link"]} />
@@ -1540,6 +1549,7 @@ jahronimo1@hotmail.com
                   `${BASE_PATH}/newwork8.jpg`,
                   `${BASE_PATH}/newwork9.jpg`,
                   `${BASE_PATH}/newwork10.jpg`,
+                  `${BASE_PATH}/newwork_questionmark.jpg`,
                 ];
 
                 const openLight = (i: number) => setLightboxIdx(i);
@@ -1590,10 +1600,26 @@ jahronimo1@hotmail.com
                     </div>
 
                     {/* Footer rule */}
-                    <div className="flex items-center gap-4 mt-8 mb-2">
-                      <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/20" />
-                      <p className="text-[#d4af37]/30 tracking-[0.4em] text-[9px] uppercase">End of Preview</p>
-                      <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/20" />
+                    <div className="flex flex-col items-center justify-center gap-6 mt-16 mb-16">
+                      <div className="flex w-full items-center gap-4">
+                        <div className="flex-grow h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/20" />
+                        <p className="text-[#d4af37]/30 tracking-[0.4em] text-[9px] uppercase">End of Preview</p>
+                        <div className="flex-grow h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/20" />
+                      </div>
+                      
+                      {/* Enormous Question Mark */}
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        className="mt-8 mb-4 relative"
+                      >
+                        <div className="absolute inset-0 bg-[#d4af37]/20 blur-3xl rounded-full scale-150 animate-pulse" />
+                        <h2 className="text-[#d4af37] text-[120px] md:text-[180px] font-black leading-none opacity-90 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+                          ?
+                        </h2>
+                      </motion.div>
                     </div>
 
                     {/* ── Lightbox ─────────────────────────────── */}
@@ -1608,7 +1634,13 @@ jahronimo1@hotmail.com
                           onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
                           onTouchEnd={(e) => {
                             const diff = touchStartX - e.changedTouches[0].clientX;
-                            if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+                            if (Math.abs(diff) > 50) {
+                              if (diff > 0) {
+                                next();
+                              } else {
+                                prev();
+                              }
+                            }
                           }}
                         >
                           {/* X close */}
