@@ -254,7 +254,7 @@ const DiamondSparkle = ({
   </div>
 );
 
-const ExpandableField = ({ name, label, fields, onTick, onKeystroke }: { name: string; label: string; fields?: string[]; onTick: () => void; onKeystroke: () => void }) => {
+const ExpandableField = ({ name, label, fields, onTick, onKeystroke, extraBottom }: { name: string; label: string; fields?: string[]; onTick: () => void; onKeystroke: () => void; extraBottom?: React.ReactNode }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -298,14 +298,15 @@ const ExpandableField = ({ name, label, fields, onTick, onKeystroke }: { name: s
                 <textarea
                   name={name}
                   placeholder="Write here..."
-                  rows={3}
+                  rows={4}
                   onFocus={onKeystroke}
                   onChange={(e) => {
                     if (e.target.value.length % 5 === 0) onKeystroke();
                   }}
-                  className="w-full bg-transparent py-4 text-white tracking-wide outline-none placeholder:text-white/35 font-light text-base resize-none border-b border-white/8 focus:border-[#d4af37]/50 transition-all"
+                  className="w-full bg-transparent border border-white/30 p-4 text-white tracking-wider outline-none focus:border-[#d4af37]/70 transition-all placeholder:text-white/60 font-light text-base resize-none"
                 />
               )}
+              {extraBottom && <div className="mt-4">{extraBottom}</div>}
             </div>
           </motion.div>
         )}
@@ -1296,7 +1297,62 @@ jahronimo1@hotmail.com
 
                 {/* Expandable optional fields */}
                 <div className="flex flex-col w-full mt-2 border-t border-white/8">
-                  <ExpandableField name="your_type" label="Your Type" onTick={playTick} onKeystroke={playKeystroke} fields={["Type of Piece (Statues, paintings, digital, or something else?)", "New or old aesthetic?", "What's your vibe or style?", "Soft & smooth or sharp & strong?", "Big or small? (scale of the piece)", "Indoor or outdoor?", "Pick a colour or palette", "A mood or feeling you want it to carry", "Anything you don't want"]} />
+                  <ExpandableField 
+                    name="your_type" 
+                    label="Your Type" 
+                    onTick={playTick} 
+                    onKeystroke={playKeystroke} 
+                    fields={[
+                      "Type of Piece (Statues, paintings, digital, or something else?)", 
+                      "Do you like gold or silver?",
+                      "Do you like, lights and glow, or not...",
+                      "New or old aesthetic?", 
+                      "What's your vibe or style?", 
+                      "Soft & smooth or sharp & strong?", 
+                      "Big or small? (scale of the piece)", 
+                      "Indoor or outdoor?", 
+                      "Pick a colour or palette", 
+                      "A mood or feeling you want it to carry", 
+                      "Anything you don't want"
+                    ]} 
+                    extraBottom={
+                      <div className="pt-2">
+                        <button 
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            playTick();
+                            const target = e.currentTarget;
+                            if (target.textContent === "No idea, just do something.....") {
+                              target.textContent = "I will take it from here.";
+                              target.classList.add("text-[#d4af37]", "border-[#d4af37]/70", "bg-[#d4af37]/10");
+                              target.classList.remove("text-white/50", "border-white/20");
+                              
+                              // Create hidden input directly within the form so it is caught by FormData
+                              const hiddenInput = document.createElement('input');
+                              hiddenInput.type = 'hidden';
+                              hiddenInput.name = 'Creative_Freedom_Override';
+                              hiddenInput.value = 'User clicked: No idea, just do something';
+                              target.parentElement?.parentElement?.parentElement?.appendChild(hiddenInput);
+                            } else {
+                              target.textContent = "No idea, just do something.....";
+                              target.classList.remove("text-[#d4af37]", "border-[#d4af37]/70", "bg-[#d4af37]/10");
+                              target.classList.add("text-white/50", "border-white/20");
+                              
+                              // Remove hidden override input if they untoggle it
+                              const hiddenInput = target.parentElement?.parentElement?.parentElement?.querySelector('input[name="Creative_Freedom_Override"]');
+                              if (hiddenInput) {
+                                hiddenInput.remove();
+                              }
+                            }
+                          }}
+                          className="w-full relative z-20 py-4 px-6 text-center text-[10px] uppercase font-semibold tracking-[0.25em] border border-white/20 text-white/50 transition-all duration-300 hover:text-white hover:border-white hover:bg-white/5 active:scale-[0.98]"
+                        >
+                          No idea, just do something.....
+                        </button>
+                      </div>
+                    }
+                  />
                   <ExpandableField name="personal_life" label="Personal Life" onTick={playTick} onKeystroke={playKeystroke} fields={["Who are you?", "Personal Ambition", "Lifestyle Focus", "Values & Beliefs", "Current Challenges"]} />
                   <ExpandableField name="business_life" label="Business Life" onTick={playTick} onKeystroke={playKeystroke} fields={["What you do", "Why?", "Current Project", "Business Goal", "Vision"]} />
                   <ExpandableField name="social_links" label="Socials & Links" onTick={playTick} onKeystroke={playKeystroke} fields={["Primary Link", "Secondary Link", "Portfolio", "Recent Work", "Reference Link"]} />
