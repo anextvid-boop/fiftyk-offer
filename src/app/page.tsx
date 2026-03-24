@@ -1121,7 +1121,7 @@ export default function Home() {
               {/* Art Scale Reference Image */}
               <motion.div
                 variants={itemVariants}
-                className="relative w-full max-w-xl bg-black/60 backdrop-blur-xl border border-[#d4af37]/20 p-2 sm:p-4 shadow-[0_0_25px_rgba(212,175,55,0.08)] overflow-hidden flex flex-col items-center justify-center cursor-pointer group"
+                className="relative w-full max-w-xl aspect-square bg-black/60 backdrop-blur-xl border border-[#d4af37]/20 p-2 sm:p-4 shadow-[0_0_25px_rgba(212,175,55,0.08)] overflow-hidden flex flex-col items-center justify-center cursor-pointer group"
                 onClick={() => playTick()}
               >
                 {/* Corner brackets */}
@@ -1133,20 +1133,33 @@ export default function Home() {
                 ].map((cls, i) => (
                   <div
                     key={i}
-                    className={`absolute w-6 h-6 ${cls} border-[#d4af37]/40 flex p-[2px] pointer-events-none group-hover:border-[#d4af37]/70 transition-colors`}
+                    className={`absolute w-6 h-6 ${cls} border-[#d4af37]/40 flex p-[2px] pointer-events-none group-hover:border-[#d4af37]/70 transition-colors z-20`}
                   >
                     <div className="w-[3px] h-[3px] rounded-full bg-[#d4af37]/60 group-hover:bg-[#d4af37] transition-colors" />
                   </div>
                 ))}
                 
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  key={ART_IMAGES[artSlideIdx]}
-                  src={`${BASE_PATH}/${ART_IMAGES[artSlideIdx]}`}
-                  alt="Art Scale Reference"
-                  className="w-full h-auto block opacity-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-[1.01]"
-                  loading="lazy"
-                />
+                {/* 
+                  Pre-load all images dynamically so they crossfade smoothly 
+                  without DOM shifts, leveraging the aspect-square parent.
+                */}
+                <div className="absolute inset-2 sm:inset-4 z-10">
+                  {ART_IMAGES.map((src, i) => (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      key={`slide-${i}`}
+                      src={`${BASE_PATH}/${src}`}
+                      alt={`Art Reference ${i}`}
+                      className={`absolute inset-0 w-full h-full object-contain block transition-all duration-300 ${
+                        artSlideIdx === i 
+                          ? "opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] z-20" 
+                          : "opacity-0 z-0 scale-95"
+                      }`}
+                      style={{ pointerEvents: artSlideIdx === i ? "auto" : "none" }}
+                      loading={i === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
+                </div>
               </motion.div>
 
               {/* ── Expand Info Button ─────── */}
