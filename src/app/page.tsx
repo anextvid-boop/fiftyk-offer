@@ -385,36 +385,46 @@ const ExpandableFileField = ({ name, label, description, onTick }: { name: strin
   );
 };
 
-const SHUFFLE_ICONS = [
-  // Picture Frames (Various Sizes/Shapes)
-  <svg key="frame1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6z" /></svg>, // Square Frame
-  <svg key="frame2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M6 2h12v20H6V2zm2 2v16h8V4H8z" /></svg>, // Tall Frame
-  <svg key="frame3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M2 6h20v12H2V6zm2 2v8h16V8H4z" /></svg>, // Wide Frame
-  <svg key="frame4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM8 8h8v8H8V8zm2 2v4h4v-4h-4z" /></svg>, // Nested Frame
-  <svg key="frame5" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 12l10 10 10-10L12 2zm0 4.5l5.5 5.5-5.5 5.5L6.5 12 12 6.5z" /></svg>, // Diamond Frame
-
-  // Spheres / Orbs
-  <svg key="sphere1" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" fill="black" /><circle cx="12" cy="12" r="2" /></svg>, // Nested Sphere
-  <svg key="sphere2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-8c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" /></svg>, // Orbiting Sphere
-  <svg key="sphere3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a10 10 0 00-7.07 17.07l14.14-14.14A10 10 0 0012 2zm7.07 17.07A10 10 0 014.93 4.93l14.14 14.14z" /></svg>, // Split Sphere
-  
-  // Stars
-  <svg key="star1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>, // 5-Point Star
-  <svg key="star2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l2.4 7.2h7.6l-6.2 4.4 2.4 7.2-6.2-4.4-6.2 4.4 2.4-7.2-6.2-4.4h7.6z" /></svg>, // Sharp Star
-  <svg key="star3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 0l2.5 8.5L23 12l-8.5 2.5L12 23l-2.5-8.5L1 12l8.5-2.5L12 0z" /></svg>, // 4-Point Star
-  <svg key="star4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5l-4-4 1.41-1.41L11 12.17l5.59-5.59L18 8l-7 7z" /></svg>, // Check Star
-  
-  // Statue Silhouettes
-  <svg key="statue1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>, // Two Busts
-  <svg key="statue2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C9.24 2 7 4.24 7 7c0 2.14 1.35 3.96 3.25 4.67C7.68 12.59 6 14.6 6 17v2h12v-2c0-2.4-1.68-4.41-4.25-5.33C15.65 10.96 17 9.14 17 7c0-2.76-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z" /></svg>, // Abstract Bust
-  <svg key="statue3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M9 21h6v-2H9v2zM12 2C8.69 2 6 4.69 6 8c0 1.9.88 3.6 2.25 4.7L10 14v4h4v-4l1.75-1.3C17.12 11.6 18 9.9 18 8c0-3.31-2.69-6-6-6z" /></svg>, // Intellectual Object
-
-  // 3D Objects / Abstract Sequences
-  <svg key="3d1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M2 12l10 5 10-5-10-5L2 12zm0 4.5l10 5 10-5V12l-10 5-10-5v4.5z" /></svg>, // Isometric Cube Layers
-  <svg key="3d2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 22h20L12 2zm0 6l5.5 11h-11L12 8z" /></svg>, // Pyramid
-  <svg key="3d3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M10 2L2 12l8 10h4l8-10-8-10h-4zm2 16.5L5.5 12 12 5.5l6.5 6.5-6.5 6.5z" /></svg>, // Octahedron
-  <svg key="3d4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z" /></svg>, // Grid
-  <svg key="3d5" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>, // Abstract Wings
+const ICON_GROUPS = [
+  // Phase 0: Basic Geometry (Spheres, circles, squares, rectangles)
+  [
+    <svg key="basic1" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="10" /></svg>,
+    <svg key="basic2" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="4" y="4" width="16" height="16" /></svg>,
+    <svg key="basic3" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="2" y="6" width="20" height="12" /></svg>,
+    <svg key="basic4" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="6" y="2" width="12" height="20" /></svg>,
+    <svg key="basic5" viewBox="0 0 24 24" className="w-full h-full fill-current"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" fill="black" /></svg>,
+    <svg key="basic6" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-8c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" /></svg>,
+    <svg key="basic7" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2a10 10 0 00-7.07 17.07l14.14-14.14A10 10 0 0012 2zm7.07 17.07A10 10 0 014.93 4.93l14.14 14.14z" /></svg>,
+  ],
+  // Phase 1: Canvases / Frames
+  [
+    <svg key="frame1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6z" /></svg>,
+    <svg key="frame2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M6 2h12v20H6V2zm2 2v16h8V4H8z" /></svg>,
+    <svg key="frame3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M2 6h20v12H2V6zm2 2v8h16V8H4z" /></svg>,
+    <svg key="frame4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM8 8h8v8H8V8zm2 2v4h4v-4h-4z" /></svg>,
+    <svg key="frame5" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 12l10 10 10-10L12 2zm0 4.5l5.5 5.5-5.5 5.5L6.5 12 12 6.5z" /></svg>,
+    <svg key="frame6" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" /></svg>,
+  ],
+  // Phase 2: Statues
+  [
+    <svg key="statue1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>,
+    <svg key="statue2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2C9.24 2 7 4.24 7 7c0 2.14 1.35 3.96 3.25 4.67C7.68 12.59 6 14.6 6 17v2h12v-2c0-2.4-1.68-4.41-4.25-5.33C15.65 10.96 17 9.14 17 7c0-2.76-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z" /></svg>,
+    <svg key="statue3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M9 21h6v-2H9v2zM12 2C8.69 2 6 4.69 6 8c0 1.9.88 3.6 2.25 4.7L10 14v4h4v-4l1.75-1.3C17.12 11.6 18 9.9 18 8c0-3.31-2.69-6-6-6z" /></svg>,
+    <svg key="statue4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>,
+    <svg key="statue5" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>,
+  ],
+  // Phase 3: Mixed (Stars, Squares, Rectangles, Abstract)
+  [
+    <svg key="star1" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>,
+    <svg key="star2" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2l2.4 7.2h7.6l-6.2 4.4 2.4 7.2-6.2-4.4-6.2 4.4 2.4-7.2-6.2-4.4h7.6z" /></svg>,
+    <svg key="star3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 0l2.5 8.5L23 12l-8.5 2.5L12 23l-2.5-8.5L1 12l8.5-2.5L12 0z" /></svg>,
+    <svg key="star4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5l-4-4 1.41-1.41L11 12.17l5.59-5.59L18 8l-7 7z" /></svg>,
+    <svg key="mix1" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="4" y="4" width="16" height="16" /></svg>,
+    <svg key="mix2" viewBox="0 0 24 24" className="w-full h-full fill-current"><rect x="2" y="6" width="20" height="12" /></svg>,
+    <svg key="mix3" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M12 2L2 22h20L12 2zm0 6l5.5 11h-11L12 8z" /></svg>,
+    <svg key="mix4" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M10 2L2 12l8 10h4l8-10-8-10h-4zm2 16.5L5.5 12 12 5.5l6.5 6.5-6.5 6.5z" /></svg>,
+    <svg key="mix5" viewBox="0 0 24 24" className="w-full h-full fill-current"><path d="M21 16.5l-8-5V3.5c0-.8-.7-1.5-1.5-1.5S10 2.7 10 3.5V11l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L11 19v-5.5l8 2.5v-2z" /></svg>,
+  ]
 ];
 
 const COLORS = [
@@ -440,25 +450,33 @@ const SpeedShuffler = () => {
   // Sequence and Color state
   const [activeColor, setActiveColor] = useState(COLORS[0]);
   const [sequenceMode, setSequenceMode] = useState<"glitch" | "smooth" | "snap" | "pulse">("glitch");
+  const [iconPhase, setIconPhase] = useState(0);
 
+  // Strictly non-eye shapes
   const containerShapes = [
-    "rounded-xl", "rounded-none", "rounded-full",
-    "rounded-tr-[4rem]", "rounded-bl-[4rem]",
-    "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]",
-    "rounded-[100%_0_100%_0]", "rounded-[0_100%_0_100%]",
-    "rounded-[50%_0_50%_0]"
+    "rounded-xl",           // slightly rounded square
+    "rounded-none",         // perfect square
+    "rounded-full",         // perfect circle
+    "rounded-sm",           // sharper square
+    "rounded-[20px]",       // rect shape
+    "rounded-t-full",       // half circle top
+    "rounded-b-full",       // half circle bottom
+    "rounded-l-[30px]",     // pill shape left
+    "rounded-r-[30px]",     // pill shape right
   ];
 
   const rotations = [0, 90, 180, 270];
 
   useEffect(() => {
-    // Mode switcher every 3-5 seconds
+    // Mode switcher every 8 seconds, cycling through the icon phases 0 -> 1 -> 2 -> 3
     const modeTimer = setInterval(() => {
+      setIconPhase(prev => (prev + 1) % 4);
+      
       const modes: ("glitch" | "smooth" | "snap" | "pulse")[] = ["glitch", "smooth", "snap", "pulse"];
       const nextMode = modes[Math.floor(Math.random() * modes.length)];
       setSequenceMode(nextMode);
       setActiveColor(COLORS[Math.floor(Math.random() * COLORS.length)]);
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(modeTimer);
   }, []);
@@ -467,7 +485,7 @@ const SpeedShuffler = () => {
     let timeoutId: NodeJS.Timeout;
     
     const tick = () => {
-      setIndex1(prev => (prev + 1) % SHUFFLE_ICONS.length);
+      setIndex1(prev => (prev + 1) % ICON_GROUPS[iconPhase].length);
       
       let nextSpeed = 100;
       
@@ -503,15 +521,15 @@ const SpeedShuffler = () => {
     tick();
     
     // Ghost layers tick at offset intervals
-    const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % SHUFFLE_ICONS.length), sequenceMode === "glitch" ? 110 : 400);
-    const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % SHUFFLE_ICONS.length), sequenceMode === "glitch" ? 180 : 500);
+    const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % ICON_GROUPS[iconPhase].length), sequenceMode === "glitch" ? 110 : 400);
+    const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % ICON_GROUPS[iconPhase].length), sequenceMode === "glitch" ? 180 : 500);
 
     return () => {
       clearTimeout(timeoutId);
       clearInterval(timer2);
       clearInterval(timer3);
     };
-  }, [sequenceMode]);
+  }, [sequenceMode, iconPhase]);
 
   const rotation = sequenceMode === "snap" ? glitchRotate : rotations[index1 % rotations.length];
   const shapeIdx = index1 % containerShapes.length;
@@ -535,7 +553,7 @@ const SpeedShuffler = () => {
           className="absolute inset-0 flex items-center justify-center scale-150 rotate-12 blur-[1px] transition-colors duration-1000"
           style={{ color: activeColor, opacity: 0.15 }}
         >
-          {SHUFFLE_ICONS[index2]}
+          {ICON_GROUPS[iconPhase][index2]}
         </div>
 
         {/* Layer 3: Rapid Fragment Layer */}
@@ -543,7 +561,7 @@ const SpeedShuffler = () => {
           className="absolute inset-0 flex items-center justify-center -translate-y-2 -translate-x-1 scale-90 transition-colors duration-1000"
           style={{ color: activeColor, opacity: 0.1 }}
         >
-          {SHUFFLE_ICONS[index3]}
+          {ICON_GROUPS[iconPhase][index3]}
         </div>
 
         {/* Main Morphing Container */}
@@ -581,7 +599,7 @@ const SpeedShuffler = () => {
               filter: `drop-shadow(0 0 ${10 * glitchScale}px ${activeColor}80)`
             }}
           >
-            {SHUFFLE_ICONS[index1]}
+            {ICON_GROUPS[iconPhase][index1]}
           </div>
 
           {/* Status Indicator */}
