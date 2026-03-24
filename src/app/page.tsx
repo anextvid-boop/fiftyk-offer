@@ -448,9 +448,10 @@ const SpeedShuffler = () => {
   const [glitchRotate, setGlitchRotate] = useState(0);
   
   // Sequence and Color state
-  const [activeColor, setActiveColor] = useState(COLORS[0]);
+  const [activeColor, setActiveColor] = useState("#d4af37"); // Start Gold
   const [sequenceMode, setSequenceMode] = useState<"glitch" | "smooth" | "snap" | "pulse">("glitch");
   const [iconPhase, setIconPhase] = useState(0);
+  const [modeIndex, setModeIndex] = useState(0);
 
   // Strictly non-eye shapes
   const containerShapes = [
@@ -468,15 +469,23 @@ const SpeedShuffler = () => {
   const rotations = [0, 90, 180, 270];
 
   useEffect(() => {
-    // Mode switcher every 8 seconds, cycling through the icon phases 0 -> 1 -> 2 -> 3
+    // Change speed, style, and type every 2.5 seconds
     const modeTimer = setInterval(() => {
-      setIconPhase(prev => (prev + 1) % 4);
-      
-      const modes: ("glitch" | "smooth" | "snap" | "pulse")[] = ["glitch", "smooth", "snap", "pulse"];
-      const nextMode = modes[Math.floor(Math.random() * modes.length)];
-      setSequenceMode(nextMode);
-      setActiveColor(COLORS[Math.floor(Math.random() * COLORS.length)]);
-    }, 8000);
+      setModeIndex(prev => {
+        const next = prev + 1;
+        const isFastNow = next % 2 === 0; // Even = Fast Gold, Odd = Slow Silver
+        
+        setIconPhase(next % 4); 
+        setActiveColor(isFastNow ? "#d4af37" : "#C0C0C0");
+        
+        // Change style/type
+        const fastModes: ("glitch" | "snap")[] = ["glitch", "snap"];
+        const slowModes: ("smooth" | "pulse")[] = ["smooth", "pulse"];
+        
+        setSequenceMode(isFastNow ? fastModes[Math.floor(Math.random() * fastModes.length)] : slowModes[Math.floor(Math.random() * slowModes.length)]);
+        return next;
+      });
+    }, 2500);
 
     return () => clearInterval(modeTimer);
   }, []);
@@ -493,25 +502,25 @@ const SpeedShuffler = () => {
         setGlitchScale(0.9 + Math.random() * 0.3);
         setGlitchOffset({ x: (Math.random() - 0.5) * 10, y: (Math.random() - 0.5) * 10 });
         setGlitchRotate((Math.random() - 0.5) * 20);
-        nextSpeed = 60 + Math.random() * 100;
+        nextSpeed = 30 + Math.random() * 30; // Really fast
         setShowBorder(Math.random() > 0.3);
       } else if (sequenceMode === "smooth") {
         setGlitchScale(1.1);
         setGlitchOffset({ x: 0, y: 0 });
         setGlitchRotate(prev => prev + 15);
-        nextSpeed = 300;
+        nextSpeed = 600; // Slow
         setShowBorder(true);
       } else if (sequenceMode === "snap") {
         setGlitchScale(1);
         setGlitchOffset({ x: 0, y: 0 });
         setGlitchRotate(prev => prev + 90);
-        nextSpeed = 500;
+        nextSpeed = 60; // Really fast
         setShowBorder(true);
       } else if (sequenceMode === "pulse") {
         setGlitchScale(prev => prev === 1 ? 1.4 : 1);
         setGlitchOffset({ x: 0, y: 0 });
         setGlitchRotate(0);
-        nextSpeed = 250;
+        nextSpeed = 800; // Slow
         setShowBorder(false);
       }
       
@@ -521,8 +530,9 @@ const SpeedShuffler = () => {
     tick();
     
     // Ghost layers tick at offset intervals
-    const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % ICON_GROUPS[iconPhase].length), sequenceMode === "glitch" ? 110 : 400);
-    const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % ICON_GROUPS[iconPhase].length), sequenceMode === "glitch" ? 180 : 500);
+    const isFast = sequenceMode === "glitch" || sequenceMode === "snap";
+    const timer2 = setInterval(() => setIndex2(prev => (prev + 1) % ICON_GROUPS[iconPhase].length), isFast ? 50 : 400);
+    const timer3 = setInterval(() => setIndex3(prev => (prev + 1) % ICON_GROUPS[iconPhase].length), isFast ? 80 : 500);
 
     return () => {
       clearTimeout(timeoutId);
@@ -665,10 +675,50 @@ const GalleryAccordion = ({ sections }: { sections: { title: string; content: Re
     </div>
   );
 };
+const ART_IMAGES = [
+  "art_grid_architectural_sketch.png",
+  "slideshow/original_edit.png",
+  "slideshow/item_1.png",
+  "slideshow/item_2.png",
+  "slideshow/item_3.png",
+  "slideshow/item_4.png",
+  "slideshow/item_5.png",
+  "slideshow/item_6.png",
+  "slideshow/item_7.png",
+  "slideshow/item_9.png",
+  "slideshow/item_10.png",
+  "slideshow/item_11.png",
+  "slideshow/item_12.png",
+  "slideshow/item_13.png",
+  // Second wave (different sequence)
+  "slideshow/original_edit.png",
+  "slideshow/item_5.png",
+  "slideshow/item_11.png",
+  "slideshow/item_2.png",
+  "slideshow/item_7.png",
+  "slideshow/item_13.png",
+  "slideshow/item_3.png",
+  "slideshow/item_9.png",
+  "slideshow/item_1.png",
+  "slideshow/item_12.png",
+  "slideshow/item_6.png",
+  "slideshow/item_4.png",
+  "slideshow/item_10.png",
+  // Third wave (rapid cycle variation)
+  "art_grid_architectural_sketch.png",
+  "slideshow/item_12.png",
+  "slideshow/item_9.png",
+  "slideshow/item_13.png",
+  "slideshow/item_7.png",
+  "slideshow/item_10.png",
+  "slideshow/item_11.png",
+  "slideshow/original_edit.png",
+];
 
 const IS_SITE_LOCKED = false;
 
 export default function Home() {
+  const [artSlideIdx, setArtSlideIdx] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [showOfferDetails, setShowOfferDetails] = useState(false);
@@ -681,6 +731,13 @@ export default function Home() {
   const detailsRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setArtSlideIdx(prev => (prev + 1) % ART_IMAGES.length);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (showHelpDetails && helpRef.current) {
@@ -1084,9 +1141,10 @@ export default function Home() {
                 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`${BASE_PATH}/art_grid_architectural_sketch.png`}
+                  key={ART_IMAGES[artSlideIdx]}
+                  src={`${BASE_PATH}/${ART_IMAGES[artSlideIdx]}`}
                   alt="Art Scale Reference"
-                  className="w-full h-auto block opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:scale-[1.01]"
+                  className="w-full h-auto block opacity-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-[1.01]"
                   loading="lazy"
                 />
               </motion.div>
