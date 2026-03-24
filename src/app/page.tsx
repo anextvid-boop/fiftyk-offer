@@ -985,26 +985,33 @@ export default function Home() {
                     >
                       <div className="pt-10 pb-4 px-2 sm:px-6 w-full flex flex-col items-center gap-6 text-white/90 font-light leading-relaxed text-sm sm:text-base border-t border-[#d4af37]/20 mt-8 text-center text-balance">
                         <p className="tracking-wide">
-                          I'm an artist. I'm not up my own ass, but I'm very talented and very skilled and I want £50,000 for a blind shot art project which is gonna look really cool.
+                          I need help. I'm an artist. I'm not up my own ass, but I'm a very talented, very skilled artist. I want £50k for a blind shot art project.
                         </p>
                         <p className="tracking-wide">
-                          I don't know exactly what it is yet, and I'm not gonna tell you because it depends on the person and what is actually going on. But it should be really cool and really fun. 
-                        </p>
-                        <p className="tracking-wide text-[#d4af37]">
-                          If you've got the money to spend, let's just see what happens. It's gonna be great fun and it'll help me out a lot.
+                          As part of the fun, you're going to have to trust me. I'll make you something magical. I've been doing art—different forms of art—my entire life. I don't know exactly what it is yet, because it's all dependent on who is actually applying for it.
                         </p>
 
-                        <div className="mt-8 w-full flex justify-center">
+                        <div className="mt-8 w-full flex flex-col sm:flex-row gap-4 justify-center items-center">
                            <a
                               href="https://gofund.me/1b96ee5b4"
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={() => playTick()}
-                              className="relative w-full max-w-sm flex flex-col items-center justify-center p-4 bg-[#d4af37]/10 border border-[#d4af37]/40 hover:bg-[#d4af37]/20 hover:border-[#d4af37] transition-all duration-300 group/btn"
+                              className="relative w-full sm:w-1/2 max-w-sm flex flex-col items-center justify-center p-4 bg-[#d4af37]/10 border border-[#d4af37]/40 hover:bg-[#d4af37]/20 hover:border-[#d4af37] transition-all duration-300 group/btn h-full"
                             >
-                              <span className="text-white tracking-[0.2em] font-bold text-sm sm:text-base uppercase mb-1 drop-shadow-md">Make a Donation</span>
-                              <span className="text-[#d4af37] text-[10px] tracking-widest uppercase opacity-70 group-hover/btn:opacity-100 transition-opacity">GoFundMe page</span>
+                              <span className="text-white tracking-[0.2em] font-bold text-sm sm:text-base uppercase mb-1 drop-shadow-md text-center">Make a<br/>Donation</span>
+                              <span className="text-[#d4af37] text-[10px] tracking-widest uppercase opacity-70 group-hover/btn:opacity-100 transition-opacity mt-auto">GoFundMe Page</span>
                            </a>
+
+                           <button
+                              type="button"
+                              onClick={(e) => { e.stopPropagation(); playTick(); setShowForm(true); }}
+                              className="relative w-full sm:w-1/2 max-w-sm flex flex-col items-center justify-center p-4 bg-black/40 border border-[#d4af37]/80 hover:bg-[#d4af37]/15 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 group/sig h-full"
+                            >
+                              <span className="text-white tracking-[0.1em] font-bold text-sm sm:text-base uppercase mb-1 drop-shadow-md text-center leading-tight">£50,000 Surprise<br/>1 of 1 Art Piece</span>
+                              <span className="text-[#d4af37] text-[10px] tracking-widest uppercase opacity-70 group-hover/sig:opacity-100 transition-opacity mt-2">Sign-up for the project</span>
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent translate-x-[-100%] group-hover/sig:animate-[shimmer_1.5s_ease-out_infinite] pointer-events-none" />
+                           </button>
                         </div>
                       </div>
                     </motion.div>
