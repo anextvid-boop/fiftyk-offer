@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
 2:I[79104,["/fiftyk-offer/_next/static/chunks/01999e29b8ced691.js","/fiftyk-offer/_next/static/chunks/3d6cdf87c2a99730.js"],"default"]
 3:I[40268,["/fiftyk-offer/_next/static/chunks/01999e29b8ced691.js","/fiftyk-offer/_next/static/chunks/3d6cdf87c2a99730.js"],"default"]
-0:{"buildId":"GN1eDqlD8R9JHiR00jAti","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"MFoKwAVeS9esRTEOrofOf","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
