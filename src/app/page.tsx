@@ -628,6 +628,78 @@ const SpeedShuffler = () => {
 };
 
 
+const WireframeVisualizer = () => {
+  return (
+    <div className="relative w-full max-w-xl aspect-square bg-black/60 backdrop-blur-xl border border-[#d4af37]/20 flex items-center justify-center overflow-hidden group shadow-[0_0_25px_rgba(212,175,55,0.08)] cursor-pointer active:scale-[0.98] transition-all">
+      {/* Corner brackets */}
+      {["top-0 left-0 border-t border-l", "top-0 right-0 border-t border-r", "bottom-0 left-0 border-b border-l", "bottom-0 right-0 border-b border-r"].map((cls, i) => (
+        <div key={i} className={`absolute w-6 h-6 sm:w-8 sm:h-8 ${cls} border-[#d4af37]/40 flex pointer-events-none group-hover:border-[#d4af37]/70 transition-colors p-[2px]`}>
+          <div className="w-[3px] h-[3px] rounded-full bg-[#d4af37]/40 group-hover:bg-[#d4af37] transition-colors" />
+        </div>
+      ))}
+      
+      {/* Subtle background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.08)_0%,transparent_60%)] pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity duration-1000" />
+
+      {/* 3D Scene */}
+      <div className="relative w-full h-full flex items-center justify-center transform scale-[0.6] sm:scale-[0.8]" style={{ perspective: "1000px" }}>
+        
+        {/* Core rotating structure */}
+        <div 
+          className="relative w-64 h-64 transition-transform duration-1000 group-hover:scale-110"
+          style={{ transformStyle: "preserve-3d", animation: "spin-3d 24s linear infinite" }}
+        >
+          {/* Latitude rings */}
+          {Array.from({length: 8}).map((_, i) => (
+            <div 
+              key={`lat-${i}`}
+              className="absolute inset-0 border border-[#d4af37]/25 rounded-full"
+              style={{ transform: `rotateY(${i * 22.5}deg)`, boxShadow: "inset 0 0 15px rgba(212,175,55,0.05)" }}
+            />
+          ))}
+          
+          {/* Longitude rings */}
+          {Array.from({length: 8}).map((_, i) => (
+            <div 
+              key={`lon-${i}`}
+              className="absolute inset-0 border border-[#d4af37]/20 rounded-full"
+              style={{ transform: `rotateX(${i * 22.5}deg)` }}
+            />
+          ))}
+
+          {/* Inner tight core */}
+          <div 
+            className="absolute inset-[25%] border border-[#d4af37]/50 mix-blend-screen"
+            style={{ transformStyle: "preserve-3d", animation: "spin-3d-reverse 12s linear infinite" }}
+          >
+             {/* Diagonal bracing inside core */}
+             <div className="absolute inset-0 border-[2px] border-[#d4af37]/40 rounded-sm" style={{ transform: "rotateX(45deg) rotateY(45deg)" }} />
+             <div className="absolute inset-0 border-[2px] border-[#d4af37]/40 rounded-sm" style={{ transform: "rotateX(-45deg) rotateY(-45deg)" }} />
+             
+             {/* Solid glow center point */}
+             <div className="absolute top-1/2 left-1/2 w-8 h-8 bg-[#d4af37] rounded-full blur-[8px] -translate-x-1/2 -translate-y-1/2 opacity-70 animate-[pulse_2s_ease-in-out_infinite]" />
+             <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 opacity-90 shadow-[0_0_10px_white]" />
+          </div>
+        </div>
+      </div>
+      
+      {/* Overlay Data */}
+      <div className="absolute bottom-4 left-4 text-[#d4af37]/50 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] flex flex-col gap-1 z-10 pointer-events-none">
+        <span>SYS.MODEL_ <span className="text-[#d4af37]">ACTIVE</span></span>
+        <span>ID: PROTO_01</span>
+      </div>
+      <div className="absolute top-4 right-4 text-[#d4af37]/30 font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.2em] animate-pulse z-10 pointer-events-none">
+        {`[RENDERING]`}
+      </div>
+      <div className="absolute bottom-4 right-4 text-[#d4af37]/50 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] flex flex-col items-end gap-1 z-10 pointer-events-none">
+        <span>MEM: 24MB</span>
+        <span>FPS: 60.0</span>
+      </div>
+    </div>
+  );
+};
+
+
 const GalleryAccordion = ({ sections }: { sections: { title: string; content: React.ReactNode }[] }) => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -965,6 +1037,14 @@ export default function Home() {
           0%, 100% { filter: drop-shadow(0 0 5px #d4af37) brightness(1); }
           50%      { filter: drop-shadow(0 0 15px #d4af37) brightness(1.2); }
         }
+        @keyframes spin-3d {
+          0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+          100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg); }
+        }
+        @keyframes spin-3d-reverse {
+          0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+          100% { transform: rotateX(-360deg) rotateY(-360deg) rotateZ(-180deg); }
+        }
       `}</style>
 
       {/* ── Background ────────────────────────────────────────── */}
@@ -1160,6 +1240,11 @@ export default function Home() {
                     />
                   ))}
                 </div>
+              </motion.div>
+
+              {/* Wireframe Extracted from Form / Dedicated Visualizer */}
+              <motion.div variants={itemVariants} className="w-full max-w-xl mx-auto flex justify-center">
+                <WireframeVisualizer />
               </motion.div>
 
               {/* ── Expand Info Button ─────── */}
@@ -1416,6 +1501,11 @@ export default function Home() {
               className="relative w-full max-w-xl mx-auto bg-black/70 backdrop-blur-2xl p-10 md:p-16 flex flex-col items-center shadow-[0_0_40px_rgba(212,175,55,0.07),0_0_0_1px_rgba(212,175,55,0.15)] overflow-hidden"
             >
               <SpeedShuffler />
+
+              <div className="w-full flex justify-center mt-4 mb-10 pb-4 border-b border-[#d4af37]/20" onClick={() => playTick()}>
+                <WireframeVisualizer />
+              </div>
+
               {/* Hardware-accelerated glow pulse */}
               <div className="absolute inset-0 pointer-events-none shadow-[0_0_80px_rgba(212,175,55,0.18),0_0_0_1px_rgba(212,175,55,0.30)]" style={{ animation: "pulsate-opacity 7s ease-in-out infinite" }} />
               {/* Shimmer sweep */}
